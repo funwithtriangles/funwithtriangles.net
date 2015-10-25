@@ -49,6 +49,7 @@ if (triCols > triRows) {
  var gridSize = triCount * triWidth;
 var moveX = 0;
 var moveY = 0;
+var message = "FUN WITH TRIANGLES";
 
 
 
@@ -134,15 +135,23 @@ function draw() {
     }   
 
     globalAngle+=0.002;
+    var fontSize = 200;
+
 
 
     context.globalCompositeOperation = 'destination-in';
-    context.font = "800 125px 'Brandon Grotesque'";
+    context.font = '800 '+fontSize+'px "Brandon Grotesque"';
     context.textAlign = "center";
+
+    while (context.measureText(message).width > width) {
+        fontSize--;
+        context.font = '800 '+fontSize+'px "Brandon Grotesque"';
+    }
+
     context.setTransform(1,0,0,1,0,0);
     context.fillStyle = "rgb(0,0,0)";
-    context.fillText("FUN WITH TRIANGLES", cx, cy);
-    
+    context.fillText(message, cx, cy+fontSize/4);
+
    context.restore();
     context.rotate(0.0003);
    
