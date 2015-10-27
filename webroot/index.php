@@ -24,7 +24,7 @@
 <header data-header>
     <canvas>Fun with Triangles</canvas>
 </header>
-
+<h1></h1>
 
 <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -281,6 +281,27 @@ headerImage.onload = function() {
 checkScreenWidth();
 $(window).on('mousemove', handleMouseMove);
 $(window).on('resize', resize);
+
+window.addEventListener('devicemotion', function(e) {
+
+  ax = e.acceleration.x;
+  ay = e.acceleration.y;
+  ax = e.acceleration.z;
+
+  if (ax > 0.5 || ax < -0.5) {
+    vx = ax * 10;
+  }
+
+  if (ay > 0.5 || ay < -0.5) {
+    vy = ay * 10;
+  }
+
+  if (az > 0.5 || az < -0.5) {
+    vy = az * 10;
+  }
+  
+
+});
 
 requestAnimationFrame(function animLoop(){
  handlePhysics();  
