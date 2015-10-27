@@ -155,7 +155,7 @@ var handleMouseMove = function(e) {
     // }
 
     // If last mouse recorded 10th of a second ago
-    if (mouseLastMoved < Date.now() - 100) {
+    if (mouseLastMoved < Date.now() - 50) {
         // Get speed of mouse
         vx = e.clientX - lastX;
         vy = e.clientY - lastY;
