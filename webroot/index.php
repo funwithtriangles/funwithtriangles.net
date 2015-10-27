@@ -1,6 +1,8 @@
 <!doctype html>
 <html>
     <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style>
         body, html {
             height: 100%;
@@ -14,6 +16,8 @@
         }
 
         </style>
+
+        <script src="/js/modernizr.js"></script>
     </head>
 
 <body>
@@ -22,7 +26,8 @@
 </header>
 
 
-<script src="/js/jquery.min.js"></script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
 <script>
 
 // Constants
@@ -47,6 +52,8 @@ var maxV = 100;
 $canvas = $('canvas');
 $container = $('[data-header]');
 var context = $canvas[0].getContext('2d');
+
+var ratio = window.devicePixelRatio || 1;
 
 // Triangle grid
 var triHeight = triWidth * (Math.sqrt(3)/2);
@@ -74,12 +81,16 @@ var vy = 0;
 
 var resize = function() {
 
-
     // Canvas sizing stuff
-    width = $canvas[0].width = $container.width();
-    height = $canvas[0].height = width*imageRatio;
+    width = $canvas[0].width = $container.width() * ratio;
+    height = $canvas[0].height = width*imageRatio * ratio;
     cx = width/2;
     cy = height/2;
+
+    context.scale(ratio,ratio);
+
+    $canvas[0].style.width = (width/ratio)+"px";
+    $canvas[0].style.height = (height/ratio)+"px";
 
     // Triangle grid
     triCols = Math.ceil(width/triWidth);
@@ -102,7 +113,8 @@ var resize = function() {
 
 var checkScreenWidth = function() {
 
-    if (window.innerWidth < 500 && headerImage.src != imageSrcSmall) {
+
+    if (Modernizr.mq('(max-width: 600px)') && headerImage.src != imageSrcSmall) {
         headerImage.src = imageSrcSmall
     } else if (headerImage.src != imageSrcLarge) {
         headerImage.src = imageSrcLarge;
@@ -184,7 +196,8 @@ var draw = function() {
     context.fill();
 
      // Rotate entire canvas
-    context.rotate(0.1); 
+   
+   // context.rotate(0.1); 
 
     // Save context for canvas rotation
     context.save();
@@ -221,7 +234,7 @@ var draw = function() {
         }
     }   
 
-    globalAngle+=0.003;
+    globalAngle+=0.006;
 
     // Apply masked text image
     context.globalCompositeOperation = 'destination-in';
