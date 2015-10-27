@@ -40,6 +40,8 @@ var colors = [[241,118,76], [232,88,59]];
 var triWidth = 40;
 var imageSrcLarge = "/images/header_wide.svg";
 var imageSrcSmall = "/images/header_tall.svg";
+var friction = 0.5;
+var maxV = 1000;
 
 // Canvas vars
 $canvas = $('canvas');
@@ -65,7 +67,8 @@ var mouseLastMoved;
 
 var vx = 0;
 var vy = 0;
-var friction = 1;
+
+
 
 
 
@@ -152,7 +155,7 @@ var handleMouseMove = function(e) {
     // }
 
     // If last mouse recorded 10th of a second ago
-    if (mouseLastMoved < Date.now() + 10) {
+    if (mouseLastMoved < Date.now() - 50) {
         // Get speed of mouse
         vx = e.clientX - lastX;
         vy = e.clientY - lastY;
@@ -161,8 +164,6 @@ var handleMouseMove = function(e) {
         lastX = e.clientX;
         lastY = e.clientY;
         mouseLastMoved = Date.now();
-
-        console.log(vx);
 
     }
 
@@ -199,7 +200,7 @@ var draw = function() {
         context.translate(xOffset,triHeight);
         
         // Adjust x position with mouse X, alternate +/- on row
-        var posX = (moveX - (2*moveX*bool))/50;
+        var posX = (moveX - (2*moveX*bool))/10;
         
         // Alternate the blend mode for each row;
         if (bool) {
@@ -212,7 +213,7 @@ var draw = function() {
 
             // Adjust y position with mouse y, alternate +/- on rcolow
             var bool = i % 2;
-            var posY = (moveY - (2*moveY*bool))/50  - (gridSize/2);
+            var posY = (moveY - (2*moveY*bool))/10  - (gridSize/2);
 
             // Draw triangle, alternate up/down rotation while adding the global rotation
             triangle(triWidth, colors[bool], (Math.PI*bool)+globalAngle, (i*triWidth)+posX - (gridSize/2), posY);
@@ -231,15 +232,12 @@ var draw = function() {
    
 };
 
-var checkVelocity = function() {
-
-    if (mouseLastMoved < Date.now() + 10) {
-        console.log('s');
-
-    }
-}
 
 var handlePhysics = function() {
+
+
+    // var vx = Math.min((Math.max(vx, maxV), -maxV));
+    // var vy = Math.min((Math.max(vy, maxV), -maxV));
 
     if (vx > 0) {
         vx -= friction;
