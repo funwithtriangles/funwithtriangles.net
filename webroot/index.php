@@ -40,8 +40,8 @@ var colors = [[241,118,76], [232,88,59]];
 var triWidth = 40;
 var imageSrcLarge = "/images/header_wide.svg";
 var imageSrcSmall = "/images/header_tall.svg";
-var friction = 0.5;
-var maxV = 1000;
+var friction = 0.9;
+var maxV = 100;
 
 // Canvas vars
 $canvas = $('canvas');
@@ -155,7 +155,7 @@ var handleMouseMove = function(e) {
     // }
 
     // If last mouse recorded 10th of a second ago
-    if (mouseLastMoved < Date.now() - 50) {
+    if (mouseLastMoved < Date.now() - 100) {
         // Get speed of mouse
         vx = e.clientX - lastX;
         vy = e.clientY - lastY;
@@ -235,21 +235,21 @@ var draw = function() {
 
 var handlePhysics = function() {
 
-
-    // var vx = Math.min((Math.max(vx, maxV), -maxV));
-    // var vy = Math.min((Math.max(vy, maxV), -maxV));
-
-    if (vx > 0) {
-        vx -= friction;
-    } else {
-        vx += friction;
+    if (vx > maxV) {
+        vx = maxV;
+    } else if (vx < -maxV) {
+        vx = -maxV;
     }
 
-    if (vy > 0) {
-        vy -= friction;
-    } else {
-        vy += friction;
+    if (vy > maxV) {
+        vy = maxV;
+    } else if (vy < -maxV) {
+        vy = -maxV;
     }
+ 
+
+    vx = vx*friction;
+    vy = vy*friction;
 
     moveX += vx;
     moveY += vy;
