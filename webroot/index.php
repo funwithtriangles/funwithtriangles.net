@@ -44,7 +44,7 @@ var imageSrcSmall = "/images/header_tall.svg";
 // Canvas vars
 $canvas = $('canvas');
 $container = $('[data-header]');
-context = $canvas[0].getContext('2d');
+var context = $canvas[0].getContext('2d');
 
 // Triangle grid
 var triHeight = triWidth * (Math.sqrt(3)/2);
@@ -59,12 +59,18 @@ var imageLoaded = false;
 // Mouse vars
 var moveX = 0;
 var moveY = 0;
+var lastX = 0;
+var lastY = 0;
+var mouseLastMoved;
+
+var vx = 0;
+var vy = 0;
+var friction = 1;
 
 
 
 var resize = function() {
 
-  
 
     // Canvas sizing stuff
     width = $canvas[0].width = $container.width();
@@ -112,7 +118,7 @@ var triangle = function(r, color, angle, x, y) {
     angle = angle + ONE_THIRD*Math.PI/2;
 
     context.beginPath();
-    context.fillStyle = 'rgba('+color[0]+','+color[1]+','+color[2]+','+1+')';
+     context.fillStyle = 'rgba('+color[0]+','+color[1]+','+color[2]+','+1+')';
     
     // Triangle points calculated using third angles on a circle
     for (var i=0; i < triAngles.length; i++) {
@@ -135,8 +141,33 @@ var triangle = function(r, color, angle, x, y) {
 
 var handleMouseMove = function(e) {
 
-    moveX = e.clientX;
-    moveY = e.clientY;
+    if (!mouseLastMoved) {
+        mouseLastMoved = Date.now();
+    }
+
+    // if (!mouseMoving) {
+    //     moveXStart = e.clientX;
+    //     moveYStart = e.clientY;
+    //     mouseMoving = true;
+    // }
+
+    // If last mouse recorded 10th of a second ago
+    if (mouseLastMoved < Date.now() + 10) {
+        // Get speed of mouse
+        vx = e.clientX - lastX;
+        vy = e.clientY - lastY;
+
+        // Update new values of mouse to check next time
+        lastX = e.clientX;
+        lastY = e.clientY;
+        mouseLastMoved = Date.now();
+
+        console.log(vx);
+
+    }
+
+   
+    
 }
 
 var draw = function() {
@@ -145,14 +176,19 @@ var draw = function() {
     if (!imageLoaded) { return };
 
     // Background color in case holes peep throuhg
-    context.globalCompositeOperation = 'normal';
+   context.globalCompositeOperation = 'normal';
     var color = colors[0];
     context.fillStyle = 'rgb('+color[0]+','+color[1]+','+color[2]+')';
     context.rect(-gridSize/2,-gridSize/2,gridSize,gridSize);
     context.fill();
 
+     // Rotate entire canvas
+    context.rotate(0.1); 
+
     // Save context for canvas rotation
     context.save();
+    var color = colors[1];
+     context.fillStyle = 'rgba('+color[0]+','+color[1]+','+color[2]+','+1+')';
     
     // Iterate triangle Rows
     for (var j = 0; j < triCount; j++) {
@@ -176,7 +212,7 @@ var draw = function() {
 
             // Adjust y position with mouse y, alternate +/- on rcolow
             var bool = i % 2;
-            var posY = (moveY - (2*moveY*bool))/40  - (gridSize/2);
+            var posY = (moveY - (2*moveY*bool))/50  - (gridSize/2);
 
             // Draw triangle, alternate up/down rotation while adding the global rotation
             triangle(triWidth, colors[bool], (Math.PI*bool)+globalAngle, (i*triWidth)+posX - (gridSize/2), posY);
@@ -184,7 +220,7 @@ var draw = function() {
         }
     }   
 
-    globalAngle+=0.002;
+    globalAngle+=0.003;
 
     // Apply masked text image
     context.globalCompositeOperation = 'destination-in';
@@ -192,10 +228,34 @@ var draw = function() {
     context.drawImage(headerImage,0,0, width, width*imageRatio);
     context.restore();
 
-    // Rotate entire canvas
-    context.rotate(0.0003); 
-
+   
 };
+
+var checkVelocity = function() {
+
+    if (mouseLastMoved < Date.now() + 10) {
+        console.log('s');
+
+    }
+}
+
+var handlePhysics = function() {
+
+    if (vx > 0) {
+        vx -= friction;
+    } else {
+        vx += friction;
+    }
+
+    if (vy > 0) {
+        vy -= friction;
+    } else {
+        vy += friction;
+    }
+
+    moveX += vx;
+    moveY += vy;
+}
 
 
 headerImage.onload = function() {
@@ -211,11 +271,11 @@ checkScreenWidth();
 $(window).on('mousemove', handleMouseMove);
 $(window).on('resize', resize);
 
-(function animLoop() {
-    requestAnimationFrame( animLoop );
-    draw();
-})();
-
+requestAnimationFrame(function animLoop(){
+ handlePhysics();  
+ draw();
+ requestAnimationFrame( animLoop );
+});
 
 
 </script>
