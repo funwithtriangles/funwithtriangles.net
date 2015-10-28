@@ -42,9 +42,10 @@ var triAngles = [
 
 // Settings
 var colors = [[241,118,76], [232,88,59]];
-var triWidth = 40;
-var imageSrcLarge = "/images/header_wide.svg";
+var triWidth = 100;
+//var imageSrcLarge = "/images/header_wide.svg";
 var imageSrcSmall = "/images/header_tall.svg";
+var imageSrcLarge = imageSrcSmall;
 var friction = 0.9;
 var maxV = 100;
 
@@ -53,7 +54,11 @@ $canvas = $('canvas');
 $container = $('[data-header]');
 var context = $canvas[0].getContext('2d');
 
-var ratio = window.devicePixelRatio || 1;
+
+var pixelRatio = window.devicePixelRatio || 1;
+
+// May need to do this for performance reasons
+//var pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
 
 // Triangle grid
 var triHeight = triWidth * (Math.sqrt(3)/2);
@@ -64,6 +69,7 @@ var globalAngle = 0;
 var headerImage = new Image();
 var imageRatio;
 var imageLoaded = false;
+var usingImage;
 
 // Mouse vars
 var moveX = 0;
@@ -82,15 +88,15 @@ var vy = 0;
 var resize = function() {
 
     // Canvas sizing stuff
-    width = $canvas[0].width = $container.width() * ratio;
-    height = $canvas[0].height = width*imageRatio * ratio;
+    width = Math.floor($canvas[0].width = $container.width() * pixelRatio);
+    height = Math.floor($canvas[0].height = (width/pixelRatio)*imageRatio * pixelRatio);
     cx = width/2;
     cy = height/2;
 
-    context.scale(ratio,ratio);
+    context.scale(pixelRatio,pixelRatio);
 
-    $canvas[0].style.width = (width/ratio)+"px";
-    $canvas[0].style.height = (height/ratio)+"px";
+    $canvas[0].style.width = Math.floor(width/pixelRatio)+"px";
+    $canvas[0].style.height = Math.floor(height/pixelRatio)+"px";
 
     // Triangle grid
     triCols = Math.ceil(width/triWidth);
@@ -104,8 +110,7 @@ var resize = function() {
 
     gridSize = triCount * triWidth;
 
-    //context.setTransform(1,0,width/2,1,0,height/2);
-    context.translate(width/2, height/2);
+    context.translate(Math.floor(width/2), Math.floor(height/2));
 
     checkScreenWidth();
 
@@ -113,13 +118,15 @@ var resize = function() {
 
 var checkScreenWidth = function() {
 
+    if (Modernizr.mq('(max-width: 600px)') && usingImage != 'small') {
 
-    if (Modernizr.mq('(max-width: 600px)') && headerImage.src != imageSrcSmall) {
         headerImage.src = imageSrcSmall
-    } else if (headerImage.src != imageSrcLarge) {
-        headerImage.src = imageSrcLarge;
-    }
+        usingImage = 'small';
 
+    } else if (Modernizr.mq('(min-width: 600px)') && usingImage != 'large') {
+        headerImage.src = imageSrcLarge;
+        usingImage = 'large';
+    }    
    
 }
 
@@ -195,12 +202,8 @@ var draw = function() {
     context.rect(-gridSize/2,-gridSize/2,gridSize,gridSize);
     context.fill();
 
-     // Rotate entire canvas
-   
-   // context.rotate(0.1); 
-
-    // Save context for canvas rotation
     context.save();
+
     var color = colors[1];
      context.fillStyle = 'rgba('+color[0]+','+color[1]+','+color[2]+','+1+')';
     
@@ -234,12 +237,13 @@ var draw = function() {
         }
     }   
 
-    globalAngle+=0.006;
+    globalAngle+=0.003;
 
     // Apply masked text image
     context.globalCompositeOperation = 'destination-in';
     context.setTransform(1,0,0,1,0,0);
     context.drawImage(headerImage,0,0, width, width*imageRatio);
+    
     context.restore();
 
    
@@ -278,6 +282,7 @@ headerImage.onload = function() {
 
 }
 
+
 checkScreenWidth();
 $(window).on('mousemove', handleMouseMove);
 $(window).on('resize', resize);
@@ -286,7 +291,7 @@ window.addEventListener('devicemotion', function(e) {
 
   ax = e.acceleration.x;
   ay = e.acceleration.y;
-  ax = e.acceleration.z;
+  az = e.acceleration.z;
 
   if (ax > 0.5 || ax < -0.5) {
     vx = ax * 10;
