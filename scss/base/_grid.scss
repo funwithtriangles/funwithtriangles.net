@@ -1,0 +1,18 @@
+[am-Row] {
+	max-width: 50rem;
+	margin: 0 auto;
+	padding: 0 1rem;
+	display: flex;
+}
+
+[am-Row~='full'] {
+	max-width: 100%;
+}
+
+[am-Row~='middle'] {
+	align-items: center;
+}
+
+[am-Col] {
+	padding: 0 1rem;
+}

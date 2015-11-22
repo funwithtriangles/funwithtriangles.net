@@ -8,7 +8,8 @@ var gulp        = require('gulp'),
 	sass        = require('gulp-sass'),
 	maps        = require('gulp-sourcemaps'),
 	del         = require('del'),
-	browserSync = require('browser-sync').create();
+	browserSync = require('browser-sync').create(),
+	prefixer    = require('gulp-autoprefixer');
 
 // Concatenate js files as listed
 gulp.task('concatScripts', function() {
@@ -40,6 +41,10 @@ gulp.task('compileSass', function() {
 	return gulp.src('scss/app.scss')
 		.pipe(maps.init())
 		.pipe(sass())
+		.pipe(prefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
 		.pipe(maps.write('./'))
 		.pipe(gulp.dest('css'))
 		.pipe(browserSync.stream());

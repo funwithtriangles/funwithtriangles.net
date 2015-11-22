@@ -4,3 +4,15 @@
 	margin: 0;
 	background-color: rgb(235,235,235);
 }
+
+html {
+  box-sizing: border-box;
+}
+
+img {
+	width: 100%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}

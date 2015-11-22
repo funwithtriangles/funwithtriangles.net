@@ -1,0 +1,9 @@
+@mixin list-reset() {
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0;
+}
+
+[am-list-reset] {
+	@include list-reset();
+}

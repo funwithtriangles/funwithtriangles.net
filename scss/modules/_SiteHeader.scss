@@ -1,0 +1,15 @@
+[am-SiteHeader] {
+	max-width: 50rem;
+	margin: 2rem auto;
+	padding: 0 1rem
+}
+
+[am-SiteHeader-Strip] {
+	@include list-reset;
+	width: 100%;
+
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.5rem;
+
+}
