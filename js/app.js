@@ -9260,10 +9260,6 @@ var mouseLastMoved;
 var vx = 0;
 var vy = 0;
 
-
-
-
-
 var resize = function() {
 
     // Canvas sizing stuff
@@ -9313,7 +9309,6 @@ var checkScreenWidth = function() {
 var triangle = function(r, color, angle, x, y) {
 
     var angleX, angleY;
-
 
     // Rotation
     angle = angle + ONE_THIRD*Math.PI/2;
@@ -9492,3 +9487,4 @@ requestAnimationFrame(function animLoop(){
  draw();
  requestAnimationFrame( animLoop );
 });
+//# sourceMappingURL=app.js.map
