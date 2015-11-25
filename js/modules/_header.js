@@ -268,7 +268,6 @@ window.addEventListener('devicemotion', function(e) {
     vy = az * 10;
   }
   
-
 });
 
 requestAnimationFrame(function animLoop(){

@@ -12,30 +12,43 @@
 
 </head>
 
-
-
-
-
 <body>
-<header data-header am-SiteHeader>
-    <canvas>Fun with Triangles</canvas>
-    <p class="lead">Hello. I'm Alex Kempton, a designer who works with front-end web technologies. I can make you a website or some other fun thing.</p>
+<header am-SiteHeader>
+
+	<div am-SiteHeader-Header data-header>
+    	<canvas>Fun with Triangles</canvas>
+    </div>
+
+    <p>Hello. I'm Alex Kempton, a designer who works with front-end web technologies. I can make you a website or some other fun thing.</p>
 </header>
 
 
-<div am-Row="full middle">
-	<div am-Col>
-		<img src="/images/cutouts/poly_gear.jpg">
-	</div>
+<div am-Strip>
+	<div am-Row="full middle">
+		<div am-Col>
+			<img am-Strip-Cutout src="/images/cutouts/poly_gear.gif">
+		</div>
 
-	<div am-Col>
-		<h1 class="hug">Getting Trippy with HTML 5 and MIDI</h1>
-		<p class="lead">
-			How I teamed up with a techno producer to build a fully audio reactive visual system that runs on web technologies.
-
-		</p>
+		<div am-Col>
+			<h1 am-txt="hug">Getting Trippy with HTML 5 and MIDI</h1>
+			<p am-txt="lead">
+				How I teamed up with a techno producer to build a fully audio reactive visual system that runs on web technologies.
+			</p>
+		</div>
 	</div>
-</div><!-- 
+</div>
+
+<div am-Strip="beach">
+	<div am-Row="full middle">
+		<div am-Col="8">
+			<h1 am-txt="hug">Making it Swooshy for Santa Monica</h1>
+			<p am-txt="lead">
+				I created an animated microsite to promote health and wellbeing in Santa Monica
+			</p>
+		</div>
+	</div>
+</div>
+<!-- 
 <div am-Row>
 	
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, recusandae! Reiciendis a esse placeat asperiores error consequuntur odit corporis accusantium at. Explicabo quod possimus quam, pariatur earum a culpa repellendus.</p>

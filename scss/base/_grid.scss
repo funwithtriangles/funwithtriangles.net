@@ -13,6 +13,18 @@
 	align-items: center;
 }
 
+[am-Row~='bottom'] {
+	align-items: bottom;
+}
+
 [am-Col] {
 	padding: 0 1rem;
+}
+
+[am-Col='8'] {
+	width: (100%/12)*8;
+}
+
+[am-Col='bottom'] {
+	align-self: flex-end;
 }

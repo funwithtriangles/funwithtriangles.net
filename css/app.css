@@ -453,12 +453,15 @@ code {
   vertical-align: bottom; }
 
 /* Leading paragraph text */
-.lead {
+[am-txt~='lead'] {
   font-size: 1.414rem; }
 
 /* Hug a the block above you */
-.hug {
+[am-txt~='hug'] {
   margin-top: 0; }
+
+[am-txt~='center'] {
+  text-align: center; }
 
 [am-Row] {
   max-width: 50rem;
@@ -476,8 +479,21 @@ code {
   -ms-flex-align: center;
   align-items: center; }
 
+[am-Row~='bottom'] {
+  -webkit-align-items: bottom;
+  -ms-flex-align: bottom;
+  align-items: bottom; }
+
 [am-Col] {
   padding: 0 1rem; }
+
+[am-Col='8'] {
+  width: 66.66667%; }
+
+[am-Col='bottom'] {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end; }
 
 [am-list-reset] {
   list-style: none;
@@ -487,10 +503,21 @@ code {
 h1, h2, h3, h4, h5, h6 {
   color: #333; }
 
+p {
+  color: #444; }
+
 [am-SiteHeader] {
-  max-width: 50rem;
-  margin: 2rem auto;
-  padding: 0 1rem; }
+  max-width: 60rem;
+  padding: 0 1rem;
+  margin: 2rem auto 3rem;
+  text-align: center; }
+  [am-SiteHeader] p {
+    font-size: 1.5554rem;
+    line-height: 1.414; }
+
+[am-SiteHeader-Header] {
+  margin: 0 auto;
+  max-width: 45rem; }
 
 [am-SiteHeader-Strip] {
   list-style: none;
@@ -504,5 +531,22 @@ h1, h2, h3, h4, h5, h6 {
   -ms-flex-pack: justify;
   justify-content: space-between;
   font-size: 1.5rem; }
+
+[am-Strip] {
+  background: #F7D9BF;
+  padding: 3rem 0; }
+
+[am-Strip~='blank'] {
+  background: transparent; }
+
+[am-Strip-Cutout] {
+  margin: -5rem 0; }
+
+[am-Strip~='beach'] {
+  background: url("/images/backgrounds/beach_blur.jpg");
+  background-size: cover;
+  color: white; }
+  [am-Strip~='beach'] h1, [am-Strip~='beach'] h2, [am-Strip~='beach'] h3 {
+    color: white; }
 
 /*# sourceMappingURL=app.css.map */

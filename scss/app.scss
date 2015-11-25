@@ -1,7 +1,10 @@
 @import "base/normalize";
 @import "base/environment";
 @import "base/typebase";
+@import "base/txt";
 @import "base/grid";
 @import "base/helpers";
 @import "base/typography";
+
 @import "modules/SiteHeader";
+@import "modules/Strip";
