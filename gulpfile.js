@@ -9,7 +9,8 @@ var gulp        = require('gulp'),
 	maps        = require('gulp-sourcemaps'),
 	del         = require('del'),
 	browserSync = require('browser-sync').create(),
-	prefixer    = require('gulp-autoprefixer');
+	prefixer    = require('gulp-autoprefixer'),
+	notify		= require('gulp-notify');
 
 // Concatenate js files as listed
 gulp.task('concatScripts', function() {
@@ -40,14 +41,17 @@ gulp.task('compileSass', function() {
 
 	return gulp.src('scss/app.scss')
 		.pipe(maps.init())
-		.pipe(sass())
+		.pipe(sass().on('error', notify.onError(function (error) {
+   			return 'An error occurred while compiling sass.\nLook in the console for details.\n' + error;
+		})))
 		.pipe(prefixer({
             browsers: ['last 2 versions'],
             cascade: false
         }))
 		.pipe(maps.write('./'))
 		.pipe(gulp.dest('css'))
-		.pipe(browserSync.stream());
+		.pipe(browserSync.stream())
+		.pipe(notify( {message : 'Sass compiled.'} ));
 
 });
 
