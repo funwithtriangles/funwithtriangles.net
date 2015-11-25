@@ -22,7 +22,8 @@ gulp.task('concatScripts', function() {
 		.pipe(maps.init())
 		.pipe(concat('app.js'))	
 		.pipe(maps.write('./'))
-		.pipe(gulp.dest('js'));
+		.pipe(gulp.dest('js'))
+		.pipe(notify( {message : 'JS compiled.'} ));
 
 });
 
