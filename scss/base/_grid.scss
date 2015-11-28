@@ -3,6 +3,7 @@
 	margin: 0 auto;
 	padding: 0 1rem;
 	display: flex;
+	flex-wrap: wrap;
 }
 
 [am-Row~='full'] {
@@ -13,16 +14,25 @@
 	align-items: center;
 }
 
+[am-Row~='center'] {
+	justify-content: center;
+}
+
 [am-Row~='bottom'] {
 	align-items: bottom;
 }
 
 [am-Col] {
 	padding: 0 1rem;
+	flex: 1 0;
 }
 
 [am-Col='8'] {
-	width: (100%/12)*8;
+	flex: 0 (100%/12)*8;
+}
+
+[am-Col='6'] {
+	flex: 0 (100%/12)*6;
 }
 
 [am-Col='bottom'] {

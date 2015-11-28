@@ -1,6 +1,7 @@
 [am-Strip] {
 	background: #F7D9BF;
 	padding: 3rem 0;
+	margin: auto;
 }
 
 [am-Strip~='blank'] {
@@ -13,13 +14,10 @@
 
 [am-Strip~='beach'] {
 
-	@extend [am-Strip~='bg-photo'];
-
 	background: url('/images/backgrounds/beach_blur.jpg');
 	background-size: cover;
-	color: white;
 
-	h1, h2, h3 {
+	* {
 		color: white;
 	}
 }

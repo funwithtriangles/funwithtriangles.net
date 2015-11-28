@@ -1,3 +1,34 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.eot?7i2s7v");
+  src: url("../fonts/icomoon.eot?#iefix7i2s7v") format("embedded-opentype"), url("../fonts/icomoon.woff?7i2s7v") format("woff"), url("../fonts/icomoon.ttf?7i2s7v") format("truetype"), url("../fonts/icomoon.svg?7i2s7v#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-eye:before {
+  content: "\e601"; }
+
+.icon-yoga:before {
+  content: "\e602"; }
+
+.icon-shop:before {
+  content: "\e603"; }
+
+.icon-apple:before {
+  content: "\e604"; }
+
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
@@ -469,7 +500,10 @@ code {
   padding: 0 1rem;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
 
 [am-Row~='full'] {
   max-width: 100%; }
@@ -479,16 +513,31 @@ code {
   -ms-flex-align: center;
   align-items: center; }
 
+[am-Row~='center'] {
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
 [am-Row~='bottom'] {
   -webkit-align-items: bottom;
   -ms-flex-align: bottom;
   align-items: bottom; }
 
 [am-Col] {
-  padding: 0 1rem; }
+  padding: 0 1rem;
+  -webkit-flex: 1 0;
+  -ms-flex: 1 0;
+  flex: 1 0; }
 
 [am-Col='8'] {
-  width: 66.66667%; }
+  -webkit-flex: 0 66.66667%;
+  -ms-flex: 0 66.66667%;
+  flex: 0 66.66667%; }
+
+[am-Col='6'] {
+  -webkit-flex: 0 50%;
+  -ms-flex: 0 50%;
+  flex: 0 50%; }
 
 [am-Col='bottom'] {
   -webkit-align-self: flex-end;
@@ -505,6 +554,22 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   color: #444; }
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
 
 [am-SiteHeader] {
   max-width: 60rem;
@@ -534,7 +599,8 @@ p {
 
 [am-Strip] {
   background: #F7D9BF;
-  padding: 3rem 0; }
+  padding: 3rem 0;
+  margin: auto; }
 
 [am-Strip~='blank'] {
   background: transparent; }
@@ -544,9 +610,40 @@ p {
 
 [am-Strip~='beach'] {
   background: url("/images/backgrounds/beach_blur.jpg");
-  background-size: cover;
-  color: white; }
-  [am-Strip~='beach'] h1, [am-Strip~='beach'] h2, [am-Strip~='beach'] h3 {
+  background-size: cover; }
+  [am-Strip~='beach'] * {
     color: white; }
+
+[am-BigSpinner] {
+  width: 80%;
+  height: 0;
+  padding-bottom: 80%;
+  position: relative;
+  -webkit-animation: spin 100s linear infinite;
+  animation: spin 100s linear infinite; }
+
+[am-BigSpinner-Item] {
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  line-height: 10rem;
+  background: rgba(88, 123, 124, 0.5);
+  border-radius: 1000px;
+  text-align: center;
+  font-size: 4rem;
+  -webkit-animation: spin 100s linear infinite reverse;
+  animation: spin 100s linear infinite reverse; }
+  [am-BigSpinner-Item]:nth-child(1) {
+    left: 0;
+    top: 0; }
+  [am-BigSpinner-Item]:nth-child(2) {
+    right: 0;
+    top: 0; }
+  [am-BigSpinner-Item]:nth-child(3) {
+    right: 0;
+    bottom: 0; }
+  [am-BigSpinner-Item]:nth-child(4) {
+    left: 0;
+    bottom: 0; }
 
 /*# sourceMappingURL=app.css.map */

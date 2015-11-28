@@ -1,0 +1,42 @@
+$circle-size: 10rem;
+
+[am-BigSpinner] {
+	width: 80%;
+	height: 0;
+	padding-bottom: 80%;
+	position: relative;
+	animation: spin 100s linear infinite;
+}
+
+[am-BigSpinner-Item] {
+	position: absolute;
+	width: $circle-size;
+	height: $circle-size;
+	line-height: $circle-size;
+	background: rgba(88,123,124,0.5);
+	border-radius: 1000px;
+	text-align: center;
+	font-size: 4rem;
+	animation: spin 100s linear infinite reverse;
+
+	&:nth-child(1) {
+		left: 0;
+		top: 0;
+	}
+	
+	&:nth-child(2) {
+		right: 0;
+		top: 0;
+	}
+
+	&:nth-child(3) {
+		right: 0;
+		bottom: 0;
+	}
+
+	&:nth-child(4) {
+		left: 0;
+		bottom: 0;
+	}
+
+}
