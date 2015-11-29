@@ -7,3 +7,30 @@
 [am-list-reset] {
 	@include list-reset();
 }
+
+/* Leading paragraph text */
+[am-txt~='lead'] {
+	font-size: $scale * 1rem;
+}
+
+/* Hug a the block above you */
+[am-txt~='hug'] {
+	margin-top: 0;
+}
+
+[am-txt~='center'] {
+	text-align: center;
+}
+
+[am-svg] {
+	height: 0;
+	width: 100%;
+	position: relative;
+	svg {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+	}
+}

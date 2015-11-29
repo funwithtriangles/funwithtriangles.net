@@ -17,7 +17,8 @@ var gulp        = require('gulp'),
 gulp.task('concatScripts', function() {
 
 	return gulp.src([
-			'js/modules/_header.js'
+			'js/modules/_header.js',
+			'js/modules/_saa_map.js'
 		])
 		.pipe(maps.init())
 		.pipe(concat('app.js'))	

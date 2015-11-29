@@ -483,17 +483,6 @@ th {
 code {
   vertical-align: bottom; }
 
-/* Leading paragraph text */
-[am-txt~='lead'] {
-  font-size: 1.414rem; }
-
-/* Hug a the block above you */
-[am-txt~='hug'] {
-  margin-top: 0; }
-
-[am-txt~='center'] {
-  text-align: center; }
-
 [am-Row] {
   max-width: 50rem;
   margin: 0 auto;
@@ -555,6 +544,28 @@ code {
   list-style: none;
   margin-left: 0;
   padding-left: 0; }
+
+/* Leading paragraph text */
+[am-txt~='lead'] {
+  font-size: 1.414rem; }
+
+/* Hug a the block above you */
+[am-txt~='hug'] {
+  margin-top: 0; }
+
+[am-txt~='center'] {
+  text-align: center; }
+
+[am-svg] {
+  height: 0;
+  width: 100%;
+  position: relative; }
+  [am-svg] svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0; }
 
 h1, h2, h3, h4, h5, h6 {
   color: #333; }
