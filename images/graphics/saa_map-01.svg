@@ -206,11 +206,16 @@
 		c1.295,0.051,2.412,0.516,3.376,1.38c-0.011,3.288-0.271,6.435-0.793,9.667l0.563,1.066l-0.384,2.139l-0.537,0.34
 		C173.647,132.514,172.119,134.809,169.994,136.635z"/>
 </g>
-<g id="Layer_2">
-	<path fill="none" stroke="#FFFFFF" stroke-linejoin="round" stroke-miterlimit="10" d="M156.25,153.25c0,0-37.75-22.5-15.75-94"/>
+<g id="flights">
 	<path fill="none" stroke="#FFFFFF" stroke-linejoin="round" stroke-miterlimit="10" d="M142.5,58.5c0,0,28.5-29.75,50.75-20.75"/>
 	<path fill="none" stroke="#FFFFFF" stroke-linejoin="round" stroke-miterlimit="10" d="M195,38.5c0,0-44.5,29.75-31,70"/>
 	<path fill="none" stroke="#FFFFFF" stroke-linejoin="round" stroke-miterlimit="10" d="M164,110.5c0,0,54.75-16.75,61.25,12.25"/>
 	<path fill="none" stroke="#FFFFFF" stroke-linejoin="round" stroke-miterlimit="10" d="M224.25,125.5c0,0-51-20.25-66.25,27.25"/>
+	<path fill="none" stroke="#FFFFFF" stroke-linejoin="round" stroke-miterlimit="10" d="M141.25,58.75c0,0,4.5-28.5-13.25-24.5"/>
+	<path fill="none" stroke="#FFFFFF" stroke-linejoin="round" stroke-miterlimit="10" d="M126.5,34.75c0,0-38.75-41.25-83.25-2.5"/>
+	<path fill="none" stroke="#FFFFFF" stroke-linejoin="round" stroke-miterlimit="10" d="M43,34.25c0,0,81.75-17.25,80.25,65"/>
+	<path fill="none" stroke="#FFFFFF" stroke-linejoin="round" stroke-miterlimit="10" d="M123.5,100.5c0,0,42.5-49.75,62-24"/>
+	<path fill="none" stroke="#FFFFFF" stroke-linejoin="round" stroke-miterlimit="10" d="M186.75,78c0,0-62,17-64,56.75"/>
+	<path fill="none" stroke="#FFFFFF" stroke-linejoin="round" stroke-miterlimit="10" d="M122.5,136c0,0,29.75-6,34.5,19.25"/>
 </g>
 </svg>

@@ -10,7 +10,8 @@ var gulp        = require('gulp'),
 	del         = require('del'),
 	browserSync = require('browser-sync').create(),
 	prefixer    = require('gulp-autoprefixer'),
-	notify		= require('gulp-notify');
+	notify		= require('gulp-notify'),
+	include		= require('gulp-include');
 
 // Concatenate js files as listed
 gulp.task('concatScripts', function() {
@@ -55,8 +56,16 @@ gulp.task('compileSass', function() {
 
 });
 
+gulp.task('compileHtml', function(file) {
+	return gulp.src('pages/**/*.html')
+		.pipe(include())
+		.pipe(gulp.dest('./'));
+})
+
 // Refresh browser after JS has concatenated
 gulp.task('watchJs', ['concatScripts'], browserSync.reload);
+
+gulp.task('watchHtml', ['compileHtml'], browserSync.reload);
 
 // Cleanup before build by removing certain files
 gulp.task('clean', function() {
@@ -64,13 +73,13 @@ gulp.task('clean', function() {
 });
 
 // Build /dest folder
-gulp.task('build', ['minifyScripts', 'compileSass'], function() {
+gulp.task('build', ['minifyScripts', 'compileSass', 'compileHtml'], function() {
 	return gulp.src(['css/app.css', 'js/app.min.js', 'images/**', 'index.html'], {base: './'})
 		.pipe(gulp.dest('dist'));
 });
 
 // Start a browser refresh server, watch for JS/SCSS/HTML changes
-gulp.task('serve', ['compileSass', 'concatScripts'], function() {
+gulp.task('serve', ['compileSass', 'concatScripts', 'compileHtml'], function() {
 
 	browserSync.init({
         server: {
@@ -80,7 +89,7 @@ gulp.task('serve', ['compileSass', 'concatScripts'], function() {
 
     gulp.watch('scss/**/*.scss', ['compileSass']);
     gulp.watch(['js/app.js', 'js/modules/**'], ['watchJs']);
-    gulp.watch("*.html").on('change', browserSync.reload);
+    gulp.watch(['*.html', 'pages/**/*.html', 'partials/**/*.html'], ['watchHtml']);
 
 });
 
