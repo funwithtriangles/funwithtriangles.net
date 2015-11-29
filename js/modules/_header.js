@@ -18,9 +18,9 @@ var friction = 0.9;
 var maxV = 100;
 
 // Canvas vars
-$canvas = $('canvas');
-$container = $('[data-header]');
-var context = $canvas[0].getContext('2d');
+elCanvas = document.querySelector('canvas');
+elContainer = document.querySelector('[data-header]');
+var context = elCanvas.getContext('2d');
 
 
 var pixelRatio = window.devicePixelRatio || 1;
@@ -52,15 +52,15 @@ var vy = 0;
 var resize = function() {
 
     // Canvas sizing stuff
-    width = Math.floor($canvas[0].width = $container.width() * pixelRatio);
-    height = Math.floor($canvas[0].height = (width/pixelRatio)*imageRatio * pixelRatio);
+    width = Math.floor(elCanvas.width = elContainer.offsetWidth * pixelRatio);
+    height = Math.floor(elCanvas.height = (width/pixelRatio)*imageRatio * pixelRatio);
     cx = width/2;
     cy = height/2;
 
     context.scale(pixelRatio,pixelRatio);
 
-    $canvas[0].style.width = Math.floor(width/pixelRatio)+"px";
-    $canvas[0].style.height = Math.floor(height/pixelRatio)+"px";
+    elCanvas.style.width = Math.floor(width/pixelRatio)+"px";
+    elCanvas.style.height = Math.floor(height/pixelRatio)+"px";
 
     // Triangle grid
     triCols = Math.ceil(width/triWidth);
@@ -247,8 +247,8 @@ headerImage.onload = function() {
 
 
 checkScreenWidth();
-$(window).on('mousemove', handleMouseMove);
-$(window).on('resize', resize);
+window.addEventListener('mousemove', handleMouseMove);
+window.addEventListener('resize', resize);
 
 window.addEventListener('devicemotion', function(e) {
 

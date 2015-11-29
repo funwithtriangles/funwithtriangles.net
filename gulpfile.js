@@ -16,7 +16,6 @@ var gulp        = require('gulp'),
 gulp.task('concatScripts', function() {
 
 	return gulp.src([
-			'bower_components/jquery/dist/jquery.js',
 			'js/modules/_header.js'
 		])
 		.pipe(maps.init())
