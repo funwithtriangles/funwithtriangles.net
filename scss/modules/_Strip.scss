@@ -2,6 +2,8 @@
 	background: #F7D9BF;
 	padding: 3rem 0;
 	margin: auto;
+	position: relative;
+
 }
 
 [am-Strip~='blank'] {
@@ -12,11 +14,14 @@
 	margin: -5rem 0;
 }
 
-[am-Strip~='beach'] {
+[am-Strip-Edges] {
+	margin: -3rem 0;
+}
 
-	background: url('/images/backgrounds/beach_blur.jpg');
-	background-size: cover;
+[am-Strip~='alt'] {
 
+	background: #26634E;
+	
 	* {
 		color: white;
 	}

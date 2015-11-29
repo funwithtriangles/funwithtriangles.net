@@ -1,11 +1,61 @@
-$circle-size: 10rem;
+$circle-size: 9rem;
 
 [am-BigSpinner] {
-	width: 80%;
-	height: 0;
-	padding-bottom: 80%;
-	position: relative;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+}
+
+[am-BigSpinner~='bg'] {
+	overflow-y: hidden;
+}
+
+[am-BigSpinner-Spinner] {
+	width: 19rem;
+	height: 19rem;
+	position: absolute;
+	top: 50%;
+	margin-top: -9.5rem;
+	left: 50%;
+	margin-left: -9.5rem;
 	animation: spin 100s linear infinite;
+	z-index: 1;
+}
+
+[am-BigSpinner-Spinner~='big'] {
+	width: 35rem;
+	height: 35rem;
+	margin-top: -17.5rem;
+	margin-left: -17.5rem;
+	z-index: 0;
+	right: 0;
+	left: auto;
+	opacity: 0.3;
+	animation-direction: reverse;
+	animation-duration: 150s;
+
+	[am-BigSpinner-Item] {
+		width: 15rem;
+		height: 15rem;
+		line-height: 15rem;
+		animation-direction: normal;
+		animation-duration: 150s;
+	}
+
+
+}
+
+[am-BigSpinner-Special] {
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	width: auto;
+	padding-bottom: 0;
 }
 
 [am-BigSpinner-Item] {

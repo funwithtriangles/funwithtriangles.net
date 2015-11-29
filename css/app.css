@@ -527,22 +527,29 @@ code {
   padding: 0 1rem;
   -webkit-flex: 1 0;
   -ms-flex: 1 0;
-  flex: 1 0; }
+  flex: 1 0;
+  position: relative;
+  z-index: 1; }
 
-[am-Col='8'] {
+[am-Col~='8'] {
   -webkit-flex: 0 66.66667%;
   -ms-flex: 0 66.66667%;
   flex: 0 66.66667%; }
 
-[am-Col='6'] {
+[am-Col~='6'] {
   -webkit-flex: 0 50%;
   -ms-flex: 0 50%;
   flex: 0 50%; }
 
-[am-Col='bottom'] {
+[am-Col~='bottom'] {
   -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end; }
+
+[am-Col~='stretch'] {
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch; }
 
 [am-list-reset] {
   list-style: none;
@@ -600,7 +607,8 @@ p {
 [am-Strip] {
   background: #F7D9BF;
   padding: 3rem 0;
-  margin: auto; }
+  margin: auto;
+  position: relative; }
 
 [am-Strip~='blank'] {
   background: transparent; }
@@ -608,25 +616,73 @@ p {
 [am-Strip-Cutout] {
   margin: -5rem 0; }
 
-[am-Strip~='beach'] {
-  background: url("/images/backgrounds/beach_blur.jpg");
-  background-size: cover; }
-  [am-Strip~='beach'] * {
+[am-Strip-Edges] {
+  margin: -3rem 0; }
+
+[am-Strip~='alt'] {
+  background: #26634E; }
+  [am-Strip~='alt'] * {
     color: white; }
 
 [am-BigSpinner] {
-  width: 80%;
-  height: 0;
-  padding-bottom: 80%;
-  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute; }
+
+[am-BigSpinner~='bg'] {
+  overflow-y: hidden; }
+
+[am-BigSpinner-Spinner] {
+  width: 19rem;
+  height: 19rem;
+  position: absolute;
+  top: 50%;
+  margin-top: -9.5rem;
+  left: 50%;
+  margin-left: -9.5rem;
   -webkit-animation: spin 100s linear infinite;
-  animation: spin 100s linear infinite; }
+  animation: spin 100s linear infinite;
+  z-index: 1; }
+
+[am-BigSpinner-Spinner~='big'] {
+  width: 35rem;
+  height: 35rem;
+  margin-top: -17.5rem;
+  margin-left: -17.5rem;
+  z-index: 0;
+  right: 0;
+  left: auto;
+  opacity: 0.3;
+  -webkit-animation-direction: reverse;
+  animation-direction: reverse;
+  -webkit-animation-duration: 150s;
+  animation-duration: 150s; }
+  [am-BigSpinner-Spinner~='big'] [am-BigSpinner-Item] {
+    width: 15rem;
+    height: 15rem;
+    line-height: 15rem;
+    -webkit-animation-direction: normal;
+    animation-direction: normal;
+    -webkit-animation-duration: 150s;
+    animation-duration: 150s; }
+
+[am-BigSpinner-Special] {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: auto;
+  padding-bottom: 0; }
 
 [am-BigSpinner-Item] {
   position: absolute;
-  width: 10rem;
-  height: 10rem;
-  line-height: 10rem;
+  width: 9rem;
+  height: 9rem;
+  line-height: 9rem;
   background: rgba(88, 123, 124, 0.5);
   border-radius: 1000px;
   text-align: center;

@@ -25,16 +25,22 @@
 [am-Col] {
 	padding: 0 1rem;
 	flex: 1 0;
+	position: relative;
+	z-index: 1;
 }
 
-[am-Col='8'] {
+[am-Col~='8'] {
 	flex: 0 (100%/12)*8;
 }
 
-[am-Col='6'] {
+[am-Col~='6'] {
 	flex: 0 (100%/12)*6;
 }
 
-[am-Col='bottom'] {
+[am-Col~='bottom'] {
 	align-self: flex-end;
+}
+
+[am-Col~='stretch'] {
+	align-self: stretch;
 }
