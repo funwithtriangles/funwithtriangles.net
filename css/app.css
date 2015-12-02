@@ -410,8 +410,7 @@ html {
 /* Copy & Lists */
 p {
   line-height: 1.7rem;
-  margin-top: 1.7rem;
-  margin-bottom: 0; }
+  margin-bottom: 1.7rem; }
 
 ul,
 ol {
@@ -442,19 +441,17 @@ h6 {
   /* Change heading typefaces here */
   font-family: 'rooney-sans', sans-serif;
   font-weight: 700;
-  margin-top: 1.7rem;
-  margin-bottom: 0;
+  margin-bottom: 0.85rem;
+  margin-top: 2.55rem;
   line-height: 1.7rem; }
 
 h1 {
   font-size: 2.828rem;
-  line-height: 3.4rem;
-  margin-top: 3.4rem; }
+  line-height: 3.4rem; }
 
 h2 {
   font-size: 1.414rem;
-  line-height: 1.7rem;
-  margin-top: 1.7rem; }
+  line-height: 1.7rem; }
 
 h3 {
   font-size: 1.1312rem; }
@@ -571,7 +568,13 @@ h1, h2, h3, h4, h5, h6 {
   color: #333; }
 
 p {
-  color: #444; }
+  color: #222; }
+
+figcaption {
+  color: #555;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 1.7rem; }
 
 @-webkit-keyframes spin {
   0% {
@@ -712,5 +715,10 @@ p {
   [am-BigSpinner-Item]:nth-child(4) {
     left: 0;
     bottom: 0; }
+
+[am-TextContainer] {
+  max-width: 40rem;
+  padding: 0 1rem;
+  margin: 0 auto; }
 
 /*# sourceMappingURL=app.css.map */
