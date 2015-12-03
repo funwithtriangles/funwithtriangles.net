@@ -16,3 +16,8 @@ img {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+::selection {
+	background: #26634E;
+	color: white;
+}

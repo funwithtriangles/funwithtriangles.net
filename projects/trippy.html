@@ -13,71 +13,77 @@
 </head>
 <header am-SiteHeader>
 
-	<div am-SiteHeader-Header data-header>
+	<div am-SiteHeader-Header data-header="/images/header_wide.svg">
     	<canvas>Fun with Triangles</canvas>
     </div>
 
 </header>
 <article>
-	<header>
-	<h1>Getting Trippy with Canvas and Web Midi</h1>
-	</header>
-	
-	<div am-TextContainer>
-		<p>Towards the end of 2014 I was dipping my toe into HTML5 Canvas. The canvas element allows a programmer to “draw” whatever they like onto it, using Javascript. It’s uses range from boring graphs to incredible games. My aim was to just experiment with it and hopefully create something visually interesting along the way.</p>
-		
-		<figure>
-			<p data-height="400" data-theme-id="0" data-slug-hash="dfpHq" data-default-tab="result" data-user="iamalexkempton" class='codepen'>See the Pen <a href='http://codepen.io/iamalexkempton/pen/dfpHq/'>Accidental trippiness</a> by iamalexkempton (<a href='http://codepen.io/iamalexkempton'>@iamalexkempton</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-		
-			<figcaption>“Accidental Trippiness”: I created this while fooling around with spirals  canvas.</figcaption>
-		</figure>
-		
-		<p>I was using Codepen for a lot of these experiments, the ability to quickly “fork” a pen was nice and it also gave me an easy way to share what I was doing. A music producer friend of mine, Jack Driscoll, liked what I was making and proposed we collaborate on something that reacts to music. A year later and what we’ve created is quite something.</p>
-
-		[VIDEO: Polyop]
-
-		<p>Polyop is the name of the audio visual duo we have formed. The visuals are being generated real-time, the whole thing running inside Google Chrome. The software is currently in Beta mode and we like to call it “Polygen”.</p>
-
-		<h2>It’s reactive!</h2>
-
-		[GIF]
-		2D sprites cycle in time with the beat.
-
-		<p>The Polygen visual system is reactive in three ways:</p>
-
-		<ul>
-			<li><strong>Frequency:</strong> Polygen analyses a song’s frequency so things can bounce or flash to the lows, medium or high range of the track.</li>
-			<li><strong>BPM:</strong> Using an external BPM detection tool, Polygen takes in a MIDI clock which allows the visuals to steadily work in time with the beat, such as the 2D sprites that are incorporated.</li>
-			<li><strong>MIDI:</strong> Real time note information coming out of a sequencer can be sent to the system, allowing it to visually react to specific parts of the composed track.</li>
-				
-		</ul>
-		
-		<h2>Three.js</h2>
-		[GIF]
-		The “RGB Split” pixel shader being applied to a scene
-
-		<p>At the heart of Polygen is Three.js, an awesome Javascript library that makes working with WebGL (How you make 3D graphics with canvas) a little more manageable. One huge advantage to using Three.js is how easy it allows you to implement fun effects through the use of pixel shaders, such as the super cool looking “RGB Split” effect.</p>
 
 
-		<h2>Fun with hardware</h2>
-		[GIF/Insta?]
-		Using a MIDI grid of buttons to sequence visual effects
+	<div am-Strip>
+		<div am-TextContainer>
+			<header am-TextContainer-Header>
+				<h1>Getting Trippy with Canvas and MIDI</h1>
+				<p am-txt="lead">
+					How I teamed up with a techno producer to build a fully audio reactive visual system that runs on web technologies.
+				</p>
+			</header>
+			<p>Towards the end of 2014 I was dipping my toe into HTML5 Canvas. The canvas element allows a programmer to “draw” whatever they like onto it, using Javascript. It’s uses range from boring graphs to incredible games. My aim was to just experiment with it and hopefully create something visually interesting along the way.</p>
+			
+			<figure>
+				<p data-height="400" data-theme-id="0" data-slug-hash="dfpHq" data-default-tab="result" data-user="iamalexkempton" class='codepen'>See the Pen <a href='http://codepen.io/iamalexkempton/pen/dfpHq/'>Accidental trippiness</a> by iamalexkempton (<a href='http://codepen.io/iamalexkempton'>@iamalexkempton</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+			
+				<figcaption>“Accidental Trippiness”: I created this while fooling around with spirals  canvas.</figcaption>
+			</figure>
+			
+			<p>I was using Codepen for a lot of these experiments, the ability to quickly “fork” a pen was nice and it also gave me an easy way to share what I was doing. A music producer friend of mine, Jack Driscoll, liked what I was making and proposed we collaborate on something that reacts to music. A year later and what we’ve created is quite something.</p>
 
-		<p>Amazingly, Chrome now has the ability to work with MIDI instruments. I assume the primary idea behind this will be to allow developers to write all sorts of web based audio apps allowing musicians to plug in a MIDI keyboard (or whatever else). The Polygen system makes use of this functionality, allowing for scenes and effects to be controlled by hardware.</p>
-		
-		<h2>Keeping the community (and my sanity) in mind</h2>
-		[gif of scenes changing]
-		Eventually, anyone could contribute an effect with a single file
+			[VIDEO: Polyop]
 
-		<p>One of the funnest parts of creating this software has been making sure I get the architecture right. As it’s grown over the months, I’ve already overhauled the system twice, making sure the code is maintainable. I’m quite happy with how it’s all worked out. The whole thing is modular, you add a new effect by adding a new file to a folder. Scene data is saved in JSON format, so it can easily be saved/swapped out. My ultimate aim for this project is to release it as an open source thing.</p>
-		
-		<div class="panel">
-			<h2>Let’s make something cool!</h2>
-			<p>I’m always interested in working on more projects that push the boundaries of web technology. Whether it’s using 3D libraries such as Three.js; a project that has an audio reactive element to it or you just want to make something that is plain old trippy, feel free to get in touch.</p>
+			<p>Polyop is the name of the audio visual duo we have formed. The visuals are being generated real-time, the whole thing running inside Google Chrome. The software is currently in Beta mode and we like to call it “Polygen”.</p>
+
+			<h2>It’s reactive!</h2>
+
+			[GIF]
+			2D sprites cycle in time with the beat.
+
+			<p>The Polygen visual system is reactive in three ways:</p>
+
+			<ul>
+				<li><strong>Frequency:</strong> Polygen analyses a song’s frequency so things can bounce or flash to the lows, medium or high range of the track.</li>
+				<li><strong>BPM:</strong> Using an external BPM detection tool, Polygen takes in a MIDI clock which allows the visuals to steadily work in time with the beat, such as the 2D sprites that are incorporated.</li>
+				<li><strong>MIDI:</strong> Real time note information coming out of a sequencer can be sent to the system, allowing it to visually react to specific parts of the composed track.</li>
+					
+			</ul>
+			
+			<h2>Three.js</h2>
+			[GIF]
+			The “RGB Split” pixel shader being applied to a scene
+
+			<p>At the heart of Polygen is Three.js, an awesome Javascript library that makes working with WebGL (How you make 3D graphics with canvas) a little more manageable. One huge advantage to using Three.js is how easy it allows you to implement fun effects through the use of pixel shaders, such as the super cool looking “RGB Split” effect.</p>
+
+
+			<h2>Fun with hardware</h2>
+			[GIF/Insta?]
+			Using a MIDI grid of buttons to sequence visual effects
+
+			<p>Amazingly, Chrome now has the ability to work with MIDI instruments. I assume the primary idea behind this will be to allow developers to write all sorts of web based audio apps allowing musicians to plug in a MIDI keyboard (or whatever else). The Polygen system makes use of this functionality, allowing for scenes and effects to be controlled by hardware.</p>
+			
+			<h2>Keeping the community (and my sanity) in mind</h2>
+			[gif of scenes changing]
+			Eventually, anyone could contribute an effect with a single file
+
+			<p>One of the funnest parts of creating this software has been making sure I get the architecture right. As it’s grown over the months, I’ve already overhauled the system twice, making sure the code is maintainable. I’m quite happy with how it’s all worked out. The whole thing is modular, you add a new effect by adding a new file to a folder. Scene data is saved in JSON format, so it can easily be saved/swapped out. My ultimate aim for this project is to release it as an open source thing.</p>
+			
+			<div class="panel">
+				<h2>Let’s make something cool!</h2>
+				<p>I’m always interested in working on more projects that push the boundaries of web technology. Whether it’s using 3D libraries such as Three.js; a project that has an audio reactive element to it or you just want to make something that is plain old trippy, feel free to get in touch.</p>
+			</div>
+
 		</div>
-
-	</div>
-</article>
+	</article>
+</div>
 	<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 <script src="/js/app.js" ></script>
 </body>

@@ -12,15 +12,17 @@ var triAngles = [
 var colors = [[241,118,76], [232,88,59]];
 var triWidth = 100;
 //var imageSrcLarge = "/images/header_wide.svg";
-var imageSrcSmall = "/images/header_tall.svg";
-var imageSrcLarge = imageSrcSmall;
+
 var friction = 0.9;
 var maxV = 100;
 
 // Canvas vars
-elCanvas = document.querySelector('canvas');
-elContainer = document.querySelector('[data-header]');
+var elCanvas = document.querySelector('canvas');
+var elContainer = document.querySelector('[data-header]');
 var context = elCanvas.getContext('2d');
+
+var imageSrcSmall = elContainer.dataset.header;
+var imageSrcLarge = imageSrcSmall;
 
 
 var pixelRatio = window.devicePixelRatio || 1;
