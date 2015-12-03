@@ -17,6 +17,14 @@
 
 }
 
+[am-SiteHeader-Corner] {
+	width: 7rem;
+	height: 7rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
 [am-SiteHeader-Strip] {
 	@include list-reset;
 	width: 100%;

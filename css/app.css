@@ -613,6 +613,13 @@ figcaption {
   margin: 0 auto;
   max-width: 45rem; }
 
+[am-SiteHeader-Corner] {
+  width: 7rem;
+  height: 7rem;
+  position: absolute;
+  left: 0;
+  top: 0; }
+
 [am-SiteHeader-Strip] {
   list-style: none;
   margin-left: 0;
