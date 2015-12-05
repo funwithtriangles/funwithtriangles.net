@@ -1,12 +1,28 @@
 [am-SiteHeader] {
 	max-width: 60rem;
-	padding: 0 1rem;
-	margin: 2rem auto 3rem;
+	margin: 0 auto;
+	padding: 1rem 1rem 2rem;
 	//text-align: center;
 
+	@media #{$medium-up} {
+		padding: 2rem 1rem 3rem;
+	}
+
 	p {
-		font-size: $scale * 1.1rem;
-		line-height: $scale;
+		
+		margin-bottom: 0;
+
+		@media #{$medium-up} {
+			font-size: $scale * 1rem;
+			line-height: $scale;
+
+		}
+
+		@media #{$large-up} {
+			font-size: $scale * 1.1rem;
+			line-height: $scale;
+
+		}
 	}
 
 	h1 {

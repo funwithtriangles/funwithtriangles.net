@@ -454,12 +454,28 @@ h6 {
   line-height: 1.7rem; }
 
 h1 {
-  font-size: 2.828rem;
-  line-height: 3.4rem; }
-
-h2 {
   font-size: 2.121rem;
   line-height: 2.55rem; }
+  @media only screen and (min-width: 40.063em) {
+    h1 {
+      font-size: 2.5452rem;
+      line-height: 3.06rem; } }
+  @media only screen and (min-width: 64.063em) {
+    h1 {
+      font-size: 2.828rem;
+      line-height: 3.4rem; } }
+
+h2 {
+  font-size: 1.5554rem;
+  line-height: 1.87rem; }
+  @media only screen and (min-width: 40.063em) {
+    h2 {
+      font-size: 1.8382rem;
+      line-height: 2.21rem; } }
+  @media only screen and (min-width: 64.063em) {
+    h2 {
+      font-size: 2.121rem;
+      line-height: 2.55rem; } }
 
 h3 {
   font-size: 1.1312rem; }
@@ -552,7 +568,7 @@ code {
 
 /* Leading paragraph text */
 [am-txt~='lead'] {
-  font-size: 1.414rem; }
+  font-size: 18; }
 
 /* Hug a the block above you */
 [am-txt~='hug'] {
@@ -608,11 +624,21 @@ figcaption {
 
 [am-SiteHeader] {
   max-width: 60rem;
-  padding: 0 1rem;
-  margin: 2rem auto 3rem; }
+  margin: 0 auto;
+  padding: 1rem 1rem 2rem; }
+  @media only screen and (min-width: 40.063em) {
+    [am-SiteHeader] {
+      padding: 2rem 1rem 3rem; } }
   [am-SiteHeader] p {
-    font-size: 1.5554rem;
-    line-height: 1.414; }
+    margin-bottom: 0; }
+    @media only screen and (min-width: 40.063em) {
+      [am-SiteHeader] p {
+        font-size: 1.414rem;
+        line-height: 1.414; } }
+    @media only screen and (min-width: 64.063em) {
+      [am-SiteHeader] p {
+        font-size: 1.5554rem;
+        line-height: 1.414; } }
   [am-SiteHeader] h1 {
     border-top: 1px solid #ddd;
     padding-top: 1rem; }
@@ -648,9 +674,12 @@ figcaption {
 
 [am-Strip] {
   background: #F7D9BF;
-  padding: 3rem 0;
+  padding: 2rem 0;
   margin: auto;
   position: relative; }
+  @media only screen and (min-width: 40.063em) {
+    [am-Strip] {
+      padding: 3rem 0; } }
 
 [am-Strip~='blank'] {
   background: transparent; }

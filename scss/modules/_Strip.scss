@@ -1,12 +1,12 @@
 [am-Strip] {
 	background: #F7D9BF;
-	padding: 3rem 0;
+	padding: 2rem 0;	
 	margin: auto;
 	position: relative;
 
-	// p, li {
-	// 	color: darken(#F7D9BF, 70%);
-	// }
+	@media #{$medium-up} {
+		padding: 3rem 0;
+	}
 }
 
 [am-Strip~='blank'] {

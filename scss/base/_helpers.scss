@@ -10,7 +10,9 @@
 
 /* Leading paragraph text */
 [am-txt~='lead'] {
-	font-size: $scale * 1rem;
+	
+	font-size: $baseFontSize;
+	
 }
 
 /* Hug a the block above you */
