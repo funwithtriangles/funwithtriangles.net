@@ -458,8 +458,8 @@ h1 {
   line-height: 3.4rem; }
 
 h2 {
-  font-size: 1.414rem;
-  line-height: 1.7rem; }
+  font-size: 2.121rem;
+  line-height: 2.55rem; }
 
 h3 {
   font-size: 1.1312rem; }
@@ -578,11 +578,17 @@ h1, h2, h3, h4, h5, h6 {
 p {
   color: #222; }
 
+figure {
+  padding: 0;
+  margin: 0;
+  max-width: 50rem;
+  margin: 3rem 0; }
+
 figcaption {
   color: #555;
   font-style: italic;
-  text-align: center;
-  margin-bottom: 1.7rem; }
+  margin-top: 0.5rem;
+  margin-bottom: -0.5rem; }
 
 @-webkit-keyframes spin {
   0% {
@@ -603,15 +609,22 @@ figcaption {
 [am-SiteHeader] {
   max-width: 60rem;
   padding: 0 1rem;
-  margin: 2rem auto 3rem;
-  text-align: center; }
+  margin: 2rem auto 3rem; }
   [am-SiteHeader] p {
     font-size: 1.5554rem;
     line-height: 1.414; }
+  [am-SiteHeader] h1 {
+    border-top: 1px solid #ddd;
+    padding-top: 1rem; }
 
 [am-SiteHeader-Header] {
   margin: 0 auto;
   max-width: 45rem; }
+
+[am-SiteHeader-Header="small"] {
+  max-width: 25rem;
+  padding-bottom: 1rem;
+  margin: 0; }
 
 [am-SiteHeader-Corner] {
   width: 7rem;
@@ -731,14 +744,28 @@ figcaption {
     left: 0;
     bottom: 0; }
 
+[am-VidStretch] {
+  height: 0;
+  padding-bottom: 56.2%;
+  position: relative; }
+  [am-VidStretch] iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%; }
+
 [am-TextContainer] {
-  max-width: 40rem;
-  padding: 0 1rem;
-  margin: 0 auto; }
+  max-width: 40rem; }
 
 [am-TextContainer-Header] {
   margin-left: -5rem;
   margin-right: -5rem;
   text-align: center; }
+
+[am-ContentContainer] {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0 1rem; }
+  [am-ContentContainer] p, [am-ContentContainer] ul, [am-ContentContainer] ol, [am-ContentContainer] h2, [am-ContentContainer] h3, [am-ContentContainer] h4, [am-ContentContainer] h5, [am-ContentContainer] h6 {
+    max-width: 40rem; }
 
 /*# sourceMappingURL=app.css.map */

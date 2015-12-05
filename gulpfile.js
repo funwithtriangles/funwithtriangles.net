@@ -17,6 +17,7 @@ var gulp        = require('gulp'),
 gulp.task('concatScripts', function() {
 
 	return gulp.src([
+			'js/vendor/fittext.js',
 			'js/_FWT.js',
 			'js/modules/_TriMask.js',
 			'js/modules/_FlightsMap.js'
