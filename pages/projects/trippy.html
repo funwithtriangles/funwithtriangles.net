@@ -54,22 +54,30 @@
 
 				<h2>Three.js</h2>
 
-
-				[GIF]
-				The “RGB Split” pixel shader being applied to a scene
+				<figure am-ArticleMedia>
+					<img src="/images/gifs/polygen_rgb.gif">
+					<figcaption am-ArticleMedia-Caption>The “RGB Split” pixel shader being applied to a scene</figcaption>
+				</figure>
 
 				<p>At the heart of Polygen is Three.js, an awesome Javascript library that makes working with WebGL (How you make 3D graphics with canvas) a little more manageable. One huge advantage to using Three.js is how easy it allows you to implement fun effects through the use of pixel shaders, such as the super cool looking “RGB Split” effect.</p>
 
 
 				<h2>Fun with hardware</h2>
-				[GIF/Insta?]
-				Using a MIDI grid of buttons to sequence visual effects
+				<figure am-ArticleMedia="insta">
+					<blockquote class="instagram-media" data-instgrm-version="6" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAGFBMVEUiIiI9PT0eHh4gIB4hIBkcHBwcHBwcHBydr+JQAAAACHRSTlMABA4YHyQsM5jtaMwAAADfSURBVDjL7ZVBEgMhCAQBAf//42xcNbpAqakcM0ftUmFAAIBE81IqBJdS3lS6zs3bIpB9WED3YYXFPmHRfT8sgyrCP1x8uEUxLMzNWElFOYCV6mHWWwMzdPEKHlhLw7NWJqkHc4uIZphavDzA2JPzUDsBZziNae2S6owH8xPmX8G7zzgKEOPUoYHvGz1TBCxMkd3kwNVbU0gKHkx+iZILf77IofhrY1nYFnB/lQPb79drWOyJVa/DAvg9B/rLB4cC+Nqgdz/TvBbBnr6GBReqn/nRmDgaQEej7WhonozjF+Y2I/fZou/qAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/70wrgskn55/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A video posted by Polyop (@polyopuk)</a> on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2015-09-19T19:45:09+00:00">Sep 19, 2015 at 12:45pm PDT</time></p></div></blockquote>
+					<script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+					<figcaption am-ArticleMedia-Caption>Using a MIDI grid of buttons to sequence visual effects</figcaption>
+				</figure>
+				
 
 				<p>Amazingly, Chrome now has the ability to work with MIDI instruments. I assume the primary idea behind this will be to allow developers to write all sorts of web based audio apps allowing musicians to plug in a MIDI keyboard (or whatever else). The Polygen system makes use of this functionality, allowing for scenes and effects to be controlled by hardware.</p>
 				
 				<h2>Keeping the community (and my sanity) in mind</h2>
-				[gif of scenes changing]
-				Eventually, anyone could contribute an effect with a single file
+				<figure am-ArticleMedia>
+					<img src="/images/gifs/polygen_scenes.gif">
+					<figcaption am-ArticleMedia-Caption>Eventually, anyone could contribute an effect with a single file</figcaption>
+				</figure>
+				
 
 				<p>One of the funnest parts of creating this software has been making sure I get the architecture right. As it’s grown over the months, I’ve already overhauled the system twice, making sure the code is maintainable. I’m quite happy with how it’s all worked out. The whole thing is modular, you add a new effect by adding a new file to a folder. Scene data is saved in JSON format, so it can easily be saved/swapped out. My ultimate aim for this project is to release it as an open source thing.</p>
 				
