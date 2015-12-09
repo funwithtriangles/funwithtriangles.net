@@ -1,0 +1,22 @@
+[am-ArticleMedia] {
+
+	margin: 0;
+	max-width: $media-width;
+	padding: $media-padding 0;
+
+	@media #{$medium-up} {
+		padding: $media-padding;
+	}
+}
+
+[am-ArticleMedia='auto'] {
+	display: inline-block;
+}
+
+[am-ArticleMedia-Caption] {
+	color: #555;
+	font-style: italic;
+	//text-align: center;
+	margin-top: 0.5rem;
+	margin-bottom: -0.5rem; 
+}

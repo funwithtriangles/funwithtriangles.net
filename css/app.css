@@ -594,18 +594,6 @@ h1, h2, h3, h4, h5, h6 {
 p {
   color: #222; }
 
-figure {
-  padding: 0;
-  margin: 0;
-  max-width: 50rem;
-  margin: 3rem 0; }
-
-figcaption {
-  color: #555;
-  font-style: italic;
-  margin-top: 0.5rem;
-  margin-bottom: -0.5rem; }
-
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0);
@@ -644,7 +632,6 @@ figcaption {
     padding-top: 1rem; }
 
 [am-SiteHeader-Header] {
-  margin: 0 auto;
   max-width: 45rem; }
 
 [am-SiteHeader-Header="small"] {
@@ -796,5 +783,22 @@ figcaption {
   padding: 0 1rem; }
   [am-ContentContainer] p, [am-ContentContainer] ul, [am-ContentContainer] ol, [am-ContentContainer] h2, [am-ContentContainer] h3, [am-ContentContainer] h4, [am-ContentContainer] h5, [am-ContentContainer] h6 {
     max-width: 40rem; }
+
+[am-ArticleMedia] {
+  margin: 0;
+  max-width: 50rem;
+  padding: 3rem 0; }
+  @media only screen and (min-width: 40.063em) {
+    [am-ArticleMedia] {
+      padding: 3rem; } }
+
+[am-ArticleMedia='auto'] {
+  display: inline-block; }
+
+[am-ArticleMedia-Caption] {
+  color: #555;
+  font-style: italic;
+  margin-top: 0.5rem;
+  margin-bottom: -0.5rem; }
 
 /*# sourceMappingURL=app.css.map */
