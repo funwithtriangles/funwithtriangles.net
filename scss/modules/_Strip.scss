@@ -3,9 +3,48 @@
 	padding: 2rem 0;	
 	margin: auto;
 	position: relative;
+	display: block;
 
 	@media #{$medium-up} {
 		padding: 3rem 0;
+	}
+}
+
+[am-Strip-Anim] {
+	transition: 0.3s $bounce-ease;
+	position: relative;
+	z-index: 100;
+}
+
+[am-Strip-Anim~='2'] {
+	transition-delay: 0.1s;
+}
+
+[am-Strip-Anim~='3'] {
+	transition-delay: 0.2s;
+}
+
+a[am-Strip] {
+	cursor: pointer;
+	transition: 0.4s;
+	text-decoration: none;
+	&:hover {
+		background: white;
+
+		[am-Strip-Anim~='left'] {
+			transform: scale(1.04) translateX(-0.5rem);
+		}
+
+		[am-Strip-Anim~='right'] {
+			transform: scale(1.04) translateX(0.5rem);
+		}
+	}
+	
+}
+
+a[am-Strip='alt'] {
+	&:hover {
+		background: #333;
 	}
 }
 

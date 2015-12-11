@@ -26,3 +26,5 @@ $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (m
 
 $media-width: 50rem;
 $media-padding: 3rem;
+
+$bounce-ease: cubic-bezier(0.68, -0.55, 0.265, 1.55);
