@@ -695,8 +695,15 @@ a[am-Strip] {
   font-weight: normal;
   -webkit-transform: none;
   transform: none; }
+  a[am-Strip] svg path {
+    transition: 0.3s;
+    fill: transparent; }
   a[am-Strip]:hover {
     background: white; }
+    a[am-Strip]:hover svg #flights path {
+      stroke: #26634E; }
+    a[am-Strip]:hover svg #map path {
+      fill: #F7D9BF; }
     a[am-Strip]:hover [am-Strip-Anim~='left'] {
       -webkit-transform: scale(1.04) translateX(-0.5rem);
       transform: scale(1.04) translateX(-0.5rem); }
@@ -839,5 +846,9 @@ a[am-Strip='alt']:hover {
   font-style: italic;
   margin-top: 0.5rem;
   margin-bottom: -0.5rem; }
+
+[am-SiteFooter] {
+  background: #081E10;
+  padding: 1rem; }
 
 /*# sourceMappingURL=app.css.map */

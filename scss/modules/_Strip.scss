@@ -1,5 +1,5 @@
 [am-Strip] {
-	background: #F7D9BF;
+	background: $primary-color;
 	padding: 2rem 0;	
 	margin: auto;
 	position: relative;
@@ -31,8 +31,26 @@ a[am-Strip] {
 	font-weight: normal;
 	transform: none;
 
+	svg {
+		path {
+			transition: 0.3s;
+			fill: transparent;
+		}
+	}
+
 	&:hover {
 		background: white;
+
+		svg {
+
+			#flights path {
+				stroke: $secondary-color;
+			}
+
+			#map path {
+				fill: $primary-color;
+			}
+		}
 
 		[am-Strip-Anim~='left'] {
 			transform: scale(1.04) translateX(-0.5rem);
@@ -65,7 +83,7 @@ a[am-Strip='alt'] {
 
 [am-Strip~='alt'] {
 
-	background: #26634E;
+	background: $secondary-color;
 	
 	* {
 		color: white;
