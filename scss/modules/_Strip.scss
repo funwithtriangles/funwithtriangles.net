@@ -28,6 +28,9 @@ a[am-Strip] {
 	cursor: pointer;
 	transition: 0.4s;
 	text-decoration: none;
+	font-weight: normal;
+	transform: none;
+
 	&:hover {
 		background: white;
 

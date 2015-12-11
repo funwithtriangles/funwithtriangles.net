@@ -594,6 +594,14 @@ h1, h2, h3, h4, h5, h6 {
 p {
   color: #222; }
 
+a {
+  font-weight: bold;
+  transition: 0.2s;
+  display: inline-block; }
+  a:hover {
+    -webkit-transform: translateY(-0.2rem);
+    transform: translateY(-0.2rem); }
+
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0);
@@ -683,7 +691,10 @@ p {
 a[am-Strip] {
   cursor: pointer;
   transition: 0.4s;
-  text-decoration: none; }
+  text-decoration: none;
+  font-weight: normal;
+  -webkit-transform: none;
+  transform: none; }
   a[am-Strip]:hover {
     background: white; }
     a[am-Strip]:hover [am-Strip-Anim~='left'] {
