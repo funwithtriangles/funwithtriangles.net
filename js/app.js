@@ -107,58 +107,20 @@ FWT.prototype.TriMask = function() {
     var effects = [];
     var containerEls = document.querySelectorAll('[data-triEffect]');
 
-    var effect = function(elContainer) {
+    var Pattern = function() {
 
-        var self = this;
+        this.canvas = document.createElement('canvas');
+        this.canvas.width = triWidth*2;
+        this.canvas.height = triHeight*2;
 
-        var elCanvas = elContainer.querySelector('canvas');
-        var context = elCanvas.getContext('2d');
-
-        var maskImageUrl = elContainer.dataset.trieffect;
-
-        var context = elCanvas.getContext('2d');
-        var maskImage, imageRatio;
-
-        var width, height, cx, cy;
-        var triCols, triRows, triCount, gridSize;
+        var context = this.canvas.getContext('2d');
+        var triCount = Math.floor(window.innerWidth/triWidth);
+        var gridSize = triCount * triWidth;
         var globalAngle = 0;
 
+        this.draw = function() {
 
-        this.resize = function() {
-
-            // Canvas sizing stuff
-            width = Math.floor(elCanvas.width = elContainer.offsetWidth * pixelRatio);
-            height = Math.floor(elCanvas.height = (width/pixelRatio)*imageRatio * pixelRatio);
-            cx = width/2;
-            cy = height/2;
-
-            context.scale(pixelRatio,pixelRatio);
-
-            elCanvas.style.width = Math.floor(width/pixelRatio)+"px";
-            elCanvas.style.height = Math.floor(height/pixelRatio)+"px";
-
-            // Triangle grid
-            triCols = Math.ceil(width/triWidth);
-            triRows = Math.ceil(height/triWidth);
-
-            if (triCols > triRows) {
-                triCount = triCols*1.5; 
-            } else {
-                triCount = triRows*1.5;       
-            }
-
-            gridSize = triCount * triWidth;
-
-            context.translate(Math.floor(width/2), Math.floor(height/2));
-
-        }
-
-         this.draw = function() {
-
-            // Don't draw unless image loaded
-            if (!imageRatio) { return };
-
-            // Background color in case holes peep throuhg
+            // Background color in case holes peep through
             context.globalCompositeOperation = 'normal';
             var color = colors[0];
             context.fillStyle = 'rgb('+color[0]+','+color[1]+','+color[2]+')';
@@ -201,14 +163,6 @@ FWT.prototype.TriMask = function() {
             }   
 
             globalAngle+=0.003;
-
-            // Apply masked text image
-            if (maskImageUrl) {
-                context.globalCompositeOperation = 'destination-in';
-                context.setTransform(1,0,0,1,0,0);
-                context.drawImage(maskImage,0,0, width, width*imageRatio);
-            }
-          
             
             context.restore();
 
@@ -245,6 +199,60 @@ FWT.prototype.TriMask = function() {
 
         }
 
+
+    }
+
+    var Effect = function(elContainer) {
+
+        var self = this;
+
+        var elCanvas = elContainer.querySelector('canvas');
+        var context = elCanvas.getContext('2d');
+
+        var maskImageUrl = elContainer.dataset.trieffect;
+
+        var context = elCanvas.getContext('2d');
+        var maskImage, imageRatio;
+
+        var width, height, cx, cy;
+        var triCols, triRows, triCount, gridSize;
+
+        this.draw = function() {
+
+            // Don't draw unless image loaded
+            if (!imageRatio) { return };
+
+            context.save();
+
+            var pattern = context.createPattern(globalPattern.canvas, "repeat");
+            context.fillStyle = pattern;
+            context.fillRect(0,0,width,height);
+
+             // Apply masked text image
+            if (maskImageUrl) {
+                context.globalCompositeOperation = 'destination-in';
+                context.setTransform(1,0,0,1,0,0);
+                context.drawImage(maskImage,0,0, width, width*imageRatio);
+            }
+
+            context.restore();
+        }
+
+        this.resize = function() {
+
+            // Canvas sizing stuff
+            width = Math.floor(elCanvas.width = elContainer.offsetWidth * pixelRatio);
+            height = Math.floor(elCanvas.height = (width/pixelRatio)*imageRatio * pixelRatio);
+            cx = width/2;
+            cy = height/2;
+
+            context.scale(pixelRatio,pixelRatio);
+
+            elCanvas.style.width = Math.floor(width/pixelRatio)+"px";
+            elCanvas.style.height = Math.floor(height/pixelRatio)+"px";
+
+        }
+
         window.addEventListener('resize', this.resize);
 
         if (maskImageUrl) {
@@ -259,7 +267,7 @@ FWT.prototype.TriMask = function() {
             }
             
         } else {
-            imageRatio = 0.1;
+            imageRatio = 1;
             this.resize();
         }        
 
@@ -337,6 +345,8 @@ FWT.prototype.TriMask = function() {
 
     var drawAll = function() {
 
+        globalPattern.draw();
+
         for (var i=0; i<effects.length; i++) {
             effects[i].draw();
         }
@@ -365,10 +375,12 @@ FWT.prototype.TriMask = function() {
       
     });
 
+    var globalPattern = new Pattern();
+
     // Create instances of effect
     for (var i=0; i<containerEls.length; i++) {
 
-        effects.push(new effect(containerEls[i]));
+        effects.push(new Effect(containerEls[i]));
 
     }
 
