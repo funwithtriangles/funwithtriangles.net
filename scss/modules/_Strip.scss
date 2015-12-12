@@ -53,11 +53,11 @@ a[am-Strip] {
 		}
 
 		[am-Strip-Anim~='left'] {
-			transform: scale(1.04) translateX(-0.5rem);
+			transform: scale(1.04) translate3D(-0.5rem, 0, 0);
 		}
 
 		[am-Strip-Anim~='right'] {
-			transform: scale(1.04) translateX(0.5rem);
+			transform: scale(1.04) translate3D(0.5rem, 0, 0);
 		}
 	}
 	
