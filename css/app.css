@@ -597,7 +597,8 @@ p {
 a {
   font-weight: bold;
   transition: 0.2s;
-  display: inline-block; }
+  display: inline-block;
+  color: #26634E; }
   a:hover {
     -webkit-transform: translateY(-0.2rem);
     transform: translateY(-0.2rem); }
@@ -848,7 +849,11 @@ a[am-Strip='alt']:hover {
   margin-bottom: -0.5rem; }
 
 [am-SiteFooter] {
-  position: relative; }
+  position: relative;
+  height: 100vh;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
   [am-SiteFooter] * {
     position: relative;
     z-index: 1; }
@@ -859,12 +864,13 @@ a[am-Strip='alt']:hover {
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 0;
-  opacity: 0.5; }
+  z-index: 0; }
 
 [am-SiteFooter-Inner] {
-  max-width: 60rem;
+  width: 50%;
+  background: white;
   margin: 0 auto;
-  padding: 1rem; }
+  padding: 2rem;
+  margin: auto; }
 
 /*# sourceMappingURL=app.css.map */

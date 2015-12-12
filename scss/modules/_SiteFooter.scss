@@ -1,6 +1,9 @@
 [am-SiteFooter] {
-	// background: #081E10;
+	 //background: #081E10;
 	position: relative;
+	height: 100vh;
+	display: flex;
+	
 
 	* {
 		position: relative;
@@ -15,13 +18,18 @@
 	right: 0;
 	bottom: 0;
 	z-index: 0;
-	opacity: 0.5;
+//	opacity: 0.1;
 }
 
 [am-SiteFooter-Inner] {
-	max-width: 60rem;
+	width: 50%;
+	background: white;
 	margin: 0 auto;
-	padding: 1rem;
-
+	padding: 2rem;
+	margin: auto;
+	
+	// * {
+	// 	color: white;
+	// }
 
 }
