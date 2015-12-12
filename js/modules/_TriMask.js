@@ -1,4 +1,5 @@
 FWT.prototype.TriMask = function() {
+   
     // Constants
     var ONE_THIRD = 1/3;
     var TWO_THIRD = 2/3;
@@ -12,35 +13,16 @@ FWT.prototype.TriMask = function() {
     // Settings
     var colors = [[241,118,76], [232,88,59]];
     var triWidth = 100;
+    var triHeight = triWidth * (Math.sqrt(3)/2);
     //var imageSrcLarge = "/images/header_wide.svg";
 
     var friction = 0.9;
     var maxV = 100;
 
-    // Canvas vars
-    var elCanvas = document.querySelector('canvas');
-    var elContainer = document.querySelector('[data-header]');
-    var context = elCanvas.getContext('2d');
-
-    var imageSrcSmall = elContainer.dataset.header;
-    var imageSrcLarge = imageSrcSmall;
-
-
     var pixelRatio = window.devicePixelRatio || 1;
 
     // May need to do this for performance reasons
     //var pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
-
-    // Triangle grid
-    var triHeight = triWidth * (Math.sqrt(3)/2);
-    var triCols, triRows, triCount, gridSize;
-    var globalAngle = 0;
-
-    // Header Image
-    var headerImage = new Image();
-    var imageRatio;
-    var imageLoaded = false;
-    var usingImage;
 
     // Mouse vars
     var moveX = 0;
@@ -52,80 +34,188 @@ FWT.prototype.TriMask = function() {
     var vx = 0;
     var vy = 0;
 
-    var resize = function() {
+    // Store mutliple instances of the effect
+    var effects = [];
+    var containerEls = document.querySelectorAll('[data-triEffect]');
 
-        // Canvas sizing stuff
-        width = Math.floor(elCanvas.width = elContainer.offsetWidth * pixelRatio);
-        height = Math.floor(elCanvas.height = (width/pixelRatio)*imageRatio * pixelRatio);
-        cx = width/2;
-        cy = height/2;
+    var effect = function(elContainer) {
 
-        context.scale(pixelRatio,pixelRatio);
+        var self = this;
 
-        elCanvas.style.width = Math.floor(width/pixelRatio)+"px";
-        elCanvas.style.height = Math.floor(height/pixelRatio)+"px";
+        var elCanvas = elContainer.querySelector('canvas');
+        var context = elCanvas.getContext('2d');
 
-        // Triangle grid
-        triCols = Math.ceil(width/triWidth);
-        triRows = Math.ceil(height/triWidth);
+        var maskImageUrl = elContainer.dataset.trieffect;
 
-        if (triCols > triRows) {
-            triCount = triCols*1.5; 
-        } else {
-            triCount = triRows*1.5;       
-        }
+        var context = elCanvas.getContext('2d');
+        var maskImage, imageRatio;
 
-        gridSize = triCount * triWidth;
+        var width, height, cx, cy;
+        var triCols, triRows, triCount, gridSize;
+        var globalAngle = 0;
 
-        context.translate(Math.floor(width/2), Math.floor(height/2));
 
-        checkScreenWidth();
+        this.resize = function() {
 
-    }
+            // Canvas sizing stuff
+            width = Math.floor(elCanvas.width = elContainer.offsetWidth * pixelRatio);
+            height = Math.floor(elCanvas.height = (width/pixelRatio)*imageRatio * pixelRatio);
+            cx = width/2;
+            cy = height/2;
 
-    var checkScreenWidth = function() {
+            context.scale(pixelRatio,pixelRatio);
 
-        if (Modernizr.mq('(max-width: 600px)') && usingImage != 'small') {
+            elCanvas.style.width = Math.floor(width/pixelRatio)+"px";
+            elCanvas.style.height = Math.floor(height/pixelRatio)+"px";
 
-            headerImage.src = imageSrcSmall
-            usingImage = 'small';
+            // Triangle grid
+            triCols = Math.ceil(width/triWidth);
+            triRows = Math.ceil(height/triWidth);
 
-        } else if (Modernizr.mq('(min-width: 600px)') && usingImage != 'large') {
-            headerImage.src = imageSrcLarge;
-            usingImage = 'large';
-        }    
-       
-    }
-
-    // Generates triangle at any position/rotation/color
-    var triangle = function(r, color, angle, x, y) {
-
-        var angleX, angleY;
-
-        // Rotation
-        angle = angle + ONE_THIRD*Math.PI/2;
-
-        context.beginPath();
-         context.fillStyle = 'rgba('+color[0]+','+color[1]+','+color[2]+','+1+')';
-        
-        // Triangle points calculated using third angles on a circle
-        for (var i=0; i < triAngles.length; i++) {
-
-            angleX = r*Math.cos(triAngles[i] + angle) + x;
-            angleY = r*Math.sin(triAngles[i] + angle) + y;
-
-            if (i == 0) {
-               context.moveTo(angleX,angleY); 
+            if (triCols > triRows) {
+                triCount = triCols*1.5; 
             } else {
-                context.lineTo(angleX,angleY); 
-            } 
+                triCount = triRows*1.5;       
+            }
+
+            gridSize = triCount * triWidth;
+
+            context.translate(Math.floor(width/2), Math.floor(height/2));
 
         }
 
-        context.fill();
-        context.closePath();
+         this.draw = function() {
+
+            // Don't draw unless image loaded
+            if (!imageRatio) { return };
+
+            // Background color in case holes peep throuhg
+            context.globalCompositeOperation = 'normal';
+            var color = colors[0];
+            context.fillStyle = 'rgb('+color[0]+','+color[1]+','+color[2]+')';
+            context.rect(-gridSize/2,-gridSize/2,gridSize,gridSize);
+            context.fill();
+
+            context.save();
+
+            var color = colors[1];
+            context.fillStyle = 'rgba('+color[0]+','+color[1]+','+color[2]+','+1+')';
+            
+            // Iterate triangle Rows
+            for (var j = 0; j < triCount; j++) {
+
+                // Alternate offset of each row
+                var bool = j % 2;
+                var xOffset = triWidth - (2*triWidth*bool);
+                context.translate(xOffset,triHeight);
+                
+                // Adjust x position with mouse X, alternate +/- on row
+                var posX = (moveX - (2*moveX*bool))/10;
+                
+                // Alternate the blend mode for each row;
+                if (bool) {
+                    context.globalCompositeOperation = 'difference';
+                } else {
+                    context.globalCompositeOperation = 'screen';
+                }
+
+                for (var i = 0; i < triCount; i++ ) {
+
+                    // Adjust y position with mouse y, alternate +/- on rcolow
+                    var bool = i % 2;
+                    var posY = (moveY - (2*moveY*bool))/10  - (gridSize/2);
+
+                    // Draw triangle, alternate up/down rotation while adding the global rotation
+                    this.triangle(triWidth, colors[bool], (Math.PI*bool)+globalAngle, (i*triWidth)+posX - (gridSize/2), posY);
+
+                }
+            }   
+
+            globalAngle+=0.003;
+
+            // Apply masked text image
+            if (maskImageUrl) {
+                context.globalCompositeOperation = 'destination-in';
+                context.setTransform(1,0,0,1,0,0);
+                context.drawImage(maskImage,0,0, width, width*imageRatio);
+            }
+          
+            
+            context.restore();
+
+           
+        };
+
+         // Generates triangle at any position/rotation/color
+        this.triangle = function(r, color, angle, x, y) {
+
+            var angleX, angleY;
+
+            // Rotation
+            angle = angle + ONE_THIRD*Math.PI/2;
+
+            context.beginPath();
+            context.fillStyle = 'rgba('+color[0]+','+color[1]+','+color[2]+','+1+')';
+            
+            // Triangle points calculated using third angles on a circle
+            for (var i=0; i < triAngles.length; i++) {
+
+                angleX = r*Math.cos(triAngles[i] + angle) + x;
+                angleY = r*Math.sin(triAngles[i] + angle) + y;
+
+                if (i == 0) {
+                   context.moveTo(angleX,angleY); 
+                } else {
+                    context.lineTo(angleX,angleY); 
+                } 
+
+            }
+
+            context.fill();
+            context.closePath();
+
+        }
+
+        window.addEventListener('resize', this.resize);
+
+        if (maskImageUrl) {
+            maskImage = new Image();
+            maskImage.src = maskImageUrl;
+
+            maskImage.onload = function() {
+            
+                imageRatio = this.height/this.width;
+
+                self.resize();
+            }
+            
+        } else {
+            imageRatio = 0.1;
+            this.resize();
+        }        
 
     }
+
+    // var resize = function() {
+
+    //     checkScreenWidth();
+
+    // }
+
+    // var checkScreenWidth = function() {
+
+    //     if (Modernizr.mq('(max-width: 600px)') && usingImage != 'small') {
+
+    //         headerImage.src = imageSrcSmall
+    //         usingImage = 'small';
+
+    //     } else if (Modernizr.mq('(min-width: 600px)') && usingImage != 'large') {
+    //         headerImage.src = imageSrcLarge;
+    //         usingImage = 'large';
+    //     }    
+       
+    // }
+
 
     var handleMouseMove = function(e) {
 
@@ -151,69 +241,7 @@ FWT.prototype.TriMask = function() {
             mouseLastMoved = Date.now();
 
         }
-
-       
-        
     }
-
-    var draw = function() {
-
-        // Don't draw unless image loaded
-        if (!imageLoaded) { return };
-
-        // Background color in case holes peep throuhg
-       context.globalCompositeOperation = 'normal';
-        var color = colors[0];
-        context.fillStyle = 'rgb('+color[0]+','+color[1]+','+color[2]+')';
-        context.rect(-gridSize/2,-gridSize/2,gridSize,gridSize);
-        context.fill();
-
-        context.save();
-
-        var color = colors[1];
-         context.fillStyle = 'rgba('+color[0]+','+color[1]+','+color[2]+','+1+')';
-        
-        // Iterate triangle Rows
-        for (var j = 0; j < triCount; j++) {
-
-            // Alternate offset of each row
-            var bool = j % 2;
-            var xOffset = triWidth - (2*triWidth*bool);
-            context.translate(xOffset,triHeight);
-            
-            // Adjust x position with mouse X, alternate +/- on row
-            var posX = (moveX - (2*moveX*bool))/10;
-            
-            // Alternate the blend mode for each row;
-            if (bool) {
-                context.globalCompositeOperation = 'difference';
-            } else {
-                context.globalCompositeOperation = 'screen';
-            }
-
-            for (var i = 0; i < triCount; i++ ) {
-
-                // Adjust y position with mouse y, alternate +/- on rcolow
-                var bool = i % 2;
-                var posY = (moveY - (2*moveY*bool))/10  - (gridSize/2);
-
-                // Draw triangle, alternate up/down rotation while adding the global rotation
-                triangle(triWidth, colors[bool], (Math.PI*bool)+globalAngle, (i*triWidth)+posX - (gridSize/2), posY);
-
-            }
-        }   
-
-        globalAngle+=0.003;
-
-        // Apply masked text image
-        context.globalCompositeOperation = 'destination-in';
-        context.setTransform(1,0,0,1,0,0);
-        context.drawImage(headerImage,0,0, width, width*imageRatio);
-        
-        context.restore();
-
-       
-    };
 
 
     var handlePhysics = function() {
@@ -238,45 +266,47 @@ FWT.prototype.TriMask = function() {
         moveY += vy;
     }
 
+    var drawAll = function() {
 
-    headerImage.onload = function() {
-        
-        imageLoaded = true;
-        imageRatio = this.height/this.width;
-
-        resize();
+        for (var i=0; i<effects.length; i++) {
+            effects[i].draw();
+        }
 
     }
 
 
-    checkScreenWidth();
     window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('resize', resize);
-
     window.addEventListener('devicemotion', function(e) {
 
-      ax = e.acceleration.x;
-      ay = e.acceleration.y;
-      az = e.acceleration.z;
+        ax = e.acceleration.x;
+        ay = e.acceleration.y;
+        az = e.acceleration.z;
 
-      if (ax > 0.5 || ax < -0.5) {
-        vx = ax * 10;
-      }
+        if (ax > 0.5 || ax < -0.5) {
+            vx = ax * 10;
+        }
 
-      if (ay > 0.5 || ay < -0.5) {
-        vy = ay * 10;
-      }
+        if (ay > 0.5 || ay < -0.5) {
+            vy = ay * 10;
+        }
 
-      if (az > 0.5 || az < -0.5) {
-        vy = az * 10;
-      }
+        if (az > 0.5 || az < -0.5) {
+            vy = az * 10;
+        }
       
     });
 
+    // Create instances of effect
+    for (var i=0; i<containerEls.length; i++) {
+
+        effects.push(new effect(containerEls[i]));
+
+    }
+
     requestAnimationFrame(function animLoop(){
-     handlePhysics();  
-     draw();
-     requestAnimationFrame( animLoop );
+        handlePhysics(); 
+        drawAll();
+        requestAnimationFrame( animLoop );
     });
 }
 
