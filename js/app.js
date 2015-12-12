@@ -114,7 +114,7 @@ FWT.prototype.TriMask = function() {
         this.canvas.height = triHeight*2;
 
         var context = this.canvas.getContext('2d');
-        var triCount = Math.floor(window.innerWidth/triWidth);
+        var triCount = Math.floor(window.innerWidth/triWidth)*2;
         var gridSize = triCount * triWidth;
         var globalAngle = 0;
 
