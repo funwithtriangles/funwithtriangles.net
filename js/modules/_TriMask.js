@@ -38,6 +38,7 @@ FWT.prototype.TriMask = function() {
     var effects = [];
     var containerEls = document.querySelectorAll('[data-triEffect]');
 
+    // Create a pattern tile to be used in all instances
     var Pattern = function() {
 
         this.canvas = document.createElement('canvas');
@@ -133,6 +134,7 @@ FWT.prototype.TriMask = function() {
 
     }
 
+    // Use pattern tile on a canvas
     var Effect = function(elContainer) {
 
         var self = this;
@@ -146,12 +148,11 @@ FWT.prototype.TriMask = function() {
         var maskImage, imageRatio;
 
         var width, height, cx, cy;
-        var triCols, triRows, triCount, gridSize;
 
         this.draw = function() {
 
             // Don't draw unless image loaded
-            if (!imageRatio) { return };
+            if (!imageRatio && maskImageUrl) { return };
 
             context.save();
 
@@ -172,8 +173,14 @@ FWT.prototype.TriMask = function() {
         this.resize = function() {
 
             // Canvas sizing stuff
-            width = Math.floor(elCanvas.width = elContainer.offsetWidth * pixelRatio);
-            height = Math.floor(elCanvas.height = (width/pixelRatio)*imageRatio * pixelRatio);
+            width = Math.floor(elCanvas.width = elContainer.clientWidth * pixelRatio);
+
+            if (imageRatio) {
+                height = Math.floor(elCanvas.height = (width/pixelRatio)*imageRatio * pixelRatio);
+            } else {
+                height = Math.floor(elCanvas.height = elContainer.clientHeight * pixelRatio);
+            }
+
             cx = width/2;
             cy = height/2;
 
@@ -198,7 +205,6 @@ FWT.prototype.TriMask = function() {
             }
             
         } else {
-            imageRatio = 1;
             this.resize();
         }        
 

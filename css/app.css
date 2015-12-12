@@ -705,11 +705,11 @@ a[am-Strip] {
     a[am-Strip]:hover svg #map path {
       fill: #F7D9BF; }
     a[am-Strip]:hover [am-Strip-Anim~='left'] {
-      -webkit-transform: scale(1.04) translateX(-0.5rem);
-      transform: scale(1.04) translateX(-0.5rem); }
+      -webkit-transform: scale(1.04) translate3D(-0.5rem, 0, 0);
+      transform: scale(1.04) translate3D(-0.5rem, 0, 0); }
     a[am-Strip]:hover [am-Strip-Anim~='right'] {
-      -webkit-transform: scale(1.04) translateX(0.5rem);
-      transform: scale(1.04) translateX(0.5rem); }
+      -webkit-transform: scale(1.04) translate3D(0.5rem, 0, 0);
+      transform: scale(1.04) translate3D(0.5rem, 0, 0); }
 
 a[am-Strip='alt']:hover {
   background: #333; }
@@ -846,5 +846,25 @@ a[am-Strip='alt']:hover {
   font-style: italic;
   margin-top: 0.5rem;
   margin-bottom: -0.5rem; }
+
+[am-SiteFooter] {
+  position: relative; }
+  [am-SiteFooter] * {
+    position: relative;
+    z-index: 1; }
+
+[am-SiteFooter-Bg] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  opacity: 0.5; }
+
+[am-SiteFooter-Inner] {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 1rem; }
 
 /*# sourceMappingURL=app.css.map */

@@ -1,4 +1,27 @@
 [am-SiteFooter] {
 	// background: #081E10;
-	// padding: 1rem;
+	position: relative;
+
+	* {
+		position: relative;
+		z-index: 1;
+	}
+}
+
+[am-SiteFooter-Bg] {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 0;
+	opacity: 0.5;
+}
+
+[am-SiteFooter-Inner] {
+	max-width: 60rem;
+	margin: 0 auto;
+	padding: 1rem;
+
+
 }
