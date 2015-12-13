@@ -1,3 +1,12 @@
+// Typesetting variables. Edit these!
+$baseFontSize:18; // in pixels. This would result in 22px on desktop
+$baseLineHeight:1.7; // how large the line height is as a multiple of font size
+$leading:$baseLineHeight * 1rem;
+// Rate of growth for headings
+// I actually like this to be slightly smaller then the leading. Makes for tight headings.
+$scale:1.414;
+
+
 $small-range: (0em, 40em);
 $medium-range: (40.063em, 64em);
 $large-range: (64.063em, 90em);
@@ -25,7 +34,7 @@ $xxlarge-up: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)})";
 $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})";
 
 $media-width: 50rem;
-$media-padding: 3rem;
+$media-padding: $leading*1.5;
 
 $bounce-ease: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 

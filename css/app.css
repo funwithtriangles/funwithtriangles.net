@@ -890,15 +890,14 @@ a[am-Strip~='alt']:hover {
     max-width: 40rem; }
 
 [am-ArticleMedia] {
-  margin: 0;
   max-width: 50rem;
-  padding: 1.5rem 0; }
-  @media only screen and (min-width: 40.063em) {
-    [am-ArticleMedia] {
-      padding: 3rem; } }
+  margin: 2.55rem 0; }
 
-[am-ArticleMedia='insta'] {
+[am-ArticleMedia~='insta'] {
   max-width: 35rem; }
+
+[am-ArticleMedia~='first'] {
+  margin-top: 0; }
 
 [am-ArticleMedia-Caption] {
   color: #555;

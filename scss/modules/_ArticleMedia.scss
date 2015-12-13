@@ -1,16 +1,16 @@
 [am-ArticleMedia] {
 
-	margin: 0;
 	max-width: $media-width;
-	padding: $media-padding/2 0;
+	margin: $media-padding 0;
 
-	@media #{$medium-up} {
-		padding: $media-padding;
-	}
 }
 
-[am-ArticleMedia='insta'] {
+[am-ArticleMedia~='insta'] {
 	max-width: 35rem;
+}
+
+[am-ArticleMedia~='first'] {
+	margin-top: 0;
 }
 
 [am-ArticleMedia-Caption] {
