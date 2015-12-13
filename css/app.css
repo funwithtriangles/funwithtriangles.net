@@ -684,16 +684,15 @@ a {
 
 [am-Strip] {
   background: #F7D9BF;
-  padding: 1rem 0;
+  padding: 2rem 0;
   margin: auto;
   position: relative;
   display: block; }
-  @media only screen and (min-width: 40.063em) {
-    [am-Strip] {
-      padding: 2rem 0; } }
   @media only screen and (min-width: 64.063em) {
     [am-Strip] {
       padding: 3rem 0; } }
+  [am-Strip] > *:last-child, [am-Strip] > * > *:last-child {
+    margin-bottom: 0; }
 
 @media only screen and (max-width: 40em) {
   [am-Strip~='project'] {
@@ -893,7 +892,7 @@ a[am-Strip~='alt']:hover {
 [am-ArticleMedia] {
   margin: 0;
   max-width: 50rem;
-  padding: 3rem 0; }
+  padding: 1.5rem 0; }
   @media only screen and (min-width: 40.063em) {
     [am-ArticleMedia] {
       padding: 3rem; } }

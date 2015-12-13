@@ -1,17 +1,19 @@
 [am-Strip] {
 	background: $primary-color;
-	padding: 1rem 0;	
+	padding: 2rem 0;	
 	margin: auto;
 	position: relative;
 	display: block;
 
-	@media #{$medium-up} {
-		padding: 2rem 0;
-	}
-
 
 	@media #{$large-up} {
 		padding: 3rem 0;
+	}	
+
+	> *, > * > * {
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
 }
 

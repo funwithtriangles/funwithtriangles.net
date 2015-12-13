@@ -2,7 +2,7 @@
 
 	margin: 0;
 	max-width: $media-width;
-	padding: $media-padding 0;
+	padding: $media-padding/2 0;
 
 	@media #{$medium-up} {
 		padding: $media-padding;
