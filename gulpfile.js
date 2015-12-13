@@ -20,7 +20,8 @@ gulp.task('concatScripts', function() {
 			'js/vendor/fittext.js',
 			'js/_FWT.js',
 			'js/modules/_TriMask.js',
-			'js/modules/_FlightsMap.js'
+			'js/modules/_FlightsMap.js',
+			'js/modules/_Scroll.js'
 		])
 		.pipe(maps.init())
 		.pipe(concat('app.js'))	
