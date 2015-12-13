@@ -505,7 +505,7 @@ code {
   vertical-align: bottom; }
 
 [am-Row] {
-  max-width: 50rem;
+  max-width: 60rem;
   margin: 0 auto;
   padding: 0 1rem;
   display: -webkit-flex;
@@ -564,6 +564,12 @@ code {
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch; }
+
+@media only screen and (min-width: 40.063em) {
+  [am-Col~='m-o1'] {
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1; } }
 
 [am-list-reset] {
   list-style: none;

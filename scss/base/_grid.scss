@@ -1,5 +1,5 @@
 [am-Row] {
-	max-width: 50rem;
+	max-width: $main-width;
 	margin: 0 auto;
 	padding: 0 1rem;
 	display: flex;
@@ -51,4 +51,12 @@
 
 [am-Col~='stretch'] {
 	align-self: stretch;
+}
+
+[am-Col~='m-o1'] {
+
+	@media #{$medium-up} {
+		order: 1;
+	}
+
 }
