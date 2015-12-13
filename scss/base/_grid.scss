@@ -24,9 +24,9 @@
 
 [am-Col] {
 	padding: 0 1rem;
-	flex: 1 0;
 	position: relative;
 	z-index: 1;
+	width: 100%;
 }
 
 [am-Col~='8'] {
@@ -35,6 +35,14 @@
 
 [am-Col~='6'] {
 	flex: 0 (100%/12)*6;
+}
+
+[am-Col~='m6'] {
+
+	@media #{$medium-up} {
+		flex: 0 (100%/12)*6;	
+	}
+	
 }
 
 [am-Col~='bottom'] {

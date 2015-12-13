@@ -4,8 +4,9 @@ $circle-size: 9rem;
 	width: 100%;
 	height: 100%;
 	top: 0;
-	left: 0;
+	left: 0;	
 	position: absolute;
+	
 }
 
 [am-BigSpinner~='bg'] {
@@ -13,35 +14,63 @@ $circle-size: 9rem;
 }
 
 [am-BigSpinner-Spinner] {
-	width: 19rem;
-	height: 19rem;
-	position: absolute;
-	top: 50%;
-	margin-top: -9.5rem;
-	left: 50%;
-	margin-left: -9.5rem;
+
+
+	display: none;
 	animation: spin 100s linear infinite;
 	z-index: 1;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+
+	@media #{$medium-up} {
+		display: block;
+		
+		
+		width: 19rem;
+		height: 19rem;
+		margin-top: -9.5rem;
+		margin-left: -9.5rem;
+	}
 }
 
 [am-BigSpinner-Spinner~='big'] {
-	width: 35rem;
-	height: 35rem;
-	margin-top: -17.5rem;
-	margin-left: -17.5rem;
+	width: 20rem;
+	height: 20rem;
+	margin-top: -10rem;
+	margin-left: -10rem;
 	z-index: 0;
-	right: 0;
-	left: auto;
+	
+
 	opacity: 0.3;
 	animation-direction: reverse;
 	animation-duration: 150s;
+	display: block;
+
 
 	[am-BigSpinner-Item] {
-		width: 15rem;
-		height: 15rem;
-		line-height: 15rem;
+		width: 10rem;
+		height: 10rem;
+		line-height: 10rem;
 		animation-direction: normal;
 		animation-duration: 150s;
+	}
+
+	@media #{$medium-up} {
+
+		width: 35rem;
+		height: 35rem;
+		margin-top: -17.5rem;
+		margin-left: -17.5rem;
+
+		[am-BigSpinner-Item] {
+			width: 15rem;
+			height: 15rem;
+			line-height: 15rem;
+			font-size: 5rem;
+		}
+
+
 	}
 
 
@@ -60,14 +89,23 @@ $circle-size: 9rem;
 
 [am-BigSpinner-Item] {
 	position: absolute;
-	width: $circle-size;
-	height: $circle-size;
-	line-height: $circle-size;
+	
 	background: rgba(88,123,124,0.5);
 	border-radius: 1000px;
 	text-align: center;
-	font-size: 4rem;
+	
 	animation: spin 100s linear infinite reverse;
+	font-size: 3rem;
+	width: $circle-size/2;
+	height: $circle-size/2;
+	line-height: $circle-size/2;
+
+	@media #{$medium-up} {
+		font-size: 4rem;
+		width: $circle-size;
+		height: $circle-size;
+		line-height: $circle-size;
+	}
 
 	&:nth-child(1) {
 		left: 0;
