@@ -42,7 +42,7 @@
 	}
 
 	@media #{$large-up} {
-		width: 50%;
+		width: 60%;
 	}
 
 	
@@ -50,4 +50,27 @@
 	// 	color: white;
 	// }
 
+}
+
+[am-SiteFooter-Contact] {
+	@include list-reset;
+	margin-bottom: 0;
+	text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+
+	
+
+	@include all-headers {
+		margin-bottom: 0;
+	}	
+
+	li {
+		margin-bottom: 1rem;
+		flex: 0 100%;
+
+		@media #{$large-up} {
+			flex: 0 50%;
+		}
+	}
 }

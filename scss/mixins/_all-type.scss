@@ -1,0 +1,11 @@
+@mixin all-type() {
+	h1, h2, h3, h4, h5, h6, p, small, big, label, ul, ol, li, dl, dd, span {
+		@content;
+	}
+}
+
+@mixin all-headers() {
+	h1, h2, h3, h4, h5, h6 {
+		@content;
+	}
+}
