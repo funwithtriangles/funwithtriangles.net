@@ -1,8 +1,13 @@
 [am-SiteFooter] {
 	 //background: #081E10;
 	position: relative;
-	height: 100vh;
+	
 	display: flex;
+
+
+	@media #{$medium-up} {
+		height: 100vh;
+	}
 	
 
 	* {
@@ -22,11 +27,24 @@
 }
 
 [am-SiteFooter-Inner] {
-	width: 50%;
+
+	
 	background: white;
 	margin: 0 auto;
-	padding: 2rem;
-	margin: auto;
+	padding: 1rem;
+	margin: 1rem;
+
+
+	@media #{$medium-up} {
+		width: 70%;
+		padding: 2rem;
+		margin: auto;
+	}
+
+	@media #{$large-up} {
+		width: 50%;
+	}
+
 	
 	// * {
 	// 	color: white;

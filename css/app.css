@@ -909,10 +909,12 @@ a[am-Strip~='alt']:hover {
 
 [am-SiteFooter] {
   position: relative;
-  height: 100vh;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
+  @media only screen and (min-width: 40.063em) {
+    [am-SiteFooter] {
+      height: 100vh; } }
   [am-SiteFooter] * {
     position: relative;
     z-index: 1; }
@@ -926,10 +928,17 @@ a[am-Strip~='alt']:hover {
   z-index: 0; }
 
 [am-SiteFooter-Inner] {
-  width: 50%;
   background: white;
   margin: 0 auto;
-  padding: 2rem;
-  margin: auto; }
+  padding: 1rem;
+  margin: 1rem; }
+  @media only screen and (min-width: 40.063em) {
+    [am-SiteFooter-Inner] {
+      width: 70%;
+      padding: 2rem;
+      margin: auto; } }
+  @media only screen and (min-width: 64.063em) {
+    [am-SiteFooter-Inner] {
+      width: 50%; } }
 
 /*# sourceMappingURL=app.css.map */
