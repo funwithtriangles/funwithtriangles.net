@@ -66,7 +66,7 @@ gulp.task('compileHtml', function(file) {
 	nunjucksRender.nunjucks.configure(['templates/']);
 
 	// Gets .html and .nunjucks files in pages
-	return gulp.src('pages/**/*.+(html|nunjucks)')
+	return gulp.src('pages/**/*.+(html|nj)')
 	// Renders template with nunjucks
 	.pipe(nunjucksRender())
 	// output files in app folder
