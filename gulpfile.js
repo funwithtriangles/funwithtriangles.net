@@ -13,19 +13,21 @@ var gulp        	= require('gulp'),
 	notify			= require('gulp-notify'),
 	nunjucksRender	= require('gulp-nunjucks-render');
 
+var appPath = 'app/';
+
 // Concatenate js files as listed
 gulp.task('concatScripts', function() {
 
 	return gulp.src([
-			'js/vendor/fittext.js',
-			'js/_FWT.js',
-			'js/modules/_TriMask.js',
-			'js/modules/_FlightsMap.js',
-			'js/modules/_Scroll.js'
+			appPath+'js/vendor/fittext.js',
+			appPath+'js/_FWT.js',
+			appPath+'js/modules/_TriMask.js',
+			appPath+'js/modules/_FlightsMap.js',
+			appPath+'js/modules/_Scroll.js'
 		])
 		.pipe(maps.init())
 		.pipe(concat('app.js'))	
-		.pipe(maps.write('./'))
+		.pipe(maps.write(appPath))
 		.pipe(gulp.dest('js'))
 		.pipe(notify( {message : 'JS compiled.'} ));
 
@@ -34,17 +36,17 @@ gulp.task('concatScripts', function() {
 // Minify app.js file
 gulp.task('minifyScripts', ['concatScripts'], function() {
 
-	return gulp.src('js/app.js')
+	return gulp.src(appPath+'js/app.js')
 		.pipe(uglify())
 		.pipe(rename('app.min.js'))
-		.pipe(gulp.dest('js'));
+		.pipe(gulp.dest(appPath+'js'));
 
 });
 
 // Compile sass
 gulp.task('compileSass', function() {
 
-	return gulp.src('scss/app.scss')
+	return gulp.src(appPath+'scss/app.scss')
 		.pipe(maps.init())
 		.pipe(sass().on('error', notify.onError(function (error) {
    			return 'An error occurred while compiling sass.\nLook in the console for details.\n' + error;
@@ -53,7 +55,7 @@ gulp.task('compileSass', function() {
             browsers: ['last 2 versions'],
             cascade: false
         }))
-		.pipe(maps.write('./'))
+		.pipe(maps.write(appPath))
 		.pipe(gulp.dest('css'))
 		.pipe(browserSync.stream())
 		.pipe(notify( {message : 'Sass compiled.'} ));
@@ -68,7 +70,7 @@ gulp.task('compileHtml', function(file) {
 	// Renders template with nunjucks
 	.pipe(nunjucksRender())
 	// output files in app folder
-	.pipe(gulp.dest('./'))
+	.pipe(gulp.dest(appPath))
 })
 
 // Refresh browser after JS has concatenated
@@ -94,9 +96,9 @@ gulp.task('serve', ['compileSass', 'concatScripts', 'compileHtml'], function() {
        proxy: 'funwithtriangles:8'
     });
 
-    gulp.watch('scss/**/*.scss', ['compileSass']);
-    gulp.watch(['js/app.js', 'js/modules/**'], ['watchJs']);
-    gulp.watch(['*.html', 'pages/**/*.html', 'partials/**/*.html'], ['watchHtml']);
+    gulp.watch(appPath+'scss/**/*.scss', ['compileSass']);
+    gulp.watch([appPath+'js/app.js', appPath+'js/modules/**'], ['watchJs']);
+    gulp.watch([appPath+'templates/**/*.html', 'pages/**/*.html'], ['watchHtml']);
 
 });
 
