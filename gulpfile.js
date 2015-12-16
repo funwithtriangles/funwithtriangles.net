@@ -27,8 +27,8 @@ gulp.task('concatScripts', function() {
 		])
 		.pipe(maps.init())
 		.pipe(concat('app.js'))	
-		.pipe(maps.write(appPath))
-		.pipe(gulp.dest('js'))
+		.pipe(maps.write('./'))
+		.pipe(gulp.dest(appPath+'js'))
 		.pipe(notify( {message : 'JS compiled.'} ));
 
 });
@@ -55,18 +55,18 @@ gulp.task('compileSass', function() {
             browsers: ['last 2 versions'],
             cascade: false
         }))
-		.pipe(maps.write(appPath))
-		.pipe(gulp.dest('css'))
+		.pipe(maps.write('./'))
+		.pipe(gulp.dest(appPath+'css'))
 		.pipe(browserSync.stream())
 		.pipe(notify( {message : 'Sass compiled.'} ));
 
 });
 
 gulp.task('compileHtml', function(file) {
-	nunjucksRender.nunjucks.configure(['templates/']);
+	nunjucksRender.nunjucks.configure([appPath+'templates/']);
 
 	// Gets .html and .nunjucks files in pages
-	return gulp.src('pages/**/*.+(html|nj)')
+	return gulp.src(appPath+'pages/**/*.+(html|nj)')
 	// Renders template with nunjucks
 	.pipe(nunjucksRender())
 	// output files in app folder
@@ -79,15 +79,15 @@ gulp.task('watchJs', ['concatScripts'], browserSync.reload);
 gulp.task('watchHtml', ['compileHtml'], browserSync.reload);
 
 // Cleanup before build by removing certain files
-gulp.task('clean', function() {
-	del('dist', 'css/app.css*', 'js/app*.js*');
-});
+// gulp.task('clean', function() {
+// 	del('dist', 'css/app.css*', 'js/app*.js*');
+// });
 
-// Build /dest folder
-gulp.task('build', ['minifyScripts', 'compileSass', 'compileHtml'], function() {
-	return gulp.src(['css/app.css', 'js/app.min.js', 'images/**', 'index.html'], {base: './'})
-		.pipe(gulp.dest('dist'));
-});
+// // Build /dest folder
+// gulp.task('build', ['minifyScripts', 'compileSass', 'compileHtml'], function() {
+// 	return gulp.src(['css/app.css', 'js/app.min.js', 'images/**', 'index.html'], {base: './'})
+// 		.pipe(gulp.dest('dist'));
+// });
 
 // Start a browser refresh server, watch for JS/SCSS/HTML changes
 gulp.task('serve', ['compileSass', 'concatScripts', 'compileHtml'], function() {

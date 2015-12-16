@@ -1,4 +1,6 @@
-{% extends "layout.nunjucks" %}
+{% set title = "Getting Trippy with Canvas and MIDI | Fun With Triangles" %}
+
+{% extends "layout.nj" %}
 
 {% block content %} 
 <header am-SiteHeader>

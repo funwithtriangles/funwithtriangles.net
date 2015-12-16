@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Fun with Triangles</title>
+    <title>{{ title }}</title>
     <meta name="description" content="Alex Kempton works with Front-End web technologies.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
