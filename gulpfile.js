@@ -1,17 +1,17 @@
 'use strict';
 
 // Require things here
-var gulp        = require('gulp'),
-	concat      = require('gulp-concat'),
-	uglify      = require('gulp-uglify'),
-	rename      = require('gulp-rename'),
-	sass        = require('gulp-sass'),
-	maps        = require('gulp-sourcemaps'),
-	del         = require('del'),
-	browserSync = require('browser-sync').create(),
-	prefixer    = require('gulp-autoprefixer'),
-	notify		= require('gulp-notify'),
-	include		= require('gulp-include');
+var gulp        	= require('gulp'),
+	concat      	= require('gulp-concat'),
+	uglify      	= require('gulp-uglify'),
+	rename      	= require('gulp-rename'),
+	sass        	= require('gulp-sass'),
+	maps        	= require('gulp-sourcemaps'),
+	del         	= require('del'),
+	browserSync 	= require('browser-sync').create(),
+	prefixer    	= require('gulp-autoprefixer'),
+	notify			= require('gulp-notify'),
+	nunjucksRender	= require('gulp-nunjucks-render');
 
 // Concatenate js files as listed
 gulp.task('concatScripts', function() {
@@ -61,9 +61,14 @@ gulp.task('compileSass', function() {
 });
 
 gulp.task('compileHtml', function(file) {
-	return gulp.src('pages/**/*.html')
-		.pipe(include())
-		.pipe(gulp.dest('./'));
+	nunjucksRender.nunjucks.configure(['templates/']);
+
+	// Gets .html and .nunjucks files in pages
+	return gulp.src('pages/**/*.+(html|nunjucks)')
+	// Renders template with nunjucks
+	.pipe(nunjucksRender())
+	// output files in app folder
+	.pipe(gulp.dest('./'))
 })
 
 // Refresh browser after JS has concatenated
@@ -86,9 +91,7 @@ gulp.task('build', ['minifyScripts', 'compileSass', 'compileHtml'], function() {
 gulp.task('serve', ['compileSass', 'concatScripts', 'compileHtml'], function() {
 
 	browserSync.init({
-        server: {
-            baseDir: "./"
-        }
+       proxy: 'funwithtriangles:8'
     });
 
     gulp.watch('scss/**/*.scss', ['compileSass']);

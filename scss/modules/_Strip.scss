@@ -86,6 +86,8 @@ a[am-Strip] {
 			transform: scale(1.04);
 		}
 
+		
+
 		[am-Strip-Anim~='left'] {
 			@media #{$medium-up} {
 				transform: scale(1.04) translate3D(-0.5rem, 0, 0);
@@ -96,6 +98,12 @@ a[am-Strip] {
 		[am-Strip-Anim~='right'] {
 			@media #{$medium-up} {
 				transform: scale(1.04) translate3D(0.5rem, 0, 0);
+			}
+		}
+
+		[am-BigSpinner='bg'] {
+			@media #{$medium-up} {
+				transform: scale(1);
 			}
 		}
 	}

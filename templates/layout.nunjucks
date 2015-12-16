@@ -1,3 +1,25 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Fun with Triangles</title>
+    <meta name="description" content="Alex Kempton works with Front-End web technologies.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="/js/modernizr.js"></script>
+
+    <script src="https://use.typekit.net/kbv3itz.js"></script>
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+	<link rel="stylesheet" href="/css/app.css" />
+
+</head>
+<body>
+
+{% block content %} {% endblock %}
+
 <div am-SiteFooter data-triEffect id="contact">
 	<canvas am-SiteFooter-Bg></canvas>
 	

@@ -748,6 +748,10 @@ a[am-Strip] {
       a[am-Strip]:hover [am-Strip-Anim~='right'] {
         -webkit-transform: scale(1.04) translate3D(0.5rem, 0, 0);
         transform: scale(1.04) translate3D(0.5rem, 0, 0); } }
+    @media only screen and (min-width: 40.063em) {
+      a[am-Strip]:hover [am-BigSpinner='bg'] {
+        -webkit-transform: scale(1);
+        transform: scale(1); } }
 
 a[am-Strip~='alt']:hover {
   background: #333; }

@@ -1,6 +1,6 @@
-<!--=include ../partials/head.html -->
+{% extends "layout.nunjucks" %}
 
-<body>
+{% block content %} 
 <header am-SiteHeader>
 
 	<div am-SiteHeader-Header data-triEffect="/images/header_tall.svg">
@@ -83,7 +83,7 @@
 		<div am-Col="m6" am-Strip-Anim="1 left">
 		
 			<div am-Strip-Cutout am-svg style="padding-bottom: 77.55%">
-			<!--=include ../images/graphics/saa_map-01.svg -->
+				{% include "partials/saa_map-01.svg" %}
 			</div>
 
 		</div>
@@ -97,5 +97,4 @@
 		</div>
 	</div>
 </a>
-
-<!--=include ../partials/foot.html --><!--=include ../partials/head.html -->
+{% endblock %}
