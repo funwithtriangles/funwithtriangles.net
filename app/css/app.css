@@ -789,19 +789,19 @@ a {
   @media only screen and (min-width: 40.063em) {
     [am-SiteHeader] {
       padding: 2rem 1rem 3rem; } }
-  [am-SiteHeader] p {
-    margin-bottom: 0; }
-    @media only screen and (min-width: 40.063em) {
-      [am-SiteHeader] p {
-        font-size: 1.414rem;
-        line-height: 1.414; } }
-    @media only screen and (min-width: 64.063em) {
-      [am-SiteHeader] p {
-        font-size: 1.5554rem;
-        line-height: 1.414; } }
+  @media only screen and (min-width: 40.063em) {
+    [am-SiteHeader] p {
+      font-size: 1.414rem;
+      line-height: 1.414; } }
+  @media only screen and (min-width: 64.063em) {
+    [am-SiteHeader] p {
+      font-size: 1.5554rem;
+      line-height: 1.414; } }
   [am-SiteHeader] h1 {
     border-top: 1px solid #ddd;
     padding-top: 1rem; }
+  [am-SiteHeader] *:last-child {
+    margin-bottom: 0; }
 
 [am-SiteHeader-Header] {
   max-width: 45rem; }
@@ -1124,5 +1124,36 @@ a[am-Strip~='alt']:hover {
         -webkit-flex: 0 50%;
         -ms-flex: 0 50%;
         flex: 0 50%; } }
+
+[am-FeatureList] {
+  padding: 0.2rem 0.8rem;
+  background: white;
+  margin: 0;
+  font-size: 0.8rem;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  [am-FeatureList] li {
+    margin-right: 1rem; }
+    [am-FeatureList] li:last-child {
+      margin-right: 0; }
+
+[am-FeatureList-Title] {
+  font-weight: bold; }
+
+[am-FeatureList-Link] {
+  width: 100%;
+  font-weight: bold; }
+  @media only screen and (min-width: 64.063em) {
+    [am-FeatureList-Link] {
+      width: auto;
+      margin: 0 0 0 auto; } }
+  [am-FeatureList-Link] a {
+    display: inline-block;
+    margin-left: 1rem; }
 
 /*# sourceMappingURL=app.css.map */

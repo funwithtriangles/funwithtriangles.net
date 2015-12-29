@@ -9,8 +9,6 @@
 	}
 
 	p {
-		
-		margin-bottom: 0;
 
 		@media #{$medium-up} {
 			font-size: $scale * 1rem;
@@ -28,6 +26,10 @@
 	h1 {
 		border-top: 1px solid #ddd;
 		padding-top: 1rem;
+	}
+
+	*:last-child {
+		margin-bottom: 0;
 	}
 }
 
