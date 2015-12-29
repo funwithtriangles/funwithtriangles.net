@@ -63,6 +63,7 @@ gulp.task('compileSass', function() {
 });
 
 gulp.task('compileHtml', function(file) {
+
 	nunjucksRender.nunjucks.configure([appPath+'templates/']);
 
 	// Gets .html and .nunjucks files in pages
@@ -98,7 +99,7 @@ gulp.task('serve', ['compileSass', 'concatScripts', 'compileHtml'], function() {
 
     gulp.watch(appPath+'scss/**/*.scss', ['compileSass']);
     gulp.watch([appPath+'js/app.js', appPath+'js/modules/**'], ['watchJs']);
-    gulp.watch([appPath+'templates/**/*.html', 'pages/**/*.html'], ['watchHtml']);
+    gulp.watch([appPath+'templates/**/*.nj', appPath+'pages/**/*.nj'], ['watchHtml']);
 
 });
 
