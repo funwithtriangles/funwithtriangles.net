@@ -13,10 +13,24 @@
 	margin-top: 0;
 }
 
+[am-ArticleMedia~='auto'] {
+
+	img {
+		width: auto;
+		max-width: auto;
+	}
+	
+}
+
+
 [am-ArticleMedia-Caption] {
 	color: #555;
 	font-style: italic;
 	//text-align: center;
 	margin-top: 0.5rem;
 	margin-bottom: -0.5rem; 
+}
+
+[am-ArticleMedia-Compliment] {
+	margin-top: $media-padding;
 }

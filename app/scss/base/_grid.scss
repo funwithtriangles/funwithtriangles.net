@@ -18,8 +18,13 @@
 	justify-content: center;
 }
 
+
+[am-Row~='middle'] {
+	align-items: center;
+}
+
 [am-Row~='bottom'] {
-	align-items: bottom;
+	align-items: flex-end;
 }
 
 [am-Col] {
@@ -31,6 +36,10 @@
 
 [am-Col~='8'] {
 	flex: 0 (100%/12)*8;
+}
+
+[am-Col~='4'] {
+	flex: 0 (100%/12)*4;
 }
 
 [am-Col~='6'] {
