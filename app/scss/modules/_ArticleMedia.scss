@@ -32,5 +32,8 @@
 }
 
 [am-ArticleMedia-Compliment] {
-	margin-top: $media-padding;
+
+	@media #{$medium-up} {
+		margin-top: $media-padding;
+	}
 }

@@ -544,26 +544,165 @@ code {
   z-index: 1;
   width: 100%; }
 
-[am-Col~='8'] {
-  -webkit-flex: 0 66.66667%;
-  -ms-flex: 0 66.66667%;
-  flex: 0 66.66667%; }
+[am-Col~='1'] {
+  -webkit-flex: 0 8.33333%;
+  -ms-flex: 0 8.33333%;
+  flex: 0 8.33333%; }
+
+[am-Col~='2'] {
+  -webkit-flex: 0 16.66667%;
+  -ms-flex: 0 16.66667%;
+  flex: 0 16.66667%; }
+
+[am-Col~='3'] {
+  -webkit-flex: 0 25%;
+  -ms-flex: 0 25%;
+  flex: 0 25%; }
 
 [am-Col~='4'] {
   -webkit-flex: 0 33.33333%;
   -ms-flex: 0 33.33333%;
   flex: 0 33.33333%; }
 
+[am-Col~='5'] {
+  -webkit-flex: 0 41.66667%;
+  -ms-flex: 0 41.66667%;
+  flex: 0 41.66667%; }
+
 [am-Col~='6'] {
   -webkit-flex: 0 50%;
   -ms-flex: 0 50%;
   flex: 0 50%; }
 
+[am-Col~='7'] {
+  -webkit-flex: 0 58.33333%;
+  -ms-flex: 0 58.33333%;
+  flex: 0 58.33333%; }
+
+[am-Col~='8'] {
+  -webkit-flex: 0 66.66667%;
+  -ms-flex: 0 66.66667%;
+  flex: 0 66.66667%; }
+
+[am-Col~='9'] {
+  -webkit-flex: 0 75%;
+  -ms-flex: 0 75%;
+  flex: 0 75%; }
+
+[am-Col~='10'] {
+  -webkit-flex: 0 83.33333%;
+  -ms-flex: 0 83.33333%;
+  flex: 0 83.33333%; }
+
+[am-Col~='11'] {
+  -webkit-flex: 0 91.66667%;
+  -ms-flex: 0 91.66667%;
+  flex: 0 91.66667%; }
+
+[am-Col~='12'] {
+  -webkit-flex: 0 100%;
+  -ms-flex: 0 100%;
+  flex: 0 100%; }
+
 @media only screen and (min-width: 40.063em) {
+  [am-Col~='m1'] {
+    -webkit-flex: 0 8.33333%;
+    -ms-flex: 0 8.33333%;
+    flex: 0 8.33333%; }
+  [am-Col~='m2'] {
+    -webkit-flex: 0 16.66667%;
+    -ms-flex: 0 16.66667%;
+    flex: 0 16.66667%; }
+  [am-Col~='m3'] {
+    -webkit-flex: 0 25%;
+    -ms-flex: 0 25%;
+    flex: 0 25%; }
+  [am-Col~='m4'] {
+    -webkit-flex: 0 33.33333%;
+    -ms-flex: 0 33.33333%;
+    flex: 0 33.33333%; }
+  [am-Col~='m5'] {
+    -webkit-flex: 0 41.66667%;
+    -ms-flex: 0 41.66667%;
+    flex: 0 41.66667%; }
   [am-Col~='m6'] {
     -webkit-flex: 0 50%;
     -ms-flex: 0 50%;
-    flex: 0 50%; } }
+    flex: 0 50%; }
+  [am-Col~='m7'] {
+    -webkit-flex: 0 58.33333%;
+    -ms-flex: 0 58.33333%;
+    flex: 0 58.33333%; }
+  [am-Col~='m8'] {
+    -webkit-flex: 0 66.66667%;
+    -ms-flex: 0 66.66667%;
+    flex: 0 66.66667%; }
+  [am-Col~='m9'] {
+    -webkit-flex: 0 75%;
+    -ms-flex: 0 75%;
+    flex: 0 75%; }
+  [am-Col~='m10'] {
+    -webkit-flex: 0 83.33333%;
+    -ms-flex: 0 83.33333%;
+    flex: 0 83.33333%; }
+  [am-Col~='m11'] {
+    -webkit-flex: 0 91.66667%;
+    -ms-flex: 0 91.66667%;
+    flex: 0 91.66667%; }
+  [am-Col~='m12'] {
+    -webkit-flex: 0 100%;
+    -ms-flex: 0 100%;
+    flex: 0 100%; } }
+
+@media only screen and (min-width: 64.063em) {
+  [am-Col~='l1'] {
+    -webkit-flex: 0 8.33333%;
+    -ms-flex: 0 8.33333%;
+    flex: 0 8.33333%; }
+  [am-Col~='l2'] {
+    -webkit-flex: 0 16.66667%;
+    -ms-flex: 0 16.66667%;
+    flex: 0 16.66667%; }
+  [am-Col~='l3'] {
+    -webkit-flex: 0 25%;
+    -ms-flex: 0 25%;
+    flex: 0 25%; }
+  [am-Col~='l4'] {
+    -webkit-flex: 0 33.33333%;
+    -ms-flex: 0 33.33333%;
+    flex: 0 33.33333%; }
+  [am-Col~='l5'] {
+    -webkit-flex: 0 41.66667%;
+    -ms-flex: 0 41.66667%;
+    flex: 0 41.66667%; }
+  [am-Col~='l6'] {
+    -webkit-flex: 0 50%;
+    -ms-flex: 0 50%;
+    flex: 0 50%; }
+  [am-Col~='l7'] {
+    -webkit-flex: 0 58.33333%;
+    -ms-flex: 0 58.33333%;
+    flex: 0 58.33333%; }
+  [am-Col~='l8'] {
+    -webkit-flex: 0 66.66667%;
+    -ms-flex: 0 66.66667%;
+    flex: 0 66.66667%; }
+  [am-Col~='l9'] {
+    -webkit-flex: 0 75%;
+    -ms-flex: 0 75%;
+    flex: 0 75%; }
+  [am-Col~='l10'] {
+    -webkit-flex: 0 83.33333%;
+    -ms-flex: 0 83.33333%;
+    flex: 0 83.33333%; }
+  [am-Col~='l11'] {
+    -webkit-flex: 0 91.66667%;
+    -ms-flex: 0 91.66667%;
+    flex: 0 91.66667%; }
+  [am-Col~='l12'] {
+    -webkit-flex: 0 100%;
+    -ms-flex: 0 100%;
+    flex: 0 100%; } }
 
 [am-Col~='bottom'] {
   -webkit-align-self: flex-end;
@@ -923,8 +1062,9 @@ a[am-Strip~='alt']:hover {
   margin-top: 0.5rem;
   margin-bottom: -0.5rem; }
 
-[am-ArticleMedia-Compliment] {
-  margin-top: 2.55rem; }
+@media only screen and (min-width: 40.063em) {
+  [am-ArticleMedia-Compliment] {
+    margin-top: 2.55rem; } }
 
 [am-SiteFooter] {
   position: relative;

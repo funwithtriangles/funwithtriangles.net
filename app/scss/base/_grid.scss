@@ -34,25 +34,37 @@
 	width: 100%;
 }
 
-[am-Col~='8'] {
-	flex: 0 (100%/12)*8;
-}
-
-[am-Col~='4'] {
-	flex: 0 (100%/12)*4;
-}
-
-[am-Col~='6'] {
-	flex: 0 (100%/12)*6;
-}
-
-[am-Col~='m6'] {
-
-	@media #{$medium-up} {
-		flex: 0 (100%/12)*6;	
+@for $i from 1 through $row-count {
+	[am-Col~='#{$i}'] {
+		flex: 0 (100%/$row-count)*$i;
 	}
-	
 }
+
+
+@media #{$medium-up} {
+
+	@for $i from 1 through $row-count {
+
+		[am-Col~='m#{$i}'] {
+			flex: 0 (100%/$row-count)*$i;
+		}
+
+	}
+
+}
+
+@media #{$large-up} {
+
+	@for $i from 1 through $row-count {
+
+		[am-Col~='l#{$i}'] {
+			flex: 0 (100%/$row-count)*$i;
+		}
+
+	}
+
+}
+
 
 [am-Col~='bottom'] {
 	align-self: flex-end;
