@@ -15,6 +15,12 @@
 	
 }
 
+[am-a~='plain'] {
+	&:hover {
+		transform: none;
+	}
+}
+
 /* Hug a the block above you */
 [am-txt~='hug'] {
 	margin-top: 0;

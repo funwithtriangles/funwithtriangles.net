@@ -137,6 +137,6 @@ a[am-Strip~='alt'] {
 	background: $secondary-color;
 	
 	* {
-		color: white;
+		color: white !important;
 	}
 }

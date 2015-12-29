@@ -13,7 +13,7 @@
 </header>
 
 
-<a am-Strip="project" href="/projects/canvas-midi">
+<a am-Strip="project" href="/projects/polyop">
 		<div am-Row="middle">
 			<div am-Col="m6" am-Strip-Anim="1 left">
 				<img am-Strip-Cutout src="/images/cutouts/poly_gear.gif">
@@ -80,7 +80,7 @@
 	</div>
 </a>
 
-<a am-Strip="project">
+<a am-Strip="project" href="/projects/saa">
 	<div am-Row="middle">
 		<div am-Col="m6" am-Strip-Anim="1 left">
 		

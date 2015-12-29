@@ -729,6 +729,10 @@ code {
 [am-txt~='lead'] {
   font-size: 18; }
 
+[am-a~='plain']:hover {
+  -webkit-transform: none;
+  transform: none; }
+
 /* Hug a the block above you */
 [am-txt~='hug'] {
   margin-top: 0; }
@@ -918,7 +922,7 @@ a[am-Strip~='alt']:hover {
 [am-Strip~='alt'] {
   background: #26634E; }
   [am-Strip~='alt'] * {
-    color: white; }
+    color: white !important; }
 
 [am-BigSpinner] {
   width: 100%;
