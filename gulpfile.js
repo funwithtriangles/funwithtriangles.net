@@ -86,6 +86,7 @@ gulp.task('build', ['concatScripts', 'compileSass', 'compileHtml'], function() {
 		appPath+'images/**', 
 		appPath+'fonts/**',
 		appPath+'index.html',
+		appPath+'favicon.ico',
 		appPath+'/projects/*'], 
 		{base: './app'})
 	.pipe(gulp.dest('dist'));
