@@ -33,9 +33,9 @@
 
 			<h2>D3.js</h2>
 			<figure am-ArticleMedia>
-				<a am-a="plain" href="http://santamonicawellbeing.co.uk/"><img src="/images/gifs/santa_monica.gif" alt="Santa Monica website with animation"></a>
+				<a am-a="plain" href="http://flysaatrade.com/products/routes"><img src="/images/gifs/saa_map.gif" alt="Interactive map"></a>
 			
-				<figcaption am-ArticleMedia-Caption>The map I created showed how all of the airports were connected.</figcaption>
+				<figcaption am-ArticleMedia-Caption>The map I created showed how all of the airports were connected. <a href="http://flysaatrade.com/products/routes">See live version</a>.</figcaption>
 			</figure>
 
 
@@ -57,7 +57,7 @@
 				<h2>Giving power to the client</h2>
 
 				<figure am-ArticleMedia>
-					<a am-a="plain" href="http://santamonicawellbeing.co.uk/"><img src="/images/gifs/santa_monica.gif" alt="Santa Monica website with animation"></a>
+					<img src="/images/graphics/saa_sheet.gif" alt="Spreadsheet and map">
 				
 					<figcaption am-ArticleMedia-Caption>A simple spreadsheet turns into the fully featured map</figcaption>
 				</figure>
@@ -73,7 +73,7 @@
 		<div am-ContentContainer>
 			<h2>Let’s make a map!</h2>
 			<figure am-ArticleMedia>
-				<a am-a="plain" href="http://santamonicawellbeing.co.uk/"><img src="/images/gifs/santa_monica.gif" alt="Santa Monica website with animation"></a>
+				<img src="/images/gifs/all_maps.gif" alt="Selection of maps">
 			
 				<figcaption am-ArticleMedia-Caption>Maps I’ve made for clients such as Brand USA and Visit California.</figcaption>
 			</figure>
