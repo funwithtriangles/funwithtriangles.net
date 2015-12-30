@@ -3,4 +3,4 @@ node_modules
 bower_components
 
 *.scssc
-.DS_Storenode_modules/
+.DS_Store
