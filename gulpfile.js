@@ -79,16 +79,23 @@ gulp.task('watchJs', ['concatScripts'], browserSync.reload);
 
 gulp.task('watchHtml', ['compileHtml'], browserSync.reload);
 
-// Cleanup before build by removing certain files
-// gulp.task('clean', function() {
-// 	del('dist', 'css/app.css*', 'js/app*.js*');
-// });
+//Cleanup before build by removing certain files
+gulp.task('clean', function() {
+	del('dist', 'css/app.css*', 'js/app*.js*');
+});
 
-// // Build /dest folder
-// gulp.task('build', ['minifyScripts', 'compileSass', 'compileHtml'], function() {
-// 	return gulp.src(['css/app.css', 'js/app.min.js', 'images/**', 'index.html'], {base: './'})
-// 		.pipe(gulp.dest('dist'));
-// });
+// Build /dest folder
+gulp.task('build', ['minifyScripts', 'compileSass', 'compileHtml'], function() {
+	return gulp.src([
+			appPath+'css/app.css', 
+			appPath+'js/app.min.js', 
+			appPath+'images/**', 
+			appPath+'fonts/**',
+			appPath+'index.html',
+			appPath+'/projects/*'], 
+			{base: './app'})
+		.pipe(gulp.dest('dist'));
+});
 
 // Start a browser refresh server, watch for JS/SCSS/HTML changes
 gulp.task('serve', ['compileSass', 'concatScripts', 'compileHtml'], function() {
