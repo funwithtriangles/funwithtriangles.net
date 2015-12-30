@@ -11,7 +11,8 @@ var gulp        	= require('gulp'),
 	browserSync 	= require('browser-sync').create(),
 	prefixer    	= require('gulp-autoprefixer'),
 	notify			= require('gulp-notify'),
-	nunjucksRender	= require('gulp-nunjucks-render');
+	nunjucksRender	= require('gulp-nunjucks-render'),
+	ghPages 		= require('gulp-gh-pages');
 
 var appPath = 'app/';
 
@@ -108,6 +109,11 @@ gulp.task('serve', ['compileSass', 'concatScripts', 'compileHtml'], function() {
     gulp.watch([appPath+'js/app.js', appPath+'js/modules/**'], ['watchJs']);
     gulp.watch([appPath+'templates/**/*.nj', appPath+'pages/**/*.nj'], ['watchHtml']);
 
+});
+
+gulp.task('deploy', function() {
+  return gulp.src('dist/**/*')
+    .pipe(ghPages());
 });
 
 // Build project for deploy, cleaning first
