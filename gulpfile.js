@@ -13,7 +13,8 @@ var gulp        	= require('gulp'),
 	notify			= require('gulp-notify'),
 	nunjucksRender	= require('gulp-nunjucks-render'),
 	ghPages 		= require('gulp-gh-pages'),
-	cssnano			= require('gulp-cssnano'); 
+	cssnano			= require('gulp-cssnano'),
+	file 			= require('gulp-file');
 
 var appPath = 'app/';
 
@@ -116,6 +117,7 @@ gulp.task('serve', ['compileSass', 'concatScripts', 'compileHtml'], function() {
 
 gulp.task('deploy', function() {
   return gulp.src('dist/**/*')
+  	.pipe(file('CNAME', 'funwithtriangles.net'))
     .pipe(ghPages({
     	branch: 'master'
     }));
