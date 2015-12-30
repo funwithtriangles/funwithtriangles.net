@@ -12,7 +12,8 @@ var gulp        	= require('gulp'),
 	prefixer    	= require('gulp-autoprefixer'),
 	notify			= require('gulp-notify'),
 	nunjucksRender	= require('gulp-nunjucks-render'),
-	ghPages 		= require('gulp-gh-pages');
+	ghPages 		= require('gulp-gh-pages'),
+	cssnano			= require('gulp-cssnano'); 
 
 var appPath = 'app/';
 
@@ -34,15 +35,6 @@ gulp.task('concatScripts', function() {
 
 });
 
-// Minify app.js file
-gulp.task('minifyScripts', ['concatScripts'], function() {
-
-	return gulp.src(appPath+'js/app.js')
-		.pipe(uglify())
-		.pipe(rename('app.min.js'))
-		.pipe(gulp.dest(appPath+'js'));
-
-});
 
 // Compile sass
 gulp.task('compileSass', function() {
@@ -86,16 +78,27 @@ gulp.task('clean', function() {
 });
 
 // Build /dest folder
-gulp.task('build', ['minifyScripts', 'compileSass', 'compileHtml'], function() {
-	return gulp.src([
-			appPath+'css/app.css', 
-			appPath+'js/app.min.js', 
-			appPath+'images/**', 
-			appPath+'fonts/**',
-			appPath+'index.html',
-			appPath+'/projects/*'], 
-			{base: './app'})
-		.pipe(gulp.dest('dist'));
+gulp.task('build', ['concatScripts', 'compileSass', 'compileHtml'], function() {
+
+	// Move basic files/folders
+	gulp.src([
+		appPath+'images/**', 
+		appPath+'fonts/**',
+		appPath+'index.html',
+		appPath+'/projects/*'], 
+		{base: './app'})
+	.pipe(gulp.dest('dist'));
+
+	// Compress CSS
+	gulp.src(appPath+'css/app.css')
+        .pipe(cssnano())
+        .pipe(gulp.dest('dist/css'));
+
+    // Minify JS
+    return gulp.src(appPath+'js/app.js')
+		.pipe(uglify())
+		.pipe(gulp.dest('dist/js'));
+
 });
 
 // Start a browser refresh server, watch for JS/SCSS/HTML changes
@@ -113,7 +116,9 @@ gulp.task('serve', ['compileSass', 'concatScripts', 'compileHtml'], function() {
 
 gulp.task('deploy', function() {
   return gulp.src('dist/**/*')
-    .pipe(ghPages());
+    .pipe(ghPages({
+    	branch: 'master'
+    }));
 });
 
 // Build project for deploy, cleaning first
