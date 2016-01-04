@@ -1,9 +1,12 @@
 [am-Row] {
 	max-width: $main-width;
 	margin: 0 auto;
-	padding: 0 1rem;
 	display: flex;
 	flex-wrap: wrap;
+
+	@media #{$medium-up} {
+		padding: 0 1rem;
+	}
 }
 
 [am-Row~='full'] {

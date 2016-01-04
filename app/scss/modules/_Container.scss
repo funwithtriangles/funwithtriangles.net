@@ -14,6 +14,10 @@
 	margin: 0 auto;
 	padding: 0 1rem;
 
+	@media #{$medium-up} {
+		padding: 0 2rem;
+	}
+
 	p, ul, ol, h2, h3, h4, h5, h6 {
 		max-width: 40rem;
 	}

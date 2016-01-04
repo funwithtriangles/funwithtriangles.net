@@ -101,6 +101,21 @@
 		</div>
 	</div>
 </article>
+
+<div am-Slither>
+	<div am-Row>
+		<h3>Read More</h3> 
+	</div>
+	<div am-Row>
+		<div am-Col="m6">
+			<h4><a>Making it Swooshy for Santa Monica</a></h4>
+			<p>I created an animated microsite to promote health and wellbeing in Santa Monica</p>
+		</div>
+		
+	</div>
+</div>
+
+
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 
