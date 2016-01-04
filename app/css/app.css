@@ -742,6 +742,14 @@ code {
 [am-txt~='center'] {
   text-align: center; }
 
+[am-txt~='headerLink'] {
+  text-decoration: none;
+  color: #ccc;
+  display: inline-block;
+  margin-left: 1rem;
+  font-weight: normal;
+  font-family: 'open-sans', sans-serif; }
+
 [am-svg] {
   height: 0;
   width: 100%;
@@ -787,6 +795,9 @@ a {
 @media only screen and (max-width: 40em) {
   [am-space~='s-mt-10'] {
     margin-top: 10rem; } }
+
+[am-space~='mb-1'] {
+  margin-bottom: 1rem !important; }
 
 [am-SiteHeader] {
   max-width: 60rem;
@@ -1166,10 +1177,12 @@ a[am-Strip~='alt']:hover {
     margin-left: 1rem; }
 
 [am-Slither] {
-  padding: 1.5rem 0;
+  padding: 1.5rem 0 0;
   background: white; }
   [am-Slither] h1, [am-Slither] h2, [am-Slither] h3, [am-Slither] h4, [am-Slither] h5, [am-Slither] h6 {
     margin: 0; }
+  [am-Slither] p {
+    margin-top: 0; }
   [am-Slither] ul {
     margin: 0; }
 

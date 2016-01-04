@@ -30,6 +30,15 @@
 	text-align: center;
 }
 
+[am-txt~='headerLink'] {
+	text-decoration: none;
+	color: #ccc;
+	display: inline-block;
+	margin-left: 1rem;
+	font-weight: normal;
+	font-family: 'open-sans', sans-serif;
+}
+
 [am-svg] {
 	height: 0;
 	width: 100%;

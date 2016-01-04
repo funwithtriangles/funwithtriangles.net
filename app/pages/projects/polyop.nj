@@ -103,15 +103,18 @@
 </article>
 
 <div am-Slither>
-	<div am-Row>
-		<h3>Read More</h3> 
+	<div am-ContentContainer am-space="mb-1">
+		<h3>Read More <a href="/" am-txt="headerLink">see all projects &rarr;</a></h3> 
 	</div>
 	<div am-Row>
 		<div am-Col="m6">
-			<h4><a>Making it Swooshy for Santa Monica</a></h4>
-			<p>I created an animated microsite to promote health and wellbeing in Santa Monica</p>
+			<h4><a href="/projects/santa-monica">Making it Swooshy for Santa Monica</a></h4>
+			<p>I created an animated microsite to promote health and wellbeing in Santa Monica.</p>
 		</div>
-		
+		<div am-Col="m6">
+			<h4><a href="/projects/saa">Being the Map Man for South African Airways</a></h4>
+			<p>How I built an interactive flight route map for South African Airways.</p>
+		</div>
 	</div>
 </div>
 
