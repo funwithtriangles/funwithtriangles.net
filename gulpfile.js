@@ -86,6 +86,7 @@ gulp.task('build', ['concatScripts', 'compileSass', 'compileHtml'], function() {
 		appPath+'images/**', 
 		appPath+'fonts/**',
 		appPath+'index.html',
+		appPath+'js/modernizr.js',
 		appPath+'favicon.ico',
 		appPath+'/projects/*'], 
 		{base: './app'})
@@ -126,5 +127,5 @@ gulp.task('deploy', function() {
 
 // Build project for deploy, cleaning first
 gulp.task('default', ['clean'], function() {
-	gulp.start('build');
+	return gulp.start('build');
 });
