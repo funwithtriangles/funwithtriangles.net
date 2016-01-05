@@ -1,4 +1,6 @@
 FWT.prototype.Scroll = function() {
+	"use strict";
+	
 	// first add raf shim
 	// http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
 	window.requestAnimFrame = (function(){

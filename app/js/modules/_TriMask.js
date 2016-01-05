@@ -1,5 +1,6 @@
 FWT.prototype.TriMask = function() {
-   
+    "use strict";
+
     // Constants
     var ONE_THIRD = 1/3;
     var TWO_THIRD = 2/3;
@@ -307,9 +308,9 @@ FWT.prototype.TriMask = function() {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('devicemotion', function(e) {
 
-        ax = e.acceleration.x;
-        ay = e.acceleration.y;
-        az = e.acceleration.z;
+        var ax = e.acceleration.x;
+        var ay = e.acceleration.y;
+        var az = e.acceleration.z;
 
         if (ax > 0.5 || ax < -0.5) {
             vx = ax * 10;

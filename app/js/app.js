@@ -62,6 +62,8 @@
 })();
 var FWT = function() {
 
+	"use strict";
+
 	this.triMask = new this.TriMask();
 	this.flightsMap = new this.FlightsMap();
 	this.scroll = new this.Scroll();
@@ -69,7 +71,8 @@ var FWT = function() {
 	//window.fitText( document.querySelectorAll('[data-fittext]'), 1.7 );	
 }
 FWT.prototype.TriMask = function() {
-   
+    "use strict";
+
     // Constants
     var ONE_THIRD = 1/3;
     var TWO_THIRD = 2/3;
@@ -377,9 +380,9 @@ FWT.prototype.TriMask = function() {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('devicemotion', function(e) {
 
-        ax = e.acceleration.x;
-        ay = e.acceleration.y;
-        az = e.acceleration.z;
+        var ax = e.acceleration.x;
+        var ay = e.acceleration.y;
+        var az = e.acceleration.z;
 
         if (ax > 0.5 || ax < -0.5) {
             vx = ax * 10;
@@ -413,7 +416,8 @@ FWT.prototype.TriMask = function() {
 
 
 FWT.prototype.FlightsMap = function() {
-
+	"use strict";
+	
 	var pathEls = document.querySelectorAll('svg #flights path');
 	var paths = [];
 	var transEndEventName = ('WebkitTransition' in document.documentElement.style) ? 'webkitTransitionEnd' : 'transitionend';
@@ -500,6 +504,8 @@ FWT.prototype.FlightsMap = function() {
 	}, 1000)
 }
 FWT.prototype.Scroll = function() {
+	"use strict";
+	
 	// first add raf shim
 	// http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
 	window.requestAnimFrame = (function(){

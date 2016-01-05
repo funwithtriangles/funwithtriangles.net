@@ -1,5 +1,6 @@
 FWT.prototype.FlightsMap = function() {
-
+	"use strict";
+	
 	var pathEls = document.querySelectorAll('svg #flights path');
 	var paths = [];
 	var transEndEventName = ('WebkitTransition' in document.documentElement.style) ? 'webkitTransitionEnd' : 'transitionend';
