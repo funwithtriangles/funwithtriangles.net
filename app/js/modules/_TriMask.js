@@ -212,8 +212,10 @@ FWT.prototype.TriMask = function() {
             maskImage.src = maskImageUrl;
 
             maskImage.onload = function() {
-            
-                imageRatio = this.height/this.width;
+
+                document.body.appendChild(this);
+                imageRatio = this.offsetHeight/this.offsetWidth;
+                document.body.removeChild(this);
 
                 self.resize();
             }
