@@ -1,0 +1,37 @@
+{% 
+	set polyop = {
+		title: "Getting Trippy with Canvas and MIDI",
+		url: "/projects/polyop",
+		desc: "How I teamed up with a techno producer to build a fully audio reactive visual system that runs on web technologies.",
+		skills: ["Three.js","Canvas","Web MIDI API","Web Audio API"],
+		link: {
+			url:"http://polyup.uk", 
+			title:"polyop.uk"
+		}
+	}
+
+%}
+{%	
+	set santamonica = {
+		title: "Making it Swooshy for Santa Monica",
+		url: "/projects/santa-monica",
+		desc: "I created an animated microsite to promote health and wellbeing in Santa Monica.",
+		skills: ["Greensock","Animation","Responsive Web Design"],
+		link: {
+			url:"http://santamonicawellbeing.co.uk", 
+			title:"santamonicawellbeing.co.uk"
+		}
+	}
+%}
+{%
+	set saa = {
+		title: "Being the Map Man for South African Airways",
+		url: "/projects/saa",
+		desc: "How I built an interactive flight route map for South African Airways.",
+		skills: ["D3.js","Web Design","UX","Wireframing"],
+		link: {
+			url:"http://flysaatrade.com", 
+			title:"flysaatrade.com"
+		}
+	}
+%}

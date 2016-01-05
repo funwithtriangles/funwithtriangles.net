@@ -1,85 +1,60 @@
-{% set title = "Being the Map Man for South African Airways | Fun With Triangles" %}
+{% extends "article.nj" %}
+{% import 'project_list.nj' as projects %}
+{% set project = projects.saa %}
+{% set more = [projects.polyop, projects.santamonica] %}
+{% set cta_title = "Let’s make a map!" %}
 
-{% extends "layout.nj" %}
+{% block cta_body %} 
 
-{% block content %} 
-<header am-SiteHeader>
+<figure am-ArticleMedia>
+	<img src="/images/gifs/all_maps.gif" alt="Selection of maps">
+
+	<figcaption am-ArticleMedia-Caption>Maps I’ve made for clients such as Brand USA and Visit California.</figcaption>
+</figure>
+<p>I’ve made a bunch of interactive maps, for all sorts of clients. I’d love to  <a href="#contact" data-scrollto="#contact">have a chat with you</a> about that map you need making.</p>
+
+{% endblock %}
+
+{% block article %} 
+
+<h2>I can make maps</h2>
+<p>While working at <a href="http://blackdiamond.co.uk">Black Diamond</a>, I was often referred to as The Map Man. Countless times I’d be tasked with creating interactive maps for clients. One of these times was while building a trade-facing portal for South African Airways.</p>
+
+<p>As well as having a lead role in the UX, wireframing, design and build of the portal, arguably the most interesting part of the website was the map to show the routes that the airline offers. They wanted something interactive and visual, while still being able to edit it in the CMS.</p>
+
+
+<h2>D3.js</h2>
+<figure am-ArticleMedia>
+	<a am-a="plain" href="http://flysaatrade.com/products/routes"><img src="/images/gifs/saa_map.gif" alt="Interactive map"></a>
+
+	<figcaption am-ArticleMedia-Caption>The map I created showed how all of the airports were connected. <a href="http://flysaatrade.com/products/routes">See live version</a>.</figcaption>
+</figure>
+
+
+	<p>D3 is a Javascript library that is well known for being helpful when visualising data. Graphs are often what spring to mind with D3, but it also handles map data very well. The map I built for South African Airways was not created from a image drawn in illustrator or any other graphical program. It’s generated from real world cartographical data, using D3. The process goes something like this:</p>
 	
-	{% include "partials/post_header.html" %}
+	<ol>
+		<li>Download map data for the whole world from <a href="http://www.naturalearthdata.com/">Natural Earth</a>. This data includes a crazy amount of detail with locations for cities, landmarks and airports. </li>
+		<li>Run a few commands to filter out all the countries you don’t want</li>
+		<li>Run a few more commands to keep only the map features you want (airports, in this case)</li>
+		<li>Load this data to the page and draw a map, using the power of D3</li>
+	</ol>
 	
-	<h1>Being the Map Man for South African Airways</h1>
-	<p am-txt="lead">
-		How I built an interactive flight route map for South African Airways
-	</p>
+	<p>What’s neat about using real world data is that it’s completely accurate, you’re dealing with coordinates, not pixels. All the airports are in exactly the right place without any guesswork. </p>
+	
+	<p>Another advantage to having the data originally in text form is that it’s readily available to use when the visual element isn’t suitable. For instance, the mobile version of this page is simply an expandable table of the data. </p>
+	
+	<p>The map renders as a vector, so it also has the bonus of looking super sharp on any screen at any size, with some fun animations to boot.</p>
 
-	<ul am-FeatureList>
-		<li am-FeatureList-Title>Skills involved:</li>
-		<li>D3.js</li>
-		<li>Web Design</li>
-		<li>UX</li>
-		<li>Wireframing</li>
-		<li am-FeatureList-Link>View project: <a href="http://flysaatrade.com/">flysaatrade.com</a></li>
-	</ul>
+	<h2>Giving power to the client</h2>
 
-</header>
-<article>
-	<div am-Strip>
-		<div am-ContentContainer>
-			<h2>I can make maps</h2>
-			<p>While working at Black Diamond, I was often referred to as The Map Man. Countless times I’d be tasked with creating interactive maps for clients. One of these times was while building a trade-facing portal for South African Airways.</p>
-
-			<p>As well as having a lead role in the UX, wireframing, design and build of the portal, arguably the most interesting part of the website was the map to show the routes that the airline offers. They wanted something interactive and visual, while still being able to edit it in the CMS.</p>
+	<figure am-ArticleMedia>
+		<img src="/images/graphics/saa_sheet.gif" alt="Spreadsheet and map">
+	
+		<figcaption am-ArticleMedia-Caption>A simple spreadsheet turns into the fully featured map</figcaption>
+	</figure>
 
 
-			<h2>D3.js</h2>
-			<figure am-ArticleMedia>
-				<a am-a="plain" href="http://flysaatrade.com/products/routes"><img src="/images/gifs/saa_map.gif" alt="Interactive map"></a>
-			
-				<figcaption am-ArticleMedia-Caption>The map I created showed how all of the airports were connected. <a href="http://flysaatrade.com/products/routes">See live version</a>.</figcaption>
-			</figure>
-
-
-				<p>D3 is a Javascript library that is well known for being helpful when visualising data. Graphs are often what spring to mind with D3, but it also handles map data very well. The map I built for South African Airways was not created from a image drawn in illustrator or any other graphical program. It’s generated from real world cartographical data, using D3. The process goes something like this:</p>
-				
-				<ol>
-					<li>Download map data for the whole world from <a href="http://www.naturalearthdata.com/">Natural Earth</a>. This data includes a crazy amount of detail with locations for cities, landmarks and airports. </li>
-					<li>Run a few commands to filter out all the countries you don’t want</li>
-					<li>Run a few more commands to keep only the map features you want (airports, in this case)</li>
-					<li>Load this data to the page and draw a map, using the power of D3</li>
-				</ol>
-				
-				<p>What’s neat about using real world data is that it’s completely accurate, you’re dealing with coordinates, not pixels. All the airports are in exactly the right place without any guesswork. </p>
-				
-				<p>Another advantage to having the data originally in text form is that it’s readily available to use when the visual element isn’t suitable. For instance, the mobile version of this page is simply an expandable table of the data. </p>
-				
-				<p>The map renders as a vector, so it also has the bonus of looking super sharp on any screen at any size, with some fun animations to boot.</p>
-
-				<h2>Giving power to the client</h2>
-
-				<figure am-ArticleMedia>
-					<img src="/images/graphics/saa_sheet.gif" alt="Spreadsheet and map">
-				
-					<figcaption am-ArticleMedia-Caption>A simple spreadsheet turns into the fully featured map</figcaption>
-				</figure>
-
-
-			<p>Using this generative approach allowed the client to have control over their new shiny map, without having to use any specialist graphical software. The client simply uploads a spreadsheet of airport codes and the map is generated, with the airports and connections automatically in place.</p>
-
-
-		</div>
-	</div>
-
-	<div am-Strip="alt">
-		<div am-ContentContainer>
-			<h2>Let’s make a map!</h2>
-			<figure am-ArticleMedia>
-				<img src="/images/gifs/all_maps.gif" alt="Selection of maps">
-			
-				<figcaption am-ArticleMedia-Caption>Maps I’ve made for clients such as Brand USA and Visit California.</figcaption>
-			</figure>
-			<p>I’ve made a bunch of interactive maps, for all sorts of clients. I’d love to  <a href="#contact" data-scrollto="#contact">have a chat with you</a> about that map you need making.</p>
-		</div>
-	</div>
-</article>
+<p>Using this generative approach allowed the client to have control over their new shiny map, without having to use any specialist graphical software. The client simply uploads a spreadsheet of airport codes and the map is generated, with the airports and connections automatically in place.</p>
 
 {% endblock %}

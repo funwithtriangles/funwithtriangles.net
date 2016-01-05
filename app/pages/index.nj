@@ -2,6 +2,8 @@
 
 {% extends "layout.nj" %}
 
+{% import 'project_list.nj' as projects %}
+
 {% block content %} 
 <header am-SiteHeader>
 
@@ -13,23 +15,23 @@
 </header>
 
 
-<a am-Strip="project" href="/projects/polyop">
+<a am-Strip="project" href="{{ projects.polyop.url }}">
 		<div am-Row="middle">
 			<div am-Col="m6" am-Strip-Anim="1 left">
 				<img am-Strip-Cutout src="/images/cutouts/poly_gear.gif">
 			</div>
 
 			<div am-Col="m6">
-				<h2 am-txt="hug" am-Strip-Anim="2 right">Getting Trippy with Canvas and MIDI</h2>
+				<h2 am-txt="hug" am-Strip-Anim="2 right">{{ projects.polyop.title }}</h2>
 				<p am-txt="lead" am-Strip-Anim="3 right">
-					How I teamed up with a techno producer to build a fully audio reactive visual system that runs on web technologies.
+					{{ projects.polyop.desc }}
 				</p>
 			</div>
 		</div>
 	</div>
 </a>
 
-<a am-Strip="alt project" href="/projects/santa-monica">
+<a am-Strip="alt project" href="{{ projects.santamonica.url }}">
 	<div am-Row="middle">
 		
 		<div am-Col="m6 m-o1" am-Strip-Anim="1 right">
@@ -54,9 +56,9 @@
 		</div>
 
 		<div am-Col="m6">
-			<h2 am-space="s-mt-10" am-txt="hug" am-Strip-Anim="2 left">Making it Swooshy for Santa Monica</h2>
+			<h2 am-space="s-mt-10" am-txt="hug" am-Strip-Anim="2 left">{{ projects.santamonica.title }}</h2>
 			<p am-txt="lead" am-Strip-Anim="3 left">
-				I created an animated microsite to promote health and wellbeing in Santa Monica
+				{{ projects.santamonica.desc }}
 			</p>
 		</div>
 
@@ -80,7 +82,7 @@
 	</div>
 </a>
 
-<a am-Strip="project" href="/projects/saa">
+<a am-Strip="project" href="{{ projects.saa.url }}">
 	<div am-Row="middle">
 		<div am-Col="m6" am-Strip-Anim="1 left">
 		
@@ -91,10 +93,9 @@
 		</div>
 
 		<div am-Col="m6">
-			<h2 am-txt="hug" am-Strip-Anim="2 right">Being the Map Man for South African Airways</h2>
+			<h2 am-txt="hug" am-Strip-Anim="2 right">{{ projects.saa.title }}</h2>
 			<p am-txt="lead" am-Strip-Anim="3 right">
-				How I built an interactive flight route map for an airline's trade portal.
-
+				{{ projects.saa.desc }}
 			</p>
 		</div>
 	</div>

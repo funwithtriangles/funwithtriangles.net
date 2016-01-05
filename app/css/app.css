@@ -478,7 +478,7 @@ h2 {
       line-height: 2.55rem; } }
 
 h3 {
-  font-size: 1.1312rem; }
+  font-size: 1.414rem; }
 
 h4 {
   font-size: 112.5%; }
@@ -748,7 +748,8 @@ code {
   display: inline-block;
   margin-left: 1rem;
   font-weight: normal;
-  font-family: 'open-sans', sans-serif; }
+  font-family: 'open-sans', sans-serif;
+  font-size: 0.7em; }
 
 [am-svg] {
   height: 0;

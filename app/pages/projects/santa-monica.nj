@@ -1,76 +1,50 @@
-{% set title = "Making it swooshy for Santa Monica | Fun With Triangles" %}
+{% extends "article.nj" %}
+{% import 'project_list.nj' as projects %}
+{% set project = projects.santamonica %}
+{% set more = [projects.polyop, projects.saa] %}
+{% set cta_title = "Let’s get swooshy" %}
 
-{% extends "layout.nj" %}
+{% block cta_body %}
 
-{% block content %} 
-<header am-SiteHeader>
-	
-	{% include "partials/post_header.html" %}
-	
-	<h1>Making it swooshy for Santa Monica</h1>
-	<p am-txt="lead">
-		I created an animated microsite to promote health and wellbeing in Santa Monica.
-	</p>
+<p>Do you have a web project that needs to impress? I use a whole host of tools to make awesome animated interfaces, trippy effects and interactive maps. <a href="#contact" data-scrollto="#contact">Get hold of me</a> to find out what I can do for you.</p>
 
-	<ul am-FeatureList>
-		<li am-FeatureList-Title>Skills involved:</li>
-		<li>Greensock</li>
-		<li>Animation</li>
-		<li>Responsive Web Design</li>
-		<li am-FeatureList-Link>View project: <a href="http://santamonicawellbeing.co.uk/">santamonicawellbeing.co.uk</a></li>
-	</ul>
+{% endblock %}
 
-</header>
-<article>
-	<div am-Strip>
-		<div am-ContentContainer>
-			<h2>The best of both worlds</h2>
-			<p>As someone who was making Flash websites before knowing anything about HTML, I’ve always had a soft spot for the “swooshy”. However we all know that Flash is dead and shouldn’t be used to create websites. Luckily we’re living in new age of web technology where all sorts of fun things can be incorporated into a modern website, while still adhering to best practice.</p>
+{% block article %} 
 
-			<h2>Greensock is amazing</h2>
+<h2>The best of both worlds</h2>
+<p>As someone who was making Flash websites before knowing anything about HTML, I’ve always had a soft spot for the “swooshy”. However we all know that Flash is dead and shouldn’t be used to create websites. Luckily we’re living in new age of web technology where all sorts of fun things can be incorporated into a modern website, while still adhering to best practice.</p>
 
-			<figure am-ArticleMedia>
-				<a am-a="plain" href="http://santamonicawellbeing.co.uk/"><img src="/images/gifs/santa_monica.gif" alt="Santa Monica website with animation"></a>
-			
-				<figcaption am-ArticleMedia-Caption>Greensock makes it simple to fly elements about.</figcaption>
-			</figure>
-			
+<h2>Greensock is amazing</h2>
 
-			<p>Greensock (or more specifically GSAP) is a Javascript library that makes it easy for developers to implement complex animation that’s incredibly fast and efficient while being compatible with every browser you’d need it to be. For this project I used it for the animated navigation as well as the page transitions. It’s an incredibly fun tool to work with.</p>
+<figure am-ArticleMedia>
+	<a am-a="plain" href="http://santamonicawellbeing.co.uk/"><img src="/images/gifs/santa_monica.gif" alt="Santa Monica website with animation"></a>
+
+	<figcaption am-ArticleMedia-Caption>Greensock makes it simple to fly elements about.</figcaption>
+</figure>
 
 
-			<h2>Still works great on mobile</h2>
-			
-			<div am-Row>
-				<div am-Col="m4">
-					<figure am-ArticleMedia>
-						<img src="/images/graphics/sm_phone.gif" alt="Santa Monica website inside a mobile">
-					
-						<figcaption am-ArticleMedia-Caption>The website becomes simpler on a smaller screen.</figcaption>
-					</figure>
-				</div>
-				<div am-Col="m8 l">
+<p>Greensock (or more specifically GSAP) is a Javascript library that makes it easy for developers to implement complex animation that’s incredibly fast and efficient while being compatible with every browser you’d need it to be. For this project I used it for the animated navigation as well as the page transitions. It’s an incredibly fun tool to work with.</p>
 
-					<div am-ArticleMedia-Compliment>
-						<p>The funky concept for the desktop version of this website wasn’t going to translate onto a small screen. It was easy to create a simpler version of the site while retaining the exact same content.</p>
-					</div>
 
-				</div>
-			</div>
-			
+<h2>Still works great on mobile</h2>
 
-			
-			
-
-		</div>
+<div am-Row>
+	<div am-Col="m4">
+		<figure am-ArticleMedia>
+			<img src="/images/graphics/sm_phone.gif" alt="Santa Monica website inside a mobile">
+		
+			<figcaption am-ArticleMedia-Caption>The website becomes simpler on a smaller screen.</figcaption>
+		</figure>
 	</div>
+	<div am-Col="m8 l">
 
-	<div am-Strip="alt">
-		<div am-ContentContainer>
-			<h2>Let’s get swooshy</h2>
-			<p>Do you have a web project that needs to impress? I use a whole host of tools to make awesome animated interfaces, trippy effects and interactive maps. <a href="#contact" data-scrollto="#contact">Get hold of me</a> to find out what I can do for you.</p>
+		<div am-ArticleMedia-Compliment>
+			<p>The funky concept for the desktop version of this website wasn’t going to translate onto a small screen. It was easy to create a simpler version of the site while retaining the exact same content.</p>
 		</div>
+
 	</div>
-</article>
+</div>
+
 
 {% endblock %}
