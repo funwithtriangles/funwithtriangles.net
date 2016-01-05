@@ -142,6 +142,8 @@ FWT.prototype.TriMask = function() {
         var elCanvas = elContainer.querySelector('canvas');
         var context = elCanvas.getContext('2d');
 
+        var svgCanvas = elCanvas.cloneNode();
+
         var maskImageUrl = elContainer.dataset.trieffect;
 
         var context = elCanvas.getContext('2d');
@@ -162,9 +164,12 @@ FWT.prototype.TriMask = function() {
 
              // Apply masked text image
             if (maskImageUrl) {
+
                 context.globalCompositeOperation = 'destination-in';
                 context.setTransform(1,0,0,1,0,0);
-                context.drawImage(maskImage,0,0, width, width*imageRatio);
+
+                // Draw text with temp canvas rather than SVG to solve FF bug
+                context.drawImage(svgCanvas,0,0, width, width*imageRatio);
             }
 
             context.restore();
@@ -188,6 +193,15 @@ FWT.prototype.TriMask = function() {
 
             elCanvas.style.width = Math.floor(width/pixelRatio)+"px";
             elCanvas.style.height = Math.floor(height/pixelRatio)+"px";
+
+            // Draw SVG image onto temp canvas to solve FF bug
+
+            if (maskImage) {
+                svgCanvas.width = width;
+                svgCanvas.height = height;
+                svgCanvas.getContext('2d').drawImage(maskImage,0,0,width,height);
+            }
+           
 
         }
 
