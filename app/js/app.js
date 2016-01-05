@@ -265,8 +265,7 @@ FWT.prototype.TriMask = function() {
             elCanvas.style.height = Math.floor(height/pixelRatio)+"px";
 
             // Draw SVG image onto temp canvas to solve FF bug
-
-            if (maskImage) {
+            if (maskImageUrl) {
                 svgCanvas.width = width;
                 svgCanvas.height = height;
                 svgCanvas.getContext('2d').drawImage(maskImage,0,0,width,height);
