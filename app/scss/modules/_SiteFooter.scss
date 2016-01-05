@@ -3,6 +3,8 @@
 	position: relative;
 	
 	display: flex;
+	align-items: center;
+	justify-content: center;
 
 
 	@media #{$medium-up} {
@@ -38,7 +40,6 @@
 	@media #{$medium-up} {
 		width: 70%;
 		padding: 2rem;
-		margin: auto;
 	}
 
 	@media #{$large-up} {

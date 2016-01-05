@@ -16,17 +16,16 @@
 
 
 <a am-Strip="project" href="{{ projects.polyop.url }}">
-		<div am-Row="middle">
-			<div am-Col="m6" am-Strip-Anim="1 left">
-				<img am-Strip-Cutout src="/images/cutouts/poly_gear.gif">
-			</div>
+	<div am-Row="middle">
+		<div am-Col="m6" am-Strip-Anim="1 left">
+			<img am-Strip-Cutout src="/images/cutouts/poly_gear.gif">
+		</div>
 
-			<div am-Col="m6">
-				<h2 am-txt="hug" am-Strip-Anim="2 right">{{ projects.polyop.title }}</h2>
-				<p am-txt="lead" am-Strip-Anim="3 right">
-					{{ projects.polyop.desc }}
-				</p>
-			</div>
+		<div am-Col="m6">
+			<h2 am-txt="hug" am-Strip-Anim="2 right">{{ projects.polyop.title }}</h2>
+			<p am-txt="lead" am-Strip-Anim="3 right">
+				{{ projects.polyop.desc }}
+			</p>
 		</div>
 	</div>
 </a>

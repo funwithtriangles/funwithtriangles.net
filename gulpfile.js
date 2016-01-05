@@ -46,7 +46,7 @@ gulp.task('compileSass', function() {
    			return 'An error occurred while compiling sass.\nLook in the console for details.\n' + error;
 		})))
 		.pipe(prefixer({
-            browsers: ['last 2 versions'],
+            browsers: ['last 3 versions'],
             cascade: false
         }))
 		.pipe(maps.write('./'))

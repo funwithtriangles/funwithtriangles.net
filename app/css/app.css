@@ -509,10 +509,7 @@ code {
   margin: 0 auto;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap; }
+  display: flex; }
   @media only screen and (min-width: 40.063em) {
     [am-Row] {
       padding: 0 1rem; } }
@@ -547,164 +544,272 @@ code {
   width: 100%; }
 
 [am-Col~='1'] {
-  -webkit-flex: 0 8.33333%;
-  -ms-flex: 0 8.33333%;
-  flex: 0 8.33333%; }
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-basis: 8.33333%;
+  -ms-flex-preferred-size: 8.33333%;
+  flex-basis: 8.33333%; }
 
 [am-Col~='2'] {
-  -webkit-flex: 0 16.66667%;
-  -ms-flex: 0 16.66667%;
-  flex: 0 16.66667%; }
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-basis: 16.66667%;
+  -ms-flex-preferred-size: 16.66667%;
+  flex-basis: 16.66667%; }
 
 [am-Col~='3'] {
-  -webkit-flex: 0 25%;
-  -ms-flex: 0 25%;
-  flex: 0 25%; }
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-basis: 25%;
+  -ms-flex-preferred-size: 25%;
+  flex-basis: 25%; }
 
 [am-Col~='4'] {
-  -webkit-flex: 0 33.33333%;
-  -ms-flex: 0 33.33333%;
-  flex: 0 33.33333%; }
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-basis: 33.33333%;
+  -ms-flex-preferred-size: 33.33333%;
+  flex-basis: 33.33333%; }
 
 [am-Col~='5'] {
-  -webkit-flex: 0 41.66667%;
-  -ms-flex: 0 41.66667%;
-  flex: 0 41.66667%; }
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-basis: 41.66667%;
+  -ms-flex-preferred-size: 41.66667%;
+  flex-basis: 41.66667%; }
 
 [am-Col~='6'] {
-  -webkit-flex: 0 50%;
-  -ms-flex: 0 50%;
-  flex: 0 50%; }
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-basis: 50%;
+  -ms-flex-preferred-size: 50%;
+  flex-basis: 50%; }
 
 [am-Col~='7'] {
-  -webkit-flex: 0 58.33333%;
-  -ms-flex: 0 58.33333%;
-  flex: 0 58.33333%; }
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-basis: 58.33333%;
+  -ms-flex-preferred-size: 58.33333%;
+  flex-basis: 58.33333%; }
 
 [am-Col~='8'] {
-  -webkit-flex: 0 66.66667%;
-  -ms-flex: 0 66.66667%;
-  flex: 0 66.66667%; }
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-basis: 66.66667%;
+  -ms-flex-preferred-size: 66.66667%;
+  flex-basis: 66.66667%; }
 
 [am-Col~='9'] {
-  -webkit-flex: 0 75%;
-  -ms-flex: 0 75%;
-  flex: 0 75%; }
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-basis: 75%;
+  -ms-flex-preferred-size: 75%;
+  flex-basis: 75%; }
 
 [am-Col~='10'] {
-  -webkit-flex: 0 83.33333%;
-  -ms-flex: 0 83.33333%;
-  flex: 0 83.33333%; }
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-basis: 83.33333%;
+  -ms-flex-preferred-size: 83.33333%;
+  flex-basis: 83.33333%; }
 
 [am-Col~='11'] {
-  -webkit-flex: 0 91.66667%;
-  -ms-flex: 0 91.66667%;
-  flex: 0 91.66667%; }
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-basis: 91.66667%;
+  -ms-flex-preferred-size: 91.66667%;
+  flex-basis: 91.66667%; }
 
 [am-Col~='12'] {
-  -webkit-flex: 0 100%;
-  -ms-flex: 0 100%;
-  flex: 0 100%; }
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-basis: 100%;
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%; }
 
 @media only screen and (min-width: 40.063em) {
   [am-Col~='m1'] {
-    -webkit-flex: 0 8.33333%;
-    -ms-flex: 0 8.33333%;
-    flex: 0 8.33333%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 8.33333%;
+    -ms-flex-preferred-size: 8.33333%;
+    flex-basis: 8.33333%; }
   [am-Col~='m2'] {
-    -webkit-flex: 0 16.66667%;
-    -ms-flex: 0 16.66667%;
-    flex: 0 16.66667%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 16.66667%;
+    -ms-flex-preferred-size: 16.66667%;
+    flex-basis: 16.66667%; }
   [am-Col~='m3'] {
-    -webkit-flex: 0 25%;
-    -ms-flex: 0 25%;
-    flex: 0 25%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 25%;
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%; }
   [am-Col~='m4'] {
-    -webkit-flex: 0 33.33333%;
-    -ms-flex: 0 33.33333%;
-    flex: 0 33.33333%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 33.33333%;
+    -ms-flex-preferred-size: 33.33333%;
+    flex-basis: 33.33333%; }
   [am-Col~='m5'] {
-    -webkit-flex: 0 41.66667%;
-    -ms-flex: 0 41.66667%;
-    flex: 0 41.66667%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 41.66667%;
+    -ms-flex-preferred-size: 41.66667%;
+    flex-basis: 41.66667%; }
   [am-Col~='m6'] {
-    -webkit-flex: 0 50%;
-    -ms-flex: 0 50%;
-    flex: 0 50%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 50%;
+    -ms-flex-preferred-size: 50%;
+    flex-basis: 50%; }
   [am-Col~='m7'] {
-    -webkit-flex: 0 58.33333%;
-    -ms-flex: 0 58.33333%;
-    flex: 0 58.33333%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 58.33333%;
+    -ms-flex-preferred-size: 58.33333%;
+    flex-basis: 58.33333%; }
   [am-Col~='m8'] {
-    -webkit-flex: 0 66.66667%;
-    -ms-flex: 0 66.66667%;
-    flex: 0 66.66667%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 66.66667%;
+    -ms-flex-preferred-size: 66.66667%;
+    flex-basis: 66.66667%; }
   [am-Col~='m9'] {
-    -webkit-flex: 0 75%;
-    -ms-flex: 0 75%;
-    flex: 0 75%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 75%;
+    -ms-flex-preferred-size: 75%;
+    flex-basis: 75%; }
   [am-Col~='m10'] {
-    -webkit-flex: 0 83.33333%;
-    -ms-flex: 0 83.33333%;
-    flex: 0 83.33333%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 83.33333%;
+    -ms-flex-preferred-size: 83.33333%;
+    flex-basis: 83.33333%; }
   [am-Col~='m11'] {
-    -webkit-flex: 0 91.66667%;
-    -ms-flex: 0 91.66667%;
-    flex: 0 91.66667%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 91.66667%;
+    -ms-flex-preferred-size: 91.66667%;
+    flex-basis: 91.66667%; }
   [am-Col~='m12'] {
-    -webkit-flex: 0 100%;
-    -ms-flex: 0 100%;
-    flex: 0 100%; } }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%; } }
 
 @media only screen and (min-width: 64.063em) {
   [am-Col~='l1'] {
-    -webkit-flex: 0 8.33333%;
-    -ms-flex: 0 8.33333%;
-    flex: 0 8.33333%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 8.33333%;
+    -ms-flex-preferred-size: 8.33333%;
+    flex-basis: 8.33333%; }
   [am-Col~='l2'] {
-    -webkit-flex: 0 16.66667%;
-    -ms-flex: 0 16.66667%;
-    flex: 0 16.66667%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 16.66667%;
+    -ms-flex-preferred-size: 16.66667%;
+    flex-basis: 16.66667%; }
   [am-Col~='l3'] {
-    -webkit-flex: 0 25%;
-    -ms-flex: 0 25%;
-    flex: 0 25%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 25%;
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%; }
   [am-Col~='l4'] {
-    -webkit-flex: 0 33.33333%;
-    -ms-flex: 0 33.33333%;
-    flex: 0 33.33333%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 33.33333%;
+    -ms-flex-preferred-size: 33.33333%;
+    flex-basis: 33.33333%; }
   [am-Col~='l5'] {
-    -webkit-flex: 0 41.66667%;
-    -ms-flex: 0 41.66667%;
-    flex: 0 41.66667%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 41.66667%;
+    -ms-flex-preferred-size: 41.66667%;
+    flex-basis: 41.66667%; }
   [am-Col~='l6'] {
-    -webkit-flex: 0 50%;
-    -ms-flex: 0 50%;
-    flex: 0 50%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 50%;
+    -ms-flex-preferred-size: 50%;
+    flex-basis: 50%; }
   [am-Col~='l7'] {
-    -webkit-flex: 0 58.33333%;
-    -ms-flex: 0 58.33333%;
-    flex: 0 58.33333%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 58.33333%;
+    -ms-flex-preferred-size: 58.33333%;
+    flex-basis: 58.33333%; }
   [am-Col~='l8'] {
-    -webkit-flex: 0 66.66667%;
-    -ms-flex: 0 66.66667%;
-    flex: 0 66.66667%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 66.66667%;
+    -ms-flex-preferred-size: 66.66667%;
+    flex-basis: 66.66667%; }
   [am-Col~='l9'] {
-    -webkit-flex: 0 75%;
-    -ms-flex: 0 75%;
-    flex: 0 75%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 75%;
+    -ms-flex-preferred-size: 75%;
+    flex-basis: 75%; }
   [am-Col~='l10'] {
-    -webkit-flex: 0 83.33333%;
-    -ms-flex: 0 83.33333%;
-    flex: 0 83.33333%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 83.33333%;
+    -ms-flex-preferred-size: 83.33333%;
+    flex-basis: 83.33333%; }
   [am-Col~='l11'] {
-    -webkit-flex: 0 91.66667%;
-    -ms-flex: 0 91.66667%;
-    flex: 0 91.66667%; }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 91.66667%;
+    -ms-flex-preferred-size: 91.66667%;
+    flex-basis: 91.66667%; }
   [am-Col~='l12'] {
-    -webkit-flex: 0 100%;
-    -ms-flex: 0 100%;
-    flex: 0 100%; } }
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%; } }
 
 [am-Col~='bottom'] {
   -webkit-align-self: flex-end;
@@ -733,6 +838,7 @@ code {
 
 [am-a~='plain']:hover {
   -webkit-transform: none;
+  -ms-transform: none;
   transform: none; }
 
 /* Hug a the block above you */
@@ -775,6 +881,7 @@ a {
   color: #26634E; }
   a:hover {
     -webkit-transform: translateY(-0.2rem);
+    -ms-transform: translateY(-0.2rem);
     transform: translateY(-0.2rem); }
 
 @-webkit-keyframes spin {
@@ -894,6 +1001,7 @@ a[am-Strip] {
   text-decoration: none;
   font-weight: normal;
   -webkit-transform: none;
+  -ms-transform: none;
   transform: none; }
   a[am-Strip] svg path {
     transition: 0.3s;
@@ -906,18 +1014,22 @@ a[am-Strip] {
       fill: #F7D9BF; }
     a[am-Strip]:hover [am-Strip-Anim] {
       -webkit-transform: scale(1.04);
+      -ms-transform: scale(1.04);
       transform: scale(1.04); }
     @media only screen and (min-width: 40.063em) {
       a[am-Strip]:hover [am-Strip-Anim~='left'] {
         -webkit-transform: scale(1.04) translate3D(-0.5rem, 0, 0);
+        -ms-transform: scale(1.04) translate3D(-0.5rem, 0, 0);
         transform: scale(1.04) translate3D(-0.5rem, 0, 0); } }
     @media only screen and (min-width: 40.063em) {
       a[am-Strip]:hover [am-Strip-Anim~='right'] {
         -webkit-transform: scale(1.04) translate3D(0.5rem, 0, 0);
+        -ms-transform: scale(1.04) translate3D(0.5rem, 0, 0);
         transform: scale(1.04) translate3D(0.5rem, 0, 0); } }
     @media only screen and (min-width: 40.063em) {
       a[am-Strip]:hover [am-BigSpinner='bg'] {
         -webkit-transform: scale(1);
+        -ms-transform: scale(1);
         transform: scale(1); } }
 
 a[am-Strip~='alt']:hover {
@@ -1091,7 +1203,13 @@ a[am-Strip~='alt']:hover {
   position: relative;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
   @media only screen and (min-width: 40.063em) {
     [am-SiteFooter] {
       height: 100vh; } }
@@ -1115,8 +1233,7 @@ a[am-Strip~='alt']:hover {
   @media only screen and (min-width: 40.063em) {
     [am-SiteFooter-Inner] {
       width: 70%;
-      padding: 2rem;
-      margin: auto; } }
+      padding: 2rem; } }
   @media only screen and (min-width: 64.063em) {
     [am-SiteFooter-Inner] {
       width: 60%; } }
