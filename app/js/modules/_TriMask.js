@@ -144,18 +144,22 @@ FWT.prototype.TriMask = function() {
         var context = elCanvas.getContext('2d');
 
         var svgCanvas = elCanvas.cloneNode();
+        var svgCanvasWidth;
+        var svgCanvasHeight;
 
-        var maskImageUrl = elContainer.dataset.trieffect;
+        var maskImageUrl = elContainer.getAttribute('data-triEffect');
+        var imageRatio = elContainer.getAttribute('data-aspectRatio');
 
         var context = elCanvas.getContext('2d');
-        var maskImage, imageRatio;
+        var maskImage;
+        var imageLoaded;
 
         var width, height, cx, cy;
 
         this.draw = function() {
 
             // Don't draw unless image loaded
-            if (!imageRatio && maskImageUrl) { return };
+            if (!imageLoaded && maskImageUrl) { return };
 
             context.save();
 
@@ -170,7 +174,7 @@ FWT.prototype.TriMask = function() {
                 context.setTransform(1,0,0,1,0,0);
 
                 // Draw text with temp canvas rather than SVG to solve FF bug
-                context.drawImage(svgCanvas,0,0, width, width*imageRatio);
+                context.drawImage(svgCanvas,0,0, width, height);
             }
 
             context.restore();
@@ -181,7 +185,7 @@ FWT.prototype.TriMask = function() {
             // Canvas sizing stuff
             width = Math.floor(elCanvas.width = elContainer.clientWidth * pixelRatio);
 
-            if (imageRatio) {
+            if (maskImageUrl) {
                 height = Math.floor(elCanvas.height = (width/pixelRatio)*imageRatio * pixelRatio);
             } else {
                 height = Math.floor(elCanvas.height = elContainer.clientHeight * pixelRatio);
@@ -196,7 +200,7 @@ FWT.prototype.TriMask = function() {
             elCanvas.style.height = Math.floor(height/pixelRatio)+"px";
 
             // Draw SVG image onto temp canvas to solve FF bug
-            if (maskImageUrl) {
+            if (imageLoaded) {
                 svgCanvas.width = width;
                 svgCanvas.height = height;
                 svgCanvas.getContext('2d').drawImage(maskImage,0,0,width,height);
@@ -211,18 +215,16 @@ FWT.prototype.TriMask = function() {
             maskImage = new Image();
             maskImage.src = maskImageUrl;
 
+
             maskImage.onload = function() {
 
-                document.body.appendChild(this);
-                imageRatio = this.offsetHeight/this.offsetWidth;
-                document.body.removeChild(this);
-
+                imageLoaded = true;
                 self.resize();
             }
             
-        } else {
-            this.resize();
-        }        
+        }
+
+        this.resize();
 
     }
 
