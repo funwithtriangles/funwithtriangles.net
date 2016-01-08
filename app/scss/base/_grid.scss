@@ -2,7 +2,7 @@
 	max-width: $main-width;
 	margin: 0 auto;
 	display: flex;
-	//flex-wrap: wrap;
+	flex-wrap: wrap;
 
 	@media #{$medium-up} {
 		padding: 0 1rem;
@@ -39,8 +39,7 @@
 
 @for $i from 1 through $row-count {
 	[am-Col~='#{$i}'] {
-		flex-grow: 0;
-		flex-basis: (100%/$row-count)*$i;
+		max-width: (100%/$row-count)*$i;
 	}
 }
 
@@ -50,8 +49,7 @@
 	@for $i from 1 through $row-count {
 
 		[am-Col~='m#{$i}'] {
-			flex-grow: 0;
-			flex-basis: (100%/$row-count)*$i;
+			max-width: (100%/$row-count)*$i;
 		}
 
 	}
@@ -63,8 +61,7 @@
 	@for $i from 1 through $row-count {
 
 		[am-Col~='l#{$i}'] {
-			flex-grow: 0;
-			flex-basis: (100%/$row-count)*$i;
+			max-width: (100%/$row-count)*$i;
 		}
 
 	}
