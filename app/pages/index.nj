@@ -99,4 +99,19 @@
 		</div>
 	</div>
 </a>
+
+<a am-Strip="project alt" href="{{ projects.dp1.url }}">
+	<div am-Row="middle">
+		<div am-Col="m6 m-o1" am-Strip-Anim="1 left">
+			<img am-Strip-Cutout src="/images/graphics/dp_badge_outdoors-01.svg">
+		</div>
+
+		<div am-Col="m6">
+			<h2 am-txt="hug" am-Strip-Anim="2 right">{{ projects.dp1.title }}</h2>
+			<p am-txt="lead" am-Strip-Anim="3 right">
+				{{ projects.dp1.desc }}
+			</p>
+		</div>
+	</div>
+</a>
 {% endblock %}

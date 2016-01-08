@@ -35,3 +35,16 @@
 		}
 	}
 %}
+
+{%
+	set dp1 = {
+		title: "Tying down the USA Discovery Program",
+		url: "/projects/usa-discovery-program",
+		desc: "How I helped create and maintain an award winning training platform for Brand USA.",
+		skills: ["Web Design","UX","Wireframing","SASS", "BEM", "SMACCS", "Javascript"],
+		link: {
+			url:"http://usadiscoveryprogram.co.uk", 
+			title:"usadiscoveryprogram.co.uk"
+		}
+	}
+%}
