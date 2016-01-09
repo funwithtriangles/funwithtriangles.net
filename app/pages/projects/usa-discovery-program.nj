@@ -15,26 +15,25 @@
 <h2>An award winning project</h2>
 <p>For a while, my bread and butter work while at <a href="http://blackdiamond.co.uk">Black Diamond</a> was working on the <a href="http://usadiscoveryprogram.co.uk">USA Discovery Program</a>. A training program for UK travel agents to learn about the USA, a couple of years later and it is now live for travel agents in Australia, New Zealand, India and Brazil. Our small team built it up from scratch and I played a key role in the front-end side of things. In 2014 it won a <a href="https://www.ttgmedia.com/news/news/the-winners-of-the-ttg-travel-awards-2014-340">TTG Travel award</a>, a big achievement in the travel industry.</p>
 
-
 <h2>Gamifying Engagement</h2>
 
-<figure am-ArticleMedia>
-	<img src="/images/gifs/dp_badges.gif" alt="A selection of badges">
-
-	<figcaption am-ArticleMedia-Caption>I had fun making badges. Users earn these as they learn.</figcaption>
-</figure>
+{{ media('image',
+	src='/images/gifs/dp_badges.gif', 
+	alt='Selection of badges',
+	caption='I had fun making badges. Users earn these as they learn.'
+) }}
 
 <p>Looking at pre-existing training programmes for travel agents, we knew from the outset we had to take a different approach. They were all terrible websites that not only looked awful but functioned poorly too.</p>
 
 <p>We were inspired by the absolutely wonderful approach of Team Treehouse, a training resource for webby people. Their visual style looks almost as if the site is designed for teenagers! It’s the complete opposite of the stuffy “adult” travel training program competitors we’d looked up and it instantly makes the experience more fun and engaging. One great mechanism we implemented with the Discovery Program was awarding the users “badges” for each test they passed. This gamification aspect of the programme helped with engagement, with many users feeling compelled to earn the whole set.</p>
 
 <h2>Making Modules</h2>
-<figure am-ArticleMedia>
-	<img src="/images/gifs/dp_modules.gif" alt="A selection of modules">
 
-	<figcaption am-ArticleMedia-Caption>Each “module” has its own CSS file.</figcaption>
-</figure>
-
+{{ media('image',
+	src='/images/gifs/dp_modules.gif', 
+	alt='Selection of modules',
+	caption='Each “module” has its own CSS file.'
+) }}
 
 <p>One of my main roles on the project was ensuring the CSS and Javascript were organised in a way that was easy to maintain. Without having a plan, a large site with lots of content and design elements can easily become unwieldy, especially when working in a team.</p>
 
@@ -42,23 +41,23 @@
 
 <h2>Keeping the user engaged</h2>
 
-<figure am-ArticleMedia>
-	<img src="/images/gifs/dp_emails.gif" alt="Email templates">
-
-	<figcaption am-ArticleMedia-Caption>Email template designs.</figcaption>
-</figure>
+{{ media('image',
+	src='/images/gifs/dp_emails.gif', 
+	alt='Email templates',
+	caption='Email template designs.'
+) }}
 
 <p>Using amazing tools such as <a href="https://www.campaignmonitor.com/">Campaign Monitor</a>, we were able to keep users engaged via email. I helped design a set of email templates that could be sent out when new content was created. With a bit of creativity splitting up lists of users, we were also able to send out reminders to sets of users who hadn’t finished certain parts of the training, or were yet to start training at all.</p>
 
 <h2>Those Extra Touches</h2>
-<figure am-ArticleMedia>
-	<a href="http://usadiscoveryprogram.co.uk/404"><img src="/images/gifs/dp_404.gif" alt="Custom 404 page"></a>
 
-	<figcaption am-ArticleMedia-Caption>A cute <a href="http://usadiscoveryprogram.co.uk/404">404 page</a> is practically mandatory.</figcaption>
-</figure>
-
+{{ media('image',
+	url='http://usadiscoveryprogram.co.uk/404',
+	src='/images/gifs/dp_404.gif', 
+	alt='Custom 404 page',
+	caption='A cute <a href="http://usadiscoveryprogram.co.uk/404">404 page</a> is practically mandatory.'
+) }}
 
 <p>It’s always nice when you come across something unexpectedly pleasing on a website. I know it’s been done a million times before but we had fun with the 404 page on this project. A little lost wiggly line scouting around the USA was a very relevant image! If you’re interested in how it’s done, there’s a really <a href="https://jakearchibald.com/2013/animated-line-drawing-svg/">clever technique</a> pioneered by Jake Archibald using SVG and line dash lengths.</p>
-
 
 {% endblock %}

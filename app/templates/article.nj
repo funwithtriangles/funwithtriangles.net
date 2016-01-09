@@ -1,5 +1,29 @@
 {% extends "layout.nj" %}
 
+{% macro media(type, url, src, alt, caption, id) %}
+<figure am-ArticleMedia>
+
+	{% if type == 'image' %}
+
+		{% if url %}<a am-a="plain" href="{{url}}">{% endif %}
+
+			<img src="{{src}}" alt="{{alt}}">
+
+		{% if url %}</a>{% endif %}
+
+	{% elif type == 'vimeo' %}
+		
+		<div am-VidStretch>
+			<iframe  src="https://player.vimeo.com/video/{{id}}?api=1&player_id=vimeoplayer&color=12F4FF" id="vimeoplayer" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		</div>
+
+	{% endif %}
+	
+
+	<figcaption am-ArticleMedia-Caption>{{caption}}</figcaption>
+</figure>
+{% endmacro %}
+
 {% block content %} 
 <header am-SiteHeader>
 	

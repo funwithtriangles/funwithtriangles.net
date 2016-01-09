@@ -17,12 +17,12 @@
 
 <h2>Greensock is amazing</h2>
 
-<figure am-ArticleMedia>
-	<a am-a="plain" href="http://santamonicawellbeing.co.uk/"><img src="/images/gifs/santa_monica.gif" alt="Santa Monica website with animation"></a>
-
-	<figcaption am-ArticleMedia-Caption>Greensock makes it simple to fly elements about.</figcaption>
-</figure>
-
+{{ media('image', 
+	url='http://santamonicawellbeing.co.uk/',
+	src='/images/gifs/santa_monica.gif', 
+	alt='Santa Monica website with animation',
+	caption='Greensock makes it simple to fly elements about.'
+) }}
 
 <p>Greensock (or more specifically GSAP) is a Javascript library that makes it easy for developers to implement complex animation that’s incredibly fast and efficient while being compatible with every browser you’d need it to be. For this project I used it for the animated navigation as well as the page transitions. It’s an incredibly fun tool to work with.</p>
 
@@ -31,11 +31,13 @@
 
 <div am-Row>
 	<div am-Col="m4">
-		<figure am-ArticleMedia>
-			<img src="/images/graphics/sm_phone.gif" alt="Santa Monica website inside a mobile">
+
+		{{ media('image',
+			src='/images/graphics/sm_phone.gif', 
+			alt='Santa Monica website inside a mobile',
+			caption='The website becomes simpler on a smaller screen.'
+		) }}
 		
-			<figcaption am-ArticleMedia-Caption>The website becomes simpler on a smaller screen.</figcaption>
-		</figure>
 	</div>
 	<div am-Col="m8 l">
 
