@@ -1000,7 +1000,10 @@ a[am-Strip~='alt']:hover {
 
 [am-ArticleMedia] {
   max-width: 50rem;
-  margin: 2.55rem 0; }
+  margin: 2.55rem 0;
+  background: white;
+  padding: 2rem;
+  margin: 0 -2rem; }
 
 [am-ArticleMedia~='insta'] {
   max-width: 35rem; }
@@ -1047,6 +1050,16 @@ a[am-Strip~='alt']:hover {
   right: 0;
   bottom: 0;
   z-index: 0; }
+
+[am-SiteFooter-Bottom] {
+  position: absolute;
+  z-index: 1;
+  bottom: 1rem;
+  left: 1rem;
+  background: white;
+  padding: 0.5rem;
+  display: inline-block;
+  font-size: 0.8rem; }
 
 [am-SiteFooter-Inner] {
   background: white;
