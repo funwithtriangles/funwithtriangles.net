@@ -1,5 +1,3 @@
-{% set title = "Fun With Triangles" %}
-
 {% extends "layout.nj" %}
 
 {% import 'project_list.nj' as projects %}
