@@ -132,6 +132,10 @@ a[am-Strip~='alt'] {
 	margin: -3rem 0;
 }
 
+[am-Strip~='clip'] {
+	overflow: hidden;
+}
+
 [am-Strip~='alt'] {
 
 	background: $secondary-color;

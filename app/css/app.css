@@ -868,6 +868,9 @@ a[am-Strip~='alt']:hover {
 [am-Strip-Edges] {
   margin: -3rem 0; }
 
+[am-Strip~='clip'] {
+  overflow: hidden; }
+
 [am-Strip~='alt'] {
   background: #26634E; }
   [am-Strip~='alt'] * {
@@ -1000,10 +1003,23 @@ a[am-Strip~='alt']:hover {
 
 [am-ArticleMedia] {
   max-width: 50rem;
-  margin: 2.55rem 0;
-  background: white;
-  padding: 2rem;
-  margin: 0 -2rem; }
+  margin: 0 0 2.55rem 0;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+  position: relative; }
+  [am-ArticleMedia] * {
+    position: relative;
+    z-index: 1; }
+  [am-ArticleMedia]:after {
+    display: block;
+    content: "";
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    right: -9999px;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 0; }
 
 [am-ArticleMedia~='insta'] {
   max-width: 35rem; }
