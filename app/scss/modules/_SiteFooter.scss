@@ -1,13 +1,14 @@
 [am-SiteFooter] {
 	 //background: #081E10;
 	position: relative;
-	
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
+	padding: 1rem;
 
 	@media #{$medium-up} {
+		
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		height: 100vh;
 	}
 	
@@ -29,14 +30,20 @@
 }
 
 [am-SiteFooter-Bottom] {
-	position: absolute;
-	z-index: 1;
-	bottom: 1rem;
-	left: 1rem;
+	
 	background: white;
 	padding: 0.5rem;
 	display: inline-block;
 	font-size: 0.8rem;
+
+	@media #{$medium-up} {
+
+		position: absolute;
+		z-index: 1;
+		bottom: 1rem;
+		left: 1rem;
+
+	}
 }
 
 [am-SiteFooter-Inner] {
@@ -45,10 +52,10 @@
 	background: white;
 	margin: 0 auto;
 	padding: 1rem;
-	margin: 1rem;
-
+	margin-bottom: 1rem;
 
 	@media #{$medium-up} {
+		margin-bottom: 0;
 		width: 70%;
 		padding: 2rem;
 	}

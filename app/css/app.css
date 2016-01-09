@@ -1027,17 +1027,19 @@ a[am-Strip~='alt']:hover {
 
 [am-SiteFooter] {
   position: relative;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center; }
+  padding: 1rem; }
   @media only screen and (min-width: 40.063em) {
     [am-SiteFooter] {
+      padding: 0;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
       height: 100vh; } }
   [am-SiteFooter] * {
     position: relative;
@@ -1052,22 +1054,25 @@ a[am-Strip~='alt']:hover {
   z-index: 0; }
 
 [am-SiteFooter-Bottom] {
-  position: absolute;
-  z-index: 1;
-  bottom: 1rem;
-  left: 1rem;
   background: white;
   padding: 0.5rem;
   display: inline-block;
   font-size: 0.8rem; }
+  @media only screen and (min-width: 40.063em) {
+    [am-SiteFooter-Bottom] {
+      position: absolute;
+      z-index: 1;
+      bottom: 1rem;
+      left: 1rem; } }
 
 [am-SiteFooter-Inner] {
   background: white;
   margin: 0 auto;
   padding: 1rem;
-  margin: 1rem; }
+  margin-bottom: 1rem; }
   @media only screen and (min-width: 40.063em) {
     [am-SiteFooter-Inner] {
+      margin-bottom: 0;
       width: 70%;
       padding: 2rem; } }
   @media only screen and (min-width: 64.063em) {
