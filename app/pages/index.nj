@@ -112,4 +112,22 @@
 		</div>
 	</div>
 </a>
+
+<a am-Strip="project" href="{{ projects.ea.url }}">
+	<div am-Row="middle">
+		<div am-Col="m6" am-Strip-Anim="1 left">
+			<div am-Strip-Decal>
+				<img src="/images/graphics/ea_compass.svg">
+			</div>
+			<img am-Strip-Cutout src="/images/cutouts/helicopter.png">
+		</div>
+
+		<div am-Col="m6">
+			<h2 am-txt="hug" am-Strip-Anim="2 right">{{ projects.ea.title }}</h2>
+			<p am-txt="lead" am-Strip-Anim="3 right">
+				{{ projects.ea.desc }}
+			</p>
+		</div>
+	</div>
+</a>
 {% endblock %}

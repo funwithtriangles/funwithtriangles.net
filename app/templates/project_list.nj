@@ -48,3 +48,16 @@
 		}
 	}
 %}
+
+{%
+	set ea = {
+		title: "A Responsibly Responsive Build",
+		url: "/projects/ea",
+		desc: "I was the lead front-end designer on the build of a high end heli-skiing website.",
+		skills: ["Responsive Images", "Design", "UX"],
+		link: {
+			url:"http://eaheliskiing.com", 
+			title:"eaheliskiing.com"
+		}
+	}
+%}

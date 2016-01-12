@@ -861,9 +861,30 @@ a[am-Strip~='alt']:hover {
 [am-Strip~='blank'] {
   background: transparent; }
 
-@media only screen and (min-width: 40.063em) {
-  [am-Strip-Cutout] {
-    margin: -5rem 0; } }
+[am-Strip-Cutout] {
+  position: relative;
+  z-index: 1; }
+  @media only screen and (min-width: 40.063em) {
+    [am-Strip-Cutout] {
+      margin: -5rem 0; } }
+
+[am-Strip-Decal] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  -webkit-animation: spin 150s linear infinite;
+  animation: spin 150s linear infinite; }
+  [am-Strip-Decal] img {
+    width: 20rem;
+    height: 20rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -10rem;
+    margin-top: -10rem; }
 
 [am-Strip-Edges] {
   margin: -3rem 0; }
