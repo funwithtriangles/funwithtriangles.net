@@ -5,7 +5,7 @@
 		desc: "How I teamed up with a techno producer to build a fully audio reactive visual system that runs on web technologies.",
 		skills: ["Three.js","Canvas","Web MIDI API","Web Audio API"],
 		link: {
-			url:"http://polyup.uk", 
+			url:"http://polyop.uk", 
 			title:"polyop.uk"
 		}
 	}
