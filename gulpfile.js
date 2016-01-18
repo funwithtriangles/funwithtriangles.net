@@ -88,7 +88,8 @@ gulp.task('build', ['concatScripts', 'compileSass', 'compileHtml'], function() {
 		appPath+'index.html',
 		appPath+'js/modernizr.js',
 		appPath+'favicon.ico',
-		appPath+'/projects/*'], 
+		appPath+'projects/*',
+		appPath+'examples/**'],
 		{base: './app'})
 	.pipe(gulp.dest('dist'));
 

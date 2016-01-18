@@ -40,6 +40,7 @@
 @for $i from 1 through $row-count {
 	[am-Col~='#{$i}'] {
 		max-width: (100%/$row-count)*$i;
+		flex-basis: (100%/$row-count)*$i;
 	}
 }
 
@@ -50,6 +51,7 @@
 
 		[am-Col~='m#{$i}'] {
 			max-width: (100%/$row-count)*$i;
+			flex-basis: (100%/$row-count)*$i;
 		}
 
 	}
@@ -62,6 +64,7 @@
 
 		[am-Col~='l#{$i}'] {
 			max-width: (100%/$row-count)*$i;
+			flex-basis: (100%/$row-count)*$i;
 		}
 
 	}
