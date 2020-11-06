@@ -1,7 +1,4 @@
 dist
 node_modules
-bower_components
-
-*.scssc
 .DS_Store
-.publish
+.cache
