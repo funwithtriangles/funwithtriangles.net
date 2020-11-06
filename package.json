@@ -1,31 +1,27 @@
 {
-  "name": "funwithtriangles",
+  "name": "funwithtriangles.github.io",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Source code for Alex Kempton's portfolio, [funwithtriangles.net][1].",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
-    "url": "https://iamalexkempton@bitbucket.org/iamalexkempton/funwithtriangles.git"
+    "url": "git+https://github.com/funwithtriangles/funwithtriangles.github.io.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/funwithtriangles/funwithtriangles.github.io/issues"
+  },
+  "homepage": "https://github.com/funwithtriangles/funwithtriangles.github.io#readme",
   "devDependencies": {
-    "browser-sync": "^2.10.0",
-    "del": "^2.1.0",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-cssnano": "^2.0.0",
-    "gulp-file": "^0.2.0",
-    "gulp-gh-pages": "^0.5.4",
-    "gulp-notify": "^2.2.0",
-    "gulp-nunjucks-render": "^1.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.1.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.4.2"
+    "cssnano": "^4.1.10",
+    "gh-pages": "^3.1.0",
+    "parcel-plugin-clean-dist": "0.0.6",
+    "sass": "^1.29.0"
   }
 }

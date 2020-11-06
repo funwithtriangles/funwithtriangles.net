@@ -1,6 +1,27 @@
 # funwithtriangles.github.io
-Source code for Alex Kempton's portfolio, [funwithtriangles.net][1].
+Source code for Alex Kempton's portfolio, [funwithtriangles.net](http://funwithtriangles.net).
 
-Static site compiled with nunjucks using gulp, deploys to `master` branch.
+## Installation
+You'll need parcel installed globally
 
-[1]: http://funwithtriangles.net
+```bash
+npm install -g parcel-bundler
+```
+
+Start a development server
+
+```bash
+npm start
+```
+
+Build the site
+
+```bash
+npm run build
+```
+
+Deploy to Github pages
+
+```bash
+npm run deploy
+```
