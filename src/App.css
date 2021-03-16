@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+body {
+  background: white;
+}
+
+.content {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.page.right {
+  justify-content: flex-end;
+}
+
+.block {
+  width: 50%;
+  padding: 2rem;
+  background: #eeeeee;
+}
