@@ -5,9 +5,11 @@ import {
   useFrame,
   useThree,
 } from "react-three-fiber"
-import { PerspectiveCamera } from "three"
+import { Object3D, PerspectiveCamera } from "three"
 
 import "./App.css"
+
+const offsetPositions = [-0.25, 0.25, 0, 0]
 
 function Camera({ xOffset }: { xOffset: number }) {
   const ref = useRef<PerspectiveCamera>(new PerspectiveCamera(75, 0, 0.1, 1000))
@@ -20,7 +22,11 @@ function Camera({ xOffset }: { xOffset: number }) {
   useFrame(() => {
     const fullWidth = window.innerWidth
     const fullHeight = window.innerHeight
-    const x = -fullWidth / 4 + (fullWidth / 2) * xOffset
+    const currIndex = Math.floor(xOffset)
+    const start = fullWidth * offsetPositions[currIndex]
+    const end = fullWidth * offsetPositions[currIndex + 1]
+
+    const x = start + (end - start) * (xOffset % 1)
     ref.current.setViewOffset(
       fullWidth,
       fullHeight,
@@ -36,10 +42,21 @@ function Camera({ xOffset }: { xOffset: number }) {
 }
 
 function Scene({ pagePos }: { pagePos: number }) {
+  const boxMesh = useRef<any>()
+
+  useFrame(() => {
+    const node = boxMesh?.current
+
+    if (node !== undefined) {
+      node.rotation.x += 0.01
+      node.rotation.y += 0.01
+    }
+  })
+
   return (
     <>
       <Camera xOffset={pagePos} />
-      <mesh>
+      <mesh ref={boxMesh}>
         <boxBufferGeometry args={[0.2, 0.2, 0.2]} />
         <meshNormalMaterial />
       </mesh>
@@ -93,6 +110,7 @@ function App() {
             </p>
           </div>
         </div>
+        <div className="page"></div>
       </div>
     </>
   )
