@@ -4,6 +4,8 @@ import { Page } from "./Page"
 
 import { Camera } from "./Camera"
 
+import { pageData } from "./page-data"
+
 import "./App.css"
 
 function Scene({ pagePos }: { pagePos: number }) {
@@ -47,9 +49,9 @@ function App() {
       </div>
 
       <div className="content">
-        <Page justify="flex-start" />
-        <Page justify="flex-end" />
-        <Page justify="flex-start" />
+        {pageData.map((props, i) => (
+          <Page key={i} {...props} />
+        ))}
       </div>
     </>
   )

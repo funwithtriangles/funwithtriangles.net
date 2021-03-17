@@ -1,12 +1,14 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { useFrame, useThree } from "react-three-fiber"
-import { PerspectiveCamera, Vector2 } from "three"
+import { PerspectiveCamera } from "three"
 import { breakpoints } from "./constants"
+import { pageData } from "./page-data"
 
 const easeInOutSin = (t: number) =>
   (1 + Math.sin(Math.PI * t - Math.PI / 2)) / 2
 
-const offsetPositions = [-0.25, 0.25, 0, 0]
+const offsetPositions = pageData.map((item) => item.camOffset)
+offsetPositions.push(0) // Last position still needs a target, so we just give it any old number
 
 export function Camera({ xOffset }: { xOffset: number }) {
   const ref = useRef<PerspectiveCamera>(new PerspectiveCamera(75, 0, 0.1, 1000))

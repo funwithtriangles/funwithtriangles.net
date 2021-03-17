@@ -1,39 +1,47 @@
 import styled from "styled-components"
 import { breakpoints } from "./constants"
 
-interface ContainerProps {
-  readonly justify: string
+interface PageProps {
+  justify: string
+  title: string
+  body: string
+  isFullHeightMob?: boolean
 }
 
-const Container = styled.div<ContainerProps>`
-  height: 100vh;
+const Container = styled.div<PageProps>`
   display: flex;
   align-items: flex-end;
+  margin-top: ${(p) => (p.isFullHeightMob ? 0 : "40vh")};
+  height: ${(p) => (p.isFullHeightMob ? "100vh" : "auto")};
 
   @media (min-width: ${breakpoints.medium}px) {
+    margin-top: 0;
+    height: 100vh;
     align-items: center;
     justify-content: ${(p) => p.justify};
   }
 `
-const Block = styled.div`
+const Block = styled.div<PageProps>`
   width: 100%;
   padding: 2rem;
+  height: ${(p) => (p.isFullHeightMob ? "60vh" : "auto")};
+  display: flex;
+  align-items: center;
 
   @media (min-width: ${breakpoints.medium}px) {
+    height: auto;
     width: 50%;
   }
 `
 
-export function Page(props: ContainerProps) {
+export function Page(props: PageProps) {
   return (
     <Container {...props}>
-      <Block>
-        <p>
-          I'm Alex Kempton, a creative developer and artist working with new
-          technologies to create interesting visual experiences. I am the
-          creator of Hedron, visual artist for Polyop and creative director at
-          Nudibranch Records. Previous clients include Gucci and Red Bull.
-        </p>
+      <Block {...props}>
+        <div>
+          <h2>{props.title}</h2>
+          <p>{props.body}</p>
+        </div>
       </Block>
     </Container>
   )
