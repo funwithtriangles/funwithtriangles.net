@@ -49,6 +49,7 @@ function App() {
       <div className="content">
         <Page justify="flex-start" />
         <Page justify="flex-end" />
+        <Page justify="flex-start" />
       </div>
     </>
   )

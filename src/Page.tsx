@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { breakpoints } from "./constants"
 
 interface ContainerProps {
   readonly justify: string
@@ -7,25 +8,31 @@ interface ContainerProps {
 const Container = styled.div<ContainerProps>`
   height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: ${(p) => p.justify};
+  align-items: flex-end;
+
+  @media (min-width: ${breakpoints.medium}px) {
+    align-items: center;
+    justify-content: ${(p) => p.justify};
+  }
 `
 const Block = styled.div`
-  width: 50%;
+  width: 100%;
   padding: 2rem;
-  background: #eeeeee;
+
+  @media (min-width: ${breakpoints.medium}px) {
+    width: 50%;
+  }
 `
 
 export function Page(props: ContainerProps) {
   return (
     <Container {...props}>
       <Block>
-        <h2>Heya!</h2>
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque vitae
-          possimus blanditiis. Doloremque nostrum, eius odio iste recusandae
-          beatae corporis tempore, quasi obcaecati id tenetur quo ducimus!
-          Commodi, et assumenda.
+          I'm Alex Kempton, a creative developer and artist working with new
+          technologies to create interesting visual experiences. I am the
+          creator of Hedron, visual artist for Polyop and creative director at
+          Nudibranch Records. Previous clients include Gucci and Red Bull.
         </p>
       </Block>
     </Container>
