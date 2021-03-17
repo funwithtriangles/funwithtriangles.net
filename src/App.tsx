@@ -1,45 +1,10 @@
 import { useEffect, useRef, useState } from "react"
-import {
-  Canvas,
-  PerspectiveCameraProps,
-  useFrame,
-  useThree,
-} from "react-three-fiber"
-import { Object3D, PerspectiveCamera } from "three"
+import { Canvas, useFrame } from "react-three-fiber"
+import { Page } from "./Page"
+
+import { Camera } from "./Camera"
 
 import "./App.css"
-
-const offsetPositions = [-0.25, 0.25, 0, 0]
-
-function Camera({ xOffset }: { xOffset: number }) {
-  const ref = useRef<PerspectiveCamera>(new PerspectiveCamera(75, 0, 0.1, 1000))
-  const { setDefaultCamera } = useThree()
-  useEffect(() => {
-    ref.current.position.z = 1
-    void setDefaultCamera(ref.current)
-  })
-
-  useFrame(() => {
-    const fullWidth = window.innerWidth
-    const fullHeight = window.innerHeight
-    const currIndex = Math.floor(xOffset)
-    const start = fullWidth * offsetPositions[currIndex]
-    const end = fullWidth * offsetPositions[currIndex + 1]
-
-    const x = start + (end - start) * (xOffset % 1)
-    ref.current.setViewOffset(
-      fullWidth,
-      fullHeight,
-      x,
-      0,
-      fullWidth,
-      fullHeight
-    )
-    ref.current.updateProjectionMatrix()
-  })
-
-  return <perspectiveCamera ref={ref} />
-}
 
 function Scene({ pagePos }: { pagePos: number }) {
   const boxMesh = useRef<any>()
@@ -82,35 +47,8 @@ function App() {
       </div>
 
       <div className="content">
-        <div className="page">
-          <div className="block">
-            <h1>Heya!</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-              praesentium consequatur laudantium tenetur dolorum, doloribus
-              reprehenderit alias, minus hic accusantium repellendus fugiat illo
-              tempore quidem non corrupti enim inventore et.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-              praesentium consequatur laudantium tenetur dolorum, doloribus
-              reprehenderit alias, minus hic accusantium repellendus fugiat illo
-              tempore quidem non corrupti enim inventore et.
-            </p>
-          </div>
-        </div>
-        <div className="page right">
-          <div className="block">
-            <h1>Heya!</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-              praesentium consequatur laudantium tenetur dolorum, doloribus
-              reprehenderit alias, minus hic accusantium repellendus fugiat illo
-              tempore quidem non corrupti enim inventore et.
-            </p>
-          </div>
-        </div>
-        <div className="page"></div>
+        <Page justify="flex-start" />
+        <Page justify="flex-end" />
       </div>
     </>
   )
