@@ -23,7 +23,7 @@ function Scene({ pagePos }: { pagePos: number }) {
 
   return (
     <>
-      <Camera xOffset={pagePos} />
+      <Camera pagePos={pagePos} />
       <Suspense fallback={null}>
         <Environment preset="apartment" />
         <Dude />
