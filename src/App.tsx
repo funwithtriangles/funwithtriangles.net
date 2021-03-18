@@ -1,12 +1,13 @@
-import { useEffect, useRef, useState } from "react"
+import { Suspense, useEffect, useRef, useState } from "react"
 import { Canvas, useFrame } from "react-three-fiber"
 import { Page } from "./Page"
 
 import { Camera } from "./Camera"
-
+import { Dude } from "./Dude"
 import { pageData } from "./page-data"
 
 import "./App.css"
+import { Environment } from "drei"
 
 function Scene({ pagePos }: { pagePos: number }) {
   const boxMesh = useRef<any>()
@@ -23,10 +24,10 @@ function Scene({ pagePos }: { pagePos: number }) {
   return (
     <>
       <Camera xOffset={pagePos} />
-      <mesh ref={boxMesh}>
-        <boxBufferGeometry args={[0.2, 0.2, 0.2]} />
-        <meshNormalMaterial />
-      </mesh>
+      <Suspense fallback={null}>
+        <Environment preset="apartment" />
+        <Dude />
+      </Suspense>
     </>
   )
 }

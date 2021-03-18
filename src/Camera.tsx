@@ -14,7 +14,7 @@ export function Camera({ xOffset }: { xOffset: number }) {
   const ref = useRef<PerspectiveCamera>(new PerspectiveCamera(75, 0, 0.1, 1000))
   const { setDefaultCamera, size } = useThree()
   useEffect(() => {
-    ref.current.position.z = 1
+    ref.current.position.set(0, 1, 3)
     void setDefaultCamera(ref.current)
   })
 
