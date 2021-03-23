@@ -11,11 +11,8 @@ export function Dude() {
 
   armature?.traverse((obj) => {
     obj.frustumCulled = false
+    obj.castShadow = true
   })
-
-  if (armature !== undefined) {
-    armature.frustumCulled = false
-  }
 
   const { actions, ref } = useAnimations(animations)
 
@@ -23,5 +20,9 @@ export function Dude() {
     actions.chicken.play()
   })
 
-  return <primitive ref={ref} object={gltfObject.scene} />
+  return (
+    <>
+      <primitive ref={ref} object={gltfObject.scene} />
+    </>
+  )
 }

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { breakpoints } from "../constants"
+import { breakpoints, dimensions } from "../constants"
 
 interface PageProps {
   justify: string
@@ -11,8 +11,10 @@ interface PageProps {
 const Container = styled.div<PageProps>`
   display: flex;
   align-items: flex-end;
-  margin-top: ${(p) => (p.isFullHeightMob ? 0 : "40vh")};
+  margin-top: ${(p) =>
+    p.isFullHeightMob ? 0 : `${dimensions.mobSceneRatio * 100}vw`};
   height: ${(p) => (p.isFullHeightMob ? "100vh" : "auto")};
+  color: white;
 
   @media (min-width: ${breakpoints.medium}px) {
     margin-top: 0;
@@ -27,8 +29,12 @@ const Block = styled.div<PageProps>`
   height: ${(p) => (p.isFullHeightMob ? "60vh" : "auto")};
   display: flex;
   align-items: center;
+  backdrop-filter: blur(6px);
+  border: dashed white;
+  border-width: 1px 0;
 
   @media (min-width: ${breakpoints.medium}px) {
+    border-width: 1px;
     height: auto;
     width: 50%;
   }

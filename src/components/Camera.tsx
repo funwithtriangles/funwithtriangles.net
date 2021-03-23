@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
 import { useFrame, useThree } from "react-three-fiber"
 import { PerspectiveCamera, Vector3 } from "three"
-import { breakpoints } from "../constants"
+import { breakpoints, dimensions } from "../constants"
 import { pageData } from "../page-data"
 import { state } from "../state"
 
@@ -15,47 +15,51 @@ const camPositions = pageData.map((item) => item.camPosition)
 camPositions.push(new Vector3())
 
 export function Camera() {
-  const ref = useRef<PerspectiveCamera>(new PerspectiveCamera(75, 0, 0.1, 1000))
+  const camera = useRef<PerspectiveCamera>(
+    new PerspectiveCamera(75, 0, 0.1, 1000)
+  )
   const { setDefaultCamera, size } = useThree()
 
   useEffect(() => {
-    void setDefaultCamera(ref.current)
+    void setDefaultCamera(camera.current)
   })
 
   useFrame(() => {
+    const medBreak = breakpoints.medium
     const fullWidth = size.width
     const fullHeight = size.height
     const currIndex = Math.floor(state.pagePos)
     const start = fullWidth * offsetPositions[currIndex]
     const end = fullWidth * offsetPositions[currIndex + 1]
+    const cam = camera.current
 
     let x = 0
     let y = 0
 
     const smoothPagePos = easeInOutSin(state.pagePos % 1)
 
-    if (fullWidth >= breakpoints.medium) {
+    // Adjust zoom and offset of camera depending on screen size
+    if (fullWidth >= medBreak) {
       x = start + (end - start) * smoothPagePos
+      cam.zoom = fullWidth / 2 / medBreak
     } else {
-      y = fullHeight * 0.25
+      y = (fullHeight - fullWidth * dimensions.mobSceneRatio) / 2
+      cam.zoom =
+        (fullWidth /
+          medBreak /
+          (fullHeight / (medBreak * dimensions.mobSceneRatio))) *
+        1.2
     }
 
-    ref.current.setViewOffset(
-      fullWidth,
-      fullHeight,
-      x,
-      y,
-      fullWidth,
-      fullHeight
-    )
-    ref.current.updateProjectionMatrix()
+    cam.setViewOffset(fullWidth, fullHeight, x, y, fullWidth, fullHeight)
+    cam.updateProjectionMatrix()
 
-    ref.current.position.lerpVectors(
+    cam.position.lerpVectors(
       camPositions[currIndex],
       camPositions[currIndex + 1],
       smoothPagePos
     )
   })
 
-  return <perspectiveCamera ref={ref} />
+  return <perspectiveCamera ref={camera} />
 }
