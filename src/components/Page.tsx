@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { breakpoints } from "./constants"
+import { breakpoints } from "../constants"
 
 interface PageProps {
   justify: string

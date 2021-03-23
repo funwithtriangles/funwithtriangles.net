@@ -1,3 +1,5 @@
+import { Vector3 } from "three"
+
 type PageData = {
   title: string
   body: string
@@ -5,6 +7,7 @@ type PageData = {
   camOffset: number
   camOffsetMob: number
   isFullHeightMob?: boolean
+  camPosition: Vector3
 }
 
 export const pageData: PageData[] = [
@@ -13,6 +16,7 @@ export const pageData: PageData[] = [
     justify: "flex-end",
     camOffset: 0.25,
     camOffsetMob: 0,
+    camPosition: new Vector3(0, 1, 3),
     body: `I'm Alex Kempton, a creative developer and artist 
     working with new technologies to create interesting visual
     experiences. I am the creator of Hedron, visual artist for
@@ -24,6 +28,7 @@ export const pageData: PageData[] = [
     justify: "flex-start",
     camOffset: -0.25,
     camOffsetMob: 0,
+    camPosition: new Vector3(0, 1.2, 1),
     body: `I'm Alex Kempton, a creative developer and artist 
     working with new technologies to create interesting visual
     experiences. I am the creator of Hedron, visual artist for
@@ -35,6 +40,7 @@ export const pageData: PageData[] = [
     justify: "flex-end",
     camOffset: 0.25,
     camOffsetMob: 0,
+    camPosition: new Vector3(0, 1, 3),
     body: `I'm Alex Kempton, a creative developer and artist 
     working with new technologies to create interesting visual
     experiences. I am the creator of Hedron, visual artist for
@@ -46,6 +52,7 @@ export const pageData: PageData[] = [
     justify: "flex-start",
     camOffset: -0.25,
     camOffsetMob: 0,
+    camPosition: new Vector3(0, 1, 3),
     isFullHeightMob: true,
     body: `Id love to hear from you.`,
   },
