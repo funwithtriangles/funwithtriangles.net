@@ -9,6 +9,7 @@ type PageData = {
   isFullHeightMob?: boolean
   camPosition: Vector3
   camLookAt: Vector3
+  action: string
 }
 
 export const pageData: PageData[] = [
@@ -24,6 +25,7 @@ export const pageData: PageData[] = [
     experiences. I am the creator of Hedron, visual artist for
     Polyop and creative director at Nudibranch Records. 
     Previous clients include Gucci and Red Bull.`,
+    action: "waving",
   },
   {
     title: "Being playful with technology",
@@ -37,6 +39,7 @@ export const pageData: PageData[] = [
     experiences. I am the creator of Hedron, visual artist for
     Polyop and creative director at Nudibranch Records. 
     Previous clients include Gucci and Red Bull.`,
+    action: "chicken",
   },
   {
     title: "10 Years an Engineer",
@@ -50,6 +53,7 @@ export const pageData: PageData[] = [
     experiences. I am the creator of Hedron, visual artist for
     Polyop and creative director at Nudibranch Records. 
     Previous clients include Gucci and Red Bull.`,
+    action: "strut",
   },
   {
     title: "Say Hi!",
@@ -60,5 +64,6 @@ export const pageData: PageData[] = [
     camLookAt: new Vector3(0, 1, 0),
     isFullHeightMob: true,
     body: `Id love to hear from you.`,
+    action: "chicken",
   },
 ]

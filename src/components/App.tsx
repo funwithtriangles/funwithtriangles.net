@@ -22,7 +22,9 @@ const Background = styled.div`
 export function App() {
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      state.pagePos = window.pageYOffset / window.innerWidth
+      state.pagePos = window.pageYOffset / window.innerHeight
+      state.currPageIndex = Math.floor(state.pagePos)
+      console.log(state.pagePos, state.currPageIndex)
     })
 
     window.addEventListener("mousemove", (e) => {

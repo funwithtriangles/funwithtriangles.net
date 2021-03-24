@@ -35,9 +35,9 @@ export function Camera() {
     const medBreak = breakpoints.medium
     const fullWidth = size.width
     const fullHeight = size.height
-    const currIndex = Math.floor(state.pagePos)
-    const start = fullWidth * offsetPositions[currIndex]
-    const end = fullWidth * offsetPositions[currIndex + 1]
+
+    const start = fullWidth * offsetPositions[state.currPageIndex]
+    const end = fullWidth * offsetPositions[state.currPageIndex + 1]
     const cam = camera.current
 
     let x = 0
@@ -59,14 +59,14 @@ export function Camera() {
     }
 
     lookAt.current.lerpVectors(
-      lookAtPositions[currIndex],
-      lookAtPositions[currIndex + 1],
+      lookAtPositions[state.currPageIndex],
+      lookAtPositions[state.currPageIndex + 1],
       smoothPagePos
     )
 
     cam.position.lerpVectors(
-      camPositions[currIndex],
-      camPositions[currIndex + 1],
+      camPositions[state.currPageIndex],
+      camPositions[state.currPageIndex + 1],
       smoothPagePos
     )
 
