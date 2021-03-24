@@ -1,11 +1,10 @@
-import { Suspense, useEffect, useRef } from "react"
-import { useFrame, useThree } from "react-three-fiber"
+import { Suspense, useRef } from "react"
+import { useFrame } from "react-three-fiber"
 
 import { Camera } from "./Camera"
 import { Dude } from "./Dude"
 
-import { Environment, useHelper } from "drei"
-import { CameraHelper, DirectionalLight, Light } from "three"
+import { Environment } from "drei"
 
 function Plane({ ...props }) {
   return (
@@ -47,7 +46,7 @@ export function Scene() {
       />
       <Plane rotation={[-0.5 * Math.PI, 0, 0]} />
       <Suspense fallback={null}>
-        <Environment preset="apartment" />
+        <Environment preset="sunset" />
         <Dude />
       </Suspense>
     </>

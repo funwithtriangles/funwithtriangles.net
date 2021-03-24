@@ -7,6 +7,7 @@ import { Scene } from "./Scene"
 import { pageData } from "../page-data"
 
 import { state } from "../state"
+import { lerp } from "../utils/lerp"
 
 const Background = styled.div`
   width: 100vw;
@@ -20,9 +21,16 @@ const Background = styled.div`
 
 export function App() {
   useEffect(() => {
-    window.onscroll = () => {
-      state.pagePos = window.pageYOffset / window.innerHeight
-    }
+    window.addEventListener("scroll", () => {
+      state.pagePos = window.pageYOffset / window.innerWidth
+    })
+
+    window.addEventListener("mousemove", (e) => {
+      state.mousePos.set(
+        lerp(-1, 1, e.clientX / window.innerWidth),
+        lerp(1, -1, e.clientY / window.innerHeight)
+      )
+    })
   }, [])
 
   return (

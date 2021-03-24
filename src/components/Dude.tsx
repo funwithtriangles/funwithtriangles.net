@@ -17,7 +17,7 @@ export function Dude() {
   const { actions, ref } = useAnimations(animations)
 
   useEffect(() => {
-    actions.chicken.play()
+    actions.strut.play()
   })
 
   return (

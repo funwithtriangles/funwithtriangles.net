@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 import { useFrame, useThree } from "react-three-fiber"
-import { PerspectiveCamera, Vector3 } from "three"
+import { PerspectiveCamera, Vector2, Vector3 } from "three"
 import { breakpoints, dimensions } from "../constants"
 import { pageData } from "../page-data"
 import { state } from "../state"
@@ -14,10 +14,17 @@ offsetPositions.push(0) // Last position still needs a target, so we just give i
 const camPositions = pageData.map((item) => item.camPosition)
 camPositions.push(new Vector3())
 
+const lookAtPositions = pageData.map((item) => item.camLookAt)
+lookAtPositions.push(new Vector3())
+
+const mouseAmp = 0.5
+
 export function Camera() {
   const camera = useRef<PerspectiveCamera>(
     new PerspectiveCamera(75, 0, 0.1, 1000)
   )
+
+  const lookAt = useRef(new Vector3())
   const { setDefaultCamera, size } = useThree()
 
   useEffect(() => {
@@ -51,14 +58,26 @@ export function Camera() {
         1.2
     }
 
-    cam.setViewOffset(fullWidth, fullHeight, x, y, fullWidth, fullHeight)
-    cam.updateProjectionMatrix()
+    lookAt.current.lerpVectors(
+      lookAtPositions[currIndex],
+      lookAtPositions[currIndex + 1],
+      smoothPagePos
+    )
 
     cam.position.lerpVectors(
       camPositions[currIndex],
       camPositions[currIndex + 1],
       smoothPagePos
     )
+
+    // Damped orbit based on mouse pos
+    cam.position.x += state.mousePos.x * mouseAmp
+    cam.position.y += state.mousePos.y * mouseAmp
+
+    cam.lookAt(lookAt.current)
+
+    cam.setViewOffset(fullWidth, fullHeight, x, y, fullWidth, fullHeight)
+    cam.updateProjectionMatrix()
   })
 
   return <perspectiveCamera ref={camera} />
