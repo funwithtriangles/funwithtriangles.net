@@ -26,11 +26,10 @@ export function Dude() {
   })
 
   useFrame(() => {
-    setCurrAction(pageData[state.currPageIndex].action)
+    setCurrAction(pageData[state.fuzzyPageIndex].action)
   })
 
   useEffect(() => {
-    console.log(currAction)
     actions[currAction].reset().fadeIn(blendDuration).play()
     return () => void actions[currAction].fadeOut(blendDuration)
   }, [currAction, actions])
