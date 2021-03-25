@@ -3,24 +3,15 @@ import { useFrame } from "react-three-fiber"
 
 import { Camera } from "./Camera"
 import { Dude } from "./Dude"
+import { Paintings } from "./Paintings"
 
-import { Environment, useTexture } from "drei"
+import { Environment } from "drei"
 
 function Plane({ ...props }) {
   return (
     <mesh {...props} receiveShadow>
       <planeBufferGeometry args={[10, 10, 1, 1]} />
       <shadowMaterial transparent opacity={0.2} />
-    </mesh>
-  )
-}
-
-function Paintings({ ...props }) {
-  const texture = useTexture("sq-wave.jpg")
-  return (
-    <mesh {...props}>
-      <planeBufferGeometry args={[10, 10, 1, 1]} />
-      <meshBasicMaterial map={texture} />
     </mesh>
   )
 }
@@ -65,11 +56,11 @@ export function Scene({ mainAssetsHaveLoaded }: SceneProps) {
         <Dude loadExtraAssets={mainAssetsHaveLoaded} />
       </Suspense>
 
-      {/* {mainAssetsHaveLoaded && (
+      {mainAssetsHaveLoaded && (
         <Suspense fallback={null}>
-          <Paintings />
+          <Paintings position={[0, 2, 3]} rotation={[0, Math.PI, 0]} />
         </Suspense>
-      )} */}
+      )}
     </>
   )
 }

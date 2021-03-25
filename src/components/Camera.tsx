@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 import { useFrame, useThree } from "react-three-fiber"
-import { PerspectiveCamera, Vector2, Vector3 } from "three"
+import { PerspectiveCamera, Vector3 } from "three"
 import { breakpoints, dimensions } from "../constants"
 import { pageData } from "../page-data"
 import { state } from "../state"
