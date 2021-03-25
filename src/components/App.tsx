@@ -23,17 +23,20 @@ const Background = styled.div`
 const fuzzyThresh = 0.6
 
 function Loader({ progress }: { progress: number }) {
-  return <h2>{Math.round(progress)}</h2>
+  return <h2 style={{ position: "absolute" }}>{Math.round(progress)}</h2>
 }
 
 export function App() {
   const { progress } = useProgress()
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    const updateScrollState = () => {
       state.prevPagePos = state.pagePos
       state.pagePos = window.pageYOffset / window.innerHeight
       state.currPageIndex = Math.floor(state.pagePos)
+    }
+    window.addEventListener("scroll", () => {
+      updateScrollState()
 
       if (
         state.pagePos > state.prevPagePos &&
@@ -52,6 +55,9 @@ export function App() {
         state.fuzzyPageIndex = Math.max(state.currPageIndex, 0)
       }
     })
+
+    updateScrollState()
+    state.fuzzyPageIndex = state.currPageIndex
 
     window.addEventListener("mousemove", (e) => {
       state.mousePos.set(

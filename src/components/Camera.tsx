@@ -24,6 +24,8 @@ export function Camera() {
     new PerspectiveCamera(75, 0, 0.1, 1000)
   )
 
+  const cylindricalPos = useRef(new Vector3())
+
   const lookAt = useRef(new Vector3())
   const { setDefaultCamera, size } = useThree()
 
@@ -64,10 +66,16 @@ export function Camera() {
       smoothPagePos
     )
 
-    cam.position.lerpVectors(
+    cylindricalPos.current.lerpVectors(
       camPositions[state.currPageIndex],
       camPositions[state.currPageIndex + 1],
       smoothPagePos
+    )
+
+    cam.position.setFromCylindricalCoords(
+      cylindricalPos.current.x,
+      cylindricalPos.current.y,
+      cylindricalPos.current.z
     )
 
     // Damped orbit based on mouse pos
