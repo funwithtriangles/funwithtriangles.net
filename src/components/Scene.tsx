@@ -4,7 +4,7 @@ import { useFrame } from "react-three-fiber"
 import { Camera } from "./Camera"
 import { Dude } from "./Dude"
 
-import { Environment } from "drei"
+import { Environment, useTexture } from "drei"
 
 function Plane({ ...props }) {
   return (
@@ -15,7 +15,21 @@ function Plane({ ...props }) {
   )
 }
 
-export function Scene() {
+function Paintings({ ...props }) {
+  const texture = useTexture("sq-wave.jpg")
+  return (
+    <mesh {...props}>
+      <planeBufferGeometry args={[10, 10, 1, 1]} />
+      <meshBasicMaterial map={texture} />
+    </mesh>
+  )
+}
+
+type SceneProps = {
+  mainAssetsHaveLoaded: boolean
+}
+
+export function Scene({ mainAssetsHaveLoaded }: SceneProps) {
   const boxMesh = useRef<any>()
   const d = 2
 
@@ -45,10 +59,17 @@ export function Scene() {
         castShadow
       />
       <Plane rotation={[-0.5 * Math.PI, 0, 0]} />
+
       <Suspense fallback={null}>
         <Environment preset="sunset" />
-        <Dude />
+        <Dude loadExtraAssets={mainAssetsHaveLoaded} />
       </Suspense>
+
+      {/* {mainAssetsHaveLoaded && (
+        <Suspense fallback={null}>
+          <Paintings />
+        </Suspense>
+      )} */}
     </>
   )
 }

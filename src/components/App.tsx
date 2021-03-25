@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { useEffect, useRef } from "react"
+import { useEffect } from "react"
 import { Canvas } from "react-three-fiber"
 import { Page } from "./Page"
 import { Scene } from "./Scene"
@@ -8,7 +8,7 @@ import { pageData } from "../page-data"
 
 import { state } from "../state"
 import { lerp } from "../utils/lerp"
-import { stat } from "node:fs"
+import { useProgress } from "drei"
 
 const Background = styled.div`
   width: 100vw;
@@ -22,7 +22,13 @@ const Background = styled.div`
 
 const fuzzyThresh = 0.6
 
+function Loader({ progress }: { progress: number }) {
+  return <h2>{Math.round(progress)}</h2>
+}
+
 export function App() {
+  const { progress } = useProgress()
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       state.prevPagePos = state.pagePos
@@ -57,9 +63,10 @@ export function App() {
 
   return (
     <>
+      <Loader progress={progress} />
       <Background>
         <Canvas shadowMap>
-          <Scene />
+          <Scene mainAssetsHaveLoaded={progress === 100} />
         </Canvas>
       </Background>
 

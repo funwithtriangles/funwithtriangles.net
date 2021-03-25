@@ -3,17 +3,22 @@ import { useEffect, useState } from "react"
 import { useFrame } from "react-three-fiber"
 import { pageData } from "../page-data"
 import { state } from "../state"
+import { useInjectActions } from "../utils/useInjectActions"
 
 const modSc = 0.2
 const blendDuration = 1
 
-export function Dude() {
-  const gltfObject = useGLTF("/octobot.glb")
+type DudeProps = {
+  loadExtraAssets: boolean
+}
+
+export function Dude({ loadExtraAssets }: DudeProps) {
+  const gltfObject = useGLTF("octobot.glb")
   const { animations } = gltfObject
 
-  const { actions, ref } = useAnimations(animations)
+  const { actions, ref, mixer } = useAnimations(animations)
 
-  const [currAction, setCurrAction] = useState("waving")
+  const [currAction, setCurrAction] = useState("idle")
 
   useEffect(() => {
     gltfObject.scene.scale.set(modSc, modSc, modSc)
@@ -26,13 +31,22 @@ export function Dude() {
   })
 
   useFrame(() => {
-    setCurrAction(pageData[state.fuzzyPageIndex].action)
+    const actionName = pageData[state.fuzzyPageIndex].action
+    if (actions[actionName] !== undefined) {
+      setCurrAction(actionName)
+    } else {
+      // If action hasn't loaded yet, fall back to "idle" action
+      setCurrAction("idle")
+    }
   })
 
   useEffect(() => {
+    // Update action when currAction updates
     actions[currAction].reset().fadeIn(blendDuration).play()
     return () => void actions[currAction].fadeOut(blendDuration)
   }, [currAction, actions])
+
+  useInjectActions("extra-actions.glb", loadExtraAssets, actions, ref, mixer)
 
   return (
     <>

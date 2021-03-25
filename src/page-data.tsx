@@ -25,7 +25,7 @@ export const pageData: PageData[] = [
     experiences. I am the creator of Hedron, visual artist for
     Polyop and creative director at Nudibranch Records. 
     Previous clients include Gucci and Red Bull.`,
-    action: "waving",
+    action: "idle",
   },
   {
     title: "Being playful with technology",
