@@ -57,7 +57,7 @@ export function App() {
     })
 
     updateScrollState()
-    state.fuzzyPageIndex = state.currPageIndex
+    state.fuzzyPageIndex = Math.round(state.pagePos)
 
     window.addEventListener("mousemove", (e) => {
       state.mousePos.set(
