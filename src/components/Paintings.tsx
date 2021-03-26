@@ -1,16 +1,15 @@
 import { useEffect, useRef } from "react"
 import { useFrame } from "react-three-fiber"
 import {
-  BoxBufferGeometry,
   LoadingManager,
   MeshBasicMaterial,
-  MeshStandardMaterial,
   Object3D,
+  PlaneBufferGeometry,
   sRGBEncoding,
   TextureLoader,
   Vector3,
 } from "three"
-
+import { state } from "../state"
 const files = [
   "molecular-main.jpg",
   "sulkin-birds.jpg",
@@ -23,18 +22,16 @@ const files = [
 const sideLength = 8
 const gutter = 1
 const numFrames = 28 // We're repeating textures
-const galleryWidth = sideLength * numFrames
+const galleryWidth = (sideLength + gutter) * numFrames
 
 const texLoader = new TextureLoader(new LoadingManager())
-
-const frameMat = new MeshStandardMaterial()
 
 type SingleProps = {
   material: MeshBasicMaterial
   position: [number, number, number]
 }
 
-const geom = new BoxBufferGeometry(sideLength, sideLength, 0.2)
+const geom = new PlaneBufferGeometry(sideLength, sideLength, 1, 1)
 
 function Single({ material, position }: SingleProps) {
   const basePos = useRef(new Vector3(...position))
@@ -42,19 +39,20 @@ function Single({ material, position }: SingleProps) {
   const activePos = useRef(new Vector3())
   const mesh = useRef(new Object3D())
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
+    velocity.current.x = -state.mousePos.x * 0.1
     activePos.current.add(velocity.current)
 
     mesh.current.position.addVectors(basePos.current, activePos.current)
+
+    if (mesh.current.position.x > galleryWidth / 2) {
+      activePos.current.x -= galleryWidth
+    } else if (mesh.current.position.x < -galleryWidth / 2) {
+      activePos.current.x += galleryWidth
+    }
   })
 
-  return (
-    <mesh
-      ref={mesh}
-      geometry={geom}
-      material={[frameMat, frameMat, frameMat, frameMat, material, frameMat]}
-    />
-  )
+  return <mesh ref={mesh} geometry={geom} material={material} />
 }
 
 const tempList = new Array(numFrames).fill(0)
