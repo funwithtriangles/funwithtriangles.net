@@ -7,7 +7,7 @@ type PageData = {
   camOffset: number
   camOffsetMob: number
   isFullHeightMob?: boolean
-  camPosition: Vector3 // Cylindrical
+  camPosition: Vector3 // Cylindrical (rad, theta, y)
   camLookAt: Vector3
   action: string
 }
@@ -60,8 +60,8 @@ export const pageData: PageData[] = [
     justify: "flex-start",
     camOffset: -0.25,
     camOffsetMob: 0,
-    camPosition: new Vector3(3, Math.PI, 1),
-    camLookAt: new Vector3(0, 1, 0),
+    camPosition: new Vector3(5, Math.PI, 0.2),
+    camLookAt: new Vector3(0, 1.5, 0),
     body: `I'm Alex Kempton, a creative developer and artist 
     working with new technologies to create interesting visual
     experiences. I am the creator of Hedron, visual artist for

@@ -58,7 +58,7 @@ export function Scene({ mainAssetsHaveLoaded }: SceneProps) {
 
       {mainAssetsHaveLoaded && (
         <Suspense fallback={null}>
-          <Paintings position={[0, 2, 3]} rotation={[0, Math.PI, 0]} />
+          <Paintings rotation={[0, Math.PI, 0]} />
         </Suspense>
       )}
     </>
