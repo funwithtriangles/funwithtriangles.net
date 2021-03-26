@@ -54,13 +54,11 @@ export function Scene({ mainAssetsHaveLoaded }: SceneProps) {
       <Suspense fallback={null}>
         <Environment preset="sunset" />
         <Dude loadExtraAssets={mainAssetsHaveLoaded} />
+        <Paintings
+          loadGallery={mainAssetsHaveLoaded}
+          rotation={[0, Math.PI, 0]}
+        />
       </Suspense>
-
-      {mainAssetsHaveLoaded && (
-        <Suspense fallback={null}>
-          <Paintings rotation={[0, Math.PI, 0]} />
-        </Suspense>
-      )}
     </>
   )
 }

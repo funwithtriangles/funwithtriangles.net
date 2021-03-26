@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 import { useEffect } from "react"
-import { Canvas } from "react-three-fiber"
+import { Canvas, useThree } from "react-three-fiber"
 import { Page } from "./Page"
 import { Scene } from "./Scene"
 import { pageData } from "../page-data"
