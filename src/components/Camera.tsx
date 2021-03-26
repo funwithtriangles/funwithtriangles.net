@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 import { useFrame, useThree } from "react-three-fiber"
-import { PerspectiveCamera, Vector3 } from "three"
+import { PerspectiveCamera, Vector2, Vector3 } from "three"
 import { breakpoints, dimensions } from "../constants"
 import { pageData } from "../page-data"
 import { state } from "../state"
@@ -9,7 +9,7 @@ const easeInOutSin = (t: number) =>
   (1 + Math.sin(Math.PI * t - Math.PI / 2)) / 2
 
 const offsetPositions = pageData.map((item) => item.camOffset)
-offsetPositions.push(0) // Last position still needs a target, so we just give it any old number
+offsetPositions.push(new Vector2()) // Last position still needs a target, so we just give it any old number
 
 const camPositions = pageData.map((item) => item.camPosition)
 camPositions.push(new Vector3())
@@ -18,6 +18,7 @@ const lookAtPositions = pageData.map((item) => item.camLookAt)
 lookAtPositions.push(new Vector3())
 
 const mouseAmp = 0.5
+const medBreak = breakpoints.medium
 
 export function Camera() {
   const camera = useRef<PerspectiveCamera>(
@@ -25,6 +26,8 @@ export function Camera() {
   )
 
   const cylindricalPos = useRef(new Vector3())
+  const pageDimensions = useRef(new Vector2())
+  const viewOffset = useRef(new Vector2())
 
   const lookAt = useRef(new Vector3())
   const { setDefaultCamera, size } = useThree()
@@ -34,30 +37,32 @@ export function Camera() {
   })
 
   useFrame(() => {
-    const medBreak = breakpoints.medium
-    const fullWidth = size.width
-    const fullHeight = size.height
-
-    const start = fullWidth * offsetPositions[state.currPageIndex]
-    const end = fullWidth * offsetPositions[state.currPageIndex + 1]
+    pageDimensions.current.set(size.width, size.height)
     const cam = camera.current
-
-    let x = 0
-    let y = 0
 
     const smoothPagePos = easeInOutSin(state.pagePos % 1)
 
     // Adjust zoom and offset of camera depending on screen size
-    if (fullWidth >= medBreak) {
-      x = start + (end - start) * smoothPagePos
-      cam.zoom = fullWidth / 2 / medBreak
+    // TODO: This is actually the formula for zooming mobile, which works pretty well but probably not exact
+    cam.zoom =
+      size.width /
+      medBreak /
+      (size.width / (medBreak * dimensions.mobSceneRatio))
+
+    if (size.width >= medBreak) {
+      viewOffset.current
+        .lerpVectors(
+          offsetPositions[state.currPageIndex],
+          offsetPositions[state.currPageIndex + 1],
+          smoothPagePos
+        )
+        .multiply(pageDimensions.current)
     } else {
-      y = (fullHeight - fullWidth * dimensions.mobSceneRatio) / 2
-      cam.zoom =
-        (fullWidth /
-          medBreak /
-          (fullHeight / (medBreak * dimensions.mobSceneRatio))) *
-        1.2
+      viewOffset.current.set(
+        0,
+        (size.height - size.width * dimensions.mobSceneRatio) / 2
+      )
+      cam.zoom *= 1.2
     }
 
     lookAt.current.lerpVectors(
@@ -84,7 +89,14 @@ export function Camera() {
 
     cam.lookAt(lookAt.current)
 
-    cam.setViewOffset(fullWidth, fullHeight, x, y, fullWidth, fullHeight)
+    cam.setViewOffset(
+      size.width,
+      size.height,
+      viewOffset.current.x,
+      viewOffset.current.y,
+      size.width,
+      size.height
+    )
     cam.updateProjectionMatrix()
   })
 
