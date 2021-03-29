@@ -13,7 +13,7 @@ type DudeProps = {
 }
 
 export function Dude({ loadExtraAssets }: DudeProps) {
-  const gltfObject = useGLTF("octobot.glb")
+  const gltfObject = useGLTF("models/octobot.glb")
   const { animations } = gltfObject
 
   const { actions, ref, mixer } = useAnimations(animations)
@@ -46,7 +46,13 @@ export function Dude({ loadExtraAssets }: DudeProps) {
     return () => void actions[currAction].fadeOut(blendDuration)
   }, [currAction, actions])
 
-  useInjectActions("extra-actions.glb", loadExtraAssets, actions, ref, mixer)
+  useInjectActions(
+    "models/extra-actions.glb",
+    loadExtraAssets,
+    actions,
+    ref,
+    mixer
+  )
 
   return (
     <>

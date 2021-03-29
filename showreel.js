@@ -12,7 +12,7 @@ const clips = [
 ]
 
 const config = {
-  outPath: "public/showreel.mp4",
+  outPath: "public/video/showreel.mp4",
   width: 512,
   height: 512,
   clips: clips.map((item) => ({
