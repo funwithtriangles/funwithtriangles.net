@@ -16,6 +16,7 @@ const files = [
   "sq-wave.jpg",
   "lanquidity.jpg",
   "molecular-threads.jpg",
+  "stigmergy.jpg",
   "donttoucheyes.jpg",
   "leapwerm.jpg",
 ]
