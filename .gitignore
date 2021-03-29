@@ -10,6 +10,7 @@
 
 # production
 /build
+/public/showreel.mp4
 
 # misc
 .DS_Store
