@@ -11,13 +11,13 @@ interface PageProps {
 const Container = styled.div<PageProps>`
   display: flex;
   align-items: flex-end;
-  margin-top: ${(p) =>
+  padding-top: ${(p) =>
     p.isFullHeightMob ? 0 : `${dimensions.mobSceneRatio * 100}vw`};
   height: ${(p) => (p.isFullHeightMob ? "100vh" : "auto")};
   color: white;
 
   @media (min-width: ${breakpoints.medium}px) {
-    margin-top: 0;
+    padding-top: 0;
     height: 100vh;
     align-items: center;
     justify-content: ${(p) => p.justify};

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { Canvas } from "react-three-fiber"
 import { Page } from "./Page"
 import { Scene } from "./Scene"
@@ -28,13 +28,25 @@ function Loader({ progress }: { progress: number }) {
 
 export function App() {
   const { progress } = useProgress()
+  const pageRefs = useRef(new Array(pageData.length))
 
   useEffect(() => {
     const updateScrollState = () => {
+      for (let i = pageRefs.current.length - 1; i >= 0; i--) {
+        // Loop through page elements backwards to see which one is current
+        // The first one to be above the top of the viewport is our current page
+        if (pageRefs.current[i].offsetTop - window.pageYOffset <= 0) {
+          state.currPageIndex = i
+          break
+        }
+      }
       state.prevPagePos = state.pagePos
-      state.pagePos = window.pageYOffset / window.innerHeight
-      state.currPageIndex = Math.floor(state.pagePos)
+
+      const currEl = pageRefs.current[state.currPageIndex]
+      const relScroll = window.pageYOffset - currEl.offsetTop
+      state.pagePos = relScroll / currEl.clientHeight
     }
+
     window.addEventListener("scroll", () => {
       updateScrollState()
 
@@ -77,7 +89,9 @@ export function App() {
       </Background>
 
       {pageData.map((props, i) => (
-        <Page key={i} {...props} />
+        <div key={i} ref={(el) => (pageRefs.current[i] = el)}>
+          <Page {...props} />
+        </div>
       ))}
     </>
   )
