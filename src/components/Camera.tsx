@@ -17,6 +17,9 @@ camPositions.push(new Vector3())
 const lookAtPositions = pageData.map((item) => item.camLookAt)
 lookAtPositions.push(new Vector3())
 
+const orbitOffsets = pageData.map((item) => item.camOrbitOffset)
+orbitOffsets.push(new Vector3())
+
 const mouseAmp = 0.5
 const medBreak = breakpoints.medium
 
@@ -26,6 +29,7 @@ export function Camera() {
   )
 
   const cylindricalPos = useRef(new Vector3())
+  const orbitOffset = useRef(new Vector3())
   const pageDimensions = useRef(new Vector2())
   const viewOffset = useRef(new Vector2())
 
@@ -83,9 +87,17 @@ export function Camera() {
       cylindricalPos.current.z
     )
 
+    orbitOffset.current.lerpVectors(
+      orbitOffsets[state.currPageIndex],
+      orbitOffsets[state.currPageIndex + 1],
+      smoothPagePos
+    )
+
     // Damped orbit based on mouse pos
     cam.position.x += state.mousePos.x * mouseAmp
     cam.position.y += state.mousePos.y * mouseAmp
+
+    cam.position.add(orbitOffset.current)
 
     cam.lookAt(lookAt.current)
 
