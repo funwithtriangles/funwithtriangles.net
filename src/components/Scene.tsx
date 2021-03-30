@@ -22,7 +22,6 @@ type SceneProps = {
 
 export function Scene({ mainAssetsHaveLoaded }: SceneProps) {
   const boxMesh = useRef<any>()
-  const d = 2
 
   useFrame(() => {
     const node = boxMesh?.current
@@ -39,12 +38,12 @@ export function Scene({ mainAssetsHaveLoaded }: SceneProps) {
       <directionalLight
         intensity={0.5}
         position={[-8, 10, 20]}
-        shadow-camera-left={d * -1}
-        shadow-camera-bottom={d * -1}
-        shadow-camera-right={d}
-        shadow-camera-top={d}
+        shadow-camera-left={-5}
+        shadow-camera-bottom={-1}
+        shadow-camera-right={1}
+        shadow-camera-top={5}
         shadow-camera-near={0.5}
-        shadow-camera-far={500}
+        shadow-camera-far={100}
         shadowMapWidth={1024}
         shadowMapHeight={1024}
         castShadow

@@ -1,6 +1,7 @@
 import { Vector3, Vector2 } from "three"
 
 type PageData = {
+  id: string
   title: string
   body: string
   justify: string
@@ -15,6 +16,7 @@ type PageData = {
 
 export const pageData: PageData[] = [
   {
+    id: "intro",
     title: "Hello",
     justify: "flex-end",
     camOffset: new Vector2(0.25, -0.2),
@@ -30,6 +32,7 @@ export const pageData: PageData[] = [
     action: "idle",
   },
   {
+    id: "tech",
     title: "Being playful with technology",
     justify: "flex-start",
     camOffset: new Vector2(-0.25, 0),
@@ -45,6 +48,7 @@ export const pageData: PageData[] = [
     action: "idle",
   },
   {
+    id: "engineer",
     title: "10 Years an Engineer",
     justify: "flex-end",
     camOffset: new Vector2(0.25, 0.33),
@@ -60,6 +64,7 @@ export const pageData: PageData[] = [
     action: "strut",
   },
   {
+    id: "art",
     title: "Making Art for Music",
     justify: "flex-start",
     camOffset: new Vector2(-0.25, -0.2),
@@ -75,6 +80,7 @@ export const pageData: PageData[] = [
     action: "idle",
   },
   {
+    id: "contact",
     title: "Say Hi!",
     justify: "flex-end",
     camOffset: new Vector2(0.25, 0),
