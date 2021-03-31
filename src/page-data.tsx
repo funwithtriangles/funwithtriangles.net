@@ -55,7 +55,7 @@ export const pageData: PageData[] = [
     Polyop and creative director at Nudibranch Records. 
     Previous clients include Gucci and Red Bull.`,
     action: "idle",
-    tvPosition: new Vector3(-40, 0, 0),
+    tvPosition: new Vector3(-60, 0, 0),
   },
   {
     id: "engineer",
@@ -72,7 +72,7 @@ export const pageData: PageData[] = [
     Polyop and creative director at Nudibranch Records. 
     Previous clients include Gucci and Red Bull.`,
     action: "strut",
-    tvPosition: new Vector3(-40, 0, 0),
+    tvPosition: new Vector3(-60, 0, 0),
   },
   {
     id: "art",
@@ -89,7 +89,7 @@ export const pageData: PageData[] = [
     Polyop and creative director at Nudibranch Records. 
     Previous clients include Gucci and Red Bull.`,
     action: "idle",
-    tvPosition: new Vector3(-40, 0, 0),
+    tvPosition: new Vector3(-60, 0, 0),
   },
   {
     id: "contact",
@@ -103,6 +103,6 @@ export const pageData: PageData[] = [
     isFullHeightMob: true,
     body: `Id love to hear from you.`,
     action: "chicken",
-    tvPosition: new Vector3(-40, 0, 0),
+    tvPosition: new Vector3(-60, 0, 0),
   },
 ]

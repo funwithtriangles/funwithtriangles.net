@@ -11,6 +11,7 @@ import {
 import { pageData } from "../page-data"
 import { state } from "../state"
 import { useInjectActions } from "../utils/useInjectActions"
+import { usePageDataVector } from "../utils/usePageDataVector"
 
 const modSc = 0.2
 const blendDuration = 1
@@ -30,9 +31,6 @@ const screenMat = new MeshBasicMaterial({ map: videoTex })
 videoTex.encoding = sRGBEncoding
 screenMat.toneMapped = false
 
-const tvShowPos = new Vector3(0, 0, 0)
-const tvHidePos = new Vector3(0, 40, 0)
-
 export function Dude({ loadExtraAssets }: DudeProps) {
   const gltfObject = useGLTF("models/octobot.glb")
   const { animations } = gltfObject
@@ -41,8 +39,6 @@ export function Dude({ loadExtraAssets }: DudeProps) {
   const tv = useRef<Mesh>()
 
   useEffect(() => {
-    const page = pageData[state.fuzzyPageIndex]
-
     gltfObject.scene.scale.set(modSc, modSc, modSc)
     const armature = gltfObject.scene.getObjectByName("Armature")
 
@@ -58,13 +54,11 @@ export function Dude({ loadExtraAssets }: DudeProps) {
       obj.castShadow = true
     })
 
-    if (page.id !== "intro") {
-      tv.current.position.copy(tvHidePos)
-    }
-
     const screen = gltfObject.scene.getObjectByName("tvscreen") as Mesh
     screen.material = screenMat
   })
+
+  const tvPosition = usePageDataVector("tvPosition", new Vector3())
 
   useFrame(() => {
     const page = pageData[state.fuzzyPageIndex]
@@ -78,13 +72,9 @@ export function Dude({ loadExtraAssets }: DudeProps) {
       setCurrAction("idle")
     }
 
-    // Only show TV for intro
+    // Move TV based on page data
     if (tv.current) {
-      if (page.id === "intro") {
-        tv.current.position.lerp(tvShowPos, 0.05)
-      } else {
-        tv.current.position.lerp(tvHidePos, 0.02)
-      }
+      tv.current.position.copy(tvPosition.current)
     }
   })
 
