@@ -75,6 +75,8 @@ export function Dude({ loadExtraAssets }: DudeProps) {
     // Move TV based on page data
     if (tv.current) {
       tv.current.position.copy(tvPosition.current)
+      // Hide TV once it's out of the shot
+      tv.current.visible = tv.current.position.x > -40
     }
   })
 
