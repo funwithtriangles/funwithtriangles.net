@@ -4,21 +4,13 @@ import { PerspectiveCamera, Vector2, Vector3 } from "three"
 import { breakpoints, dimensions } from "../constants"
 import { pageData } from "../page-data"
 import { state } from "../state"
+import { usePageDataVector } from "../utils/usePageDataVector"
 
 const easeInOutSin = (t: number) =>
   (1 + Math.sin(Math.PI * t - Math.PI / 2)) / 2
 
 const offsetPositions = pageData.map((item) => item.camOffset)
 offsetPositions.push(new Vector2()) // Last position still needs a target, so we just give it any old number
-
-const camPositions = pageData.map((item) => item.camPosition)
-camPositions.push(new Vector3())
-
-const lookAtPositions = pageData.map((item) => item.camLookAt)
-lookAtPositions.push(new Vector3())
-
-const orbitOffsets = pageData.map((item) => item.camOrbitOffset)
-orbitOffsets.push(new Vector3())
 
 const mouseAmp = 0.5
 const medBreak = breakpoints.medium
@@ -28,12 +20,13 @@ export function Camera() {
     new PerspectiveCamera(75, 0, 0.1, 1000)
   )
 
-  const cylindricalPos = useRef(new Vector3())
-  const orbitOffset = useRef(new Vector3())
-  const pageDimensions = useRef(new Vector2())
   const viewOffset = useRef(new Vector2())
+  const pageDimensions = useRef(new Vector2())
 
-  const lookAt = useRef(new Vector3())
+  const cylindricalPos = usePageDataVector("camPosition", new Vector3())
+  const orbitOffset = usePageDataVector("camOrbitOffset", new Vector3())
+  const lookAt = usePageDataVector("camLookAt", new Vector3())
+
   const { setDefaultCamera, size } = useThree()
 
   useEffect(() => {
@@ -69,28 +62,10 @@ export function Camera() {
       cam.zoom *= 1.2
     }
 
-    lookAt.current.lerpVectors(
-      lookAtPositions[state.currPageIndex],
-      lookAtPositions[state.currPageIndex + 1],
-      smoothPagePos
-    )
-
-    cylindricalPos.current.lerpVectors(
-      camPositions[state.currPageIndex],
-      camPositions[state.currPageIndex + 1],
-      smoothPagePos
-    )
-
     cam.position.setFromCylindricalCoords(
       cylindricalPos.current.x,
       cylindricalPos.current.y,
       cylindricalPos.current.z
-    )
-
-    orbitOffset.current.lerpVectors(
-      orbitOffsets[state.currPageIndex],
-      orbitOffsets[state.currPageIndex + 1],
-      smoothPagePos
     )
 
     // Damped orbit based on mouse pos

@@ -1,6 +1,13 @@
 import { Vector3, Vector2 } from "three"
 
-type PageData = {
+export type VectorKeys =
+  | "camOffset"
+  | "camPosition"
+  | "camLookAt"
+  | "camOrbitOffset"
+  | "tvPosition"
+
+export interface PageData {
   id: string
   title: string
   body: string
@@ -12,6 +19,7 @@ type PageData = {
   camLookAt: Vector3
   camOrbitOffset: Vector3
   action: string
+  tvPosition: Vector3
 }
 
 export const pageData: PageData[] = [
@@ -30,6 +38,7 @@ export const pageData: PageData[] = [
     Polyop and creative director at Nudibranch Records. 
     Previous clients include Gucci and Red Bull.`,
     action: "idle",
+    tvPosition: new Vector3(0, 0, 0),
   },
   {
     id: "tech",
@@ -46,6 +55,7 @@ export const pageData: PageData[] = [
     Polyop and creative director at Nudibranch Records. 
     Previous clients include Gucci and Red Bull.`,
     action: "idle",
+    tvPosition: new Vector3(-40, 0, 0),
   },
   {
     id: "engineer",
@@ -62,6 +72,7 @@ export const pageData: PageData[] = [
     Polyop and creative director at Nudibranch Records. 
     Previous clients include Gucci and Red Bull.`,
     action: "strut",
+    tvPosition: new Vector3(-40, 0, 0),
   },
   {
     id: "art",
@@ -78,6 +89,7 @@ export const pageData: PageData[] = [
     Polyop and creative director at Nudibranch Records. 
     Previous clients include Gucci and Red Bull.`,
     action: "idle",
+    tvPosition: new Vector3(-40, 0, 0),
   },
   {
     id: "contact",
@@ -91,5 +103,6 @@ export const pageData: PageData[] = [
     isFullHeightMob: true,
     body: `Id love to hear from you.`,
     action: "chicken",
+    tvPosition: new Vector3(-40, 0, 0),
   },
 ]
