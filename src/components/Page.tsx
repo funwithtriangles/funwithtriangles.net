@@ -3,9 +3,8 @@ import { breakpoints, dimensions } from "../constants"
 
 interface PageProps {
   justify: string
-  title: string
-  body: string
   isFullHeightMob?: boolean
+  content: Function
 }
 
 const Container = styled.div<PageProps>`
@@ -44,10 +43,7 @@ export function Page(props: PageProps) {
   return (
     <Container {...props}>
       <Block {...props}>
-        <div>
-          <h2>{props.title}</h2>
-          <p>{props.body}</p>
-        </div>
+        <div>{props.content()}</div>
       </Block>
     </Container>
   )

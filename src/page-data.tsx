@@ -1,4 +1,5 @@
 import { Vector3, Vector2 } from "three"
+import { Intro, Tech, Engineer, Art, Contact } from "./pages"
 
 export type VectorKeys =
   | "camOffset"
@@ -9,8 +10,7 @@ export type VectorKeys =
 
 export interface PageData {
   id: string
-  title: string
-  body: string
+  content: Function
   justify: string
   camOffset: Vector2
   camOffsetMob: number
@@ -25,75 +25,54 @@ export interface PageData {
 export const pageData: PageData[] = [
   {
     id: "intro",
-    title: "Hello",
     justify: "flex-end",
     camOffset: new Vector2(0.25, -0.2),
     camOffsetMob: 0,
     camPosition: new Vector3(3.5, 0, 0.8),
     camLookAt: new Vector3(-1.2, 0.8, 0),
     camOrbitOffset: new Vector3(-1.2, 0, 0),
-    body: `I'm Alex Kempton, a creative developer and artist 
-    working with new technologies to create interesting visual
-    experiences. I am the creator of Hedron, visual artist for
-    Polyop and creative director at Nudibranch Records. 
-    Previous clients include Gucci and Red Bull.`,
+    content: Intro,
     action: "idle",
     tvPosition: new Vector3(0, 0, 0),
   },
   {
     id: "tech",
-    title: "Being playful with technology",
     justify: "flex-start",
     camOffset: new Vector2(-0.25, 0),
     camOffsetMob: 0,
     camPosition: new Vector3(1, 0, 2),
     camLookAt: new Vector3(0, 1.1, 0),
     camOrbitOffset: new Vector3(0, 0, 0),
-    body: `I'm Alex Kempton, a creative developer and artist 
-    working with new technologies to create interesting visual
-    experiences. I am the creator of Hedron, visual artist for
-    Polyop and creative director at Nudibranch Records. 
-    Previous clients include Gucci and Red Bull.`,
+    content: Tech,
     action: "idle",
     tvPosition: new Vector3(-60, 0, 0),
   },
   {
     id: "engineer",
-    title: "10 Years an Engineer",
     justify: "flex-end",
     camOffset: new Vector2(0.25, 0.33),
     camOffsetMob: 0,
     camPosition: new Vector3(2, 0, 1),
     camLookAt: new Vector3(0, 1.5, 0),
     camOrbitOffset: new Vector3(0, 0, 0),
-    body: `I'm Alex Kempton, a creative developer and artist 
-    working with new technologies to create interesting visual
-    experiences. I am the creator of Hedron, visual artist for
-    Polyop and creative director at Nudibranch Records. 
-    Previous clients include Gucci and Red Bull.`,
+    content: Engineer,
     action: "strut",
     tvPosition: new Vector3(-60, 0, 0),
   },
   {
     id: "art",
-    title: "Making Art for Music",
     justify: "flex-start",
     camOffset: new Vector2(-0.25, -0.2),
     camOffsetMob: 0,
     camPosition: new Vector3(5, Math.PI, 1),
     camLookAt: new Vector3(0, 1, 0),
     camOrbitOffset: new Vector3(0, 0, 0),
-    body: `I'm Alex Kempton, a creative developer and artist 
-    working with new technologies to create interesting visual
-    experiences. I am the creator of Hedron, visual artist for
-    Polyop and creative director at Nudibranch Records. 
-    Previous clients include Gucci and Red Bull.`,
+    content: Art,
     action: "idle",
     tvPosition: new Vector3(-60, 0, 0),
   },
   {
     id: "contact",
-    title: "Say Hi!",
     justify: "flex-end",
     camOffset: new Vector2(0.25, 0),
     camOffsetMob: 0,
@@ -101,7 +80,7 @@ export const pageData: PageData[] = [
     camLookAt: new Vector3(0, 1, 0),
     camOrbitOffset: new Vector3(0, 0, 0),
     isFullHeightMob: true,
-    body: `Id love to hear from you.`,
+    content: Contact,
     action: "chicken",
     tvPosition: new Vector3(-60, 0, 0),
   },
