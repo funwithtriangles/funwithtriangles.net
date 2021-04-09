@@ -2,27 +2,21 @@ import { useEffect, useRef } from "react"
 import { useFrame, useThree } from "react-three-fiber"
 import { PerspectiveCamera, Vector2, Vector3 } from "three"
 import { breakpoints, dimensions } from "../constants"
-import { pageData } from "../page-data"
 import { state } from "../state"
 import { usePageDataVector } from "../utils/usePageDataVector"
-
-const easeInOutSin = (t: number) =>
-  (1 + Math.sin(Math.PI * t - Math.PI / 2)) / 2
-
-const offsetPositions = pageData.map((item) => item.camOffset)
-offsetPositions.push(new Vector2()) // Last position still needs a target, so we just give it any old number
 
 const mouseAmp = 0.5
 const medBreak = breakpoints.medium
 
 export function Camera() {
-  const camera = useRef<PerspectiveCamera>(
-    new PerspectiveCamera(75, 0, 0.1, 1000)
-  )
-
+  const camera = useRef<PerspectiveCamera>(new PerspectiveCamera())
   const viewOffset = useRef(new Vector2())
+  const viewOffsetMobAdjust = useRef(new Vector2())
   const pageDimensions = useRef(new Vector2())
 
+  // Fair play, hooks are pretty awesome!
+  const viewOffsetMob = usePageDataVector("camOffsetMob", new Vector3())
+  const viewOffsetMed = usePageDataVector("camOffset", new Vector3())
   const cylindricalPos = usePageDataVector("camPosition", new Vector3())
   const orbitOffset = usePageDataVector("camOrbitOffset", new Vector3())
   const lookAt = usePageDataVector("camLookAt", new Vector3())
@@ -37,29 +31,25 @@ export function Camera() {
     pageDimensions.current.set(size.width, size.height)
     const cam = camera.current
 
-    const smoothPagePos = easeInOutSin(state.pagePos % 1)
-
-    // Adjust zoom and offset of camera depending on screen size
-    // TODO: This is actually the formula for zooming mobile, which works pretty well but probably not exact
-    cam.zoom =
-      size.width /
-      medBreak /
-      (size.width / (medBreak * dimensions.mobSceneRatio))
+    // Use horizontal fov instead of vertical
+    const hfov = size.width >= medBreak ? 105 : 60
+    cam.fov =
+      (Math.atan(Math.tan((hfov * Math.PI) / 360) / cam.aspect) * 360) / Math.PI
 
     if (size.width >= medBreak) {
-      viewOffset.current
-        .lerpVectors(
-          offsetPositions[state.currPageIndex],
-          offsetPositions[state.currPageIndex + 1],
-          smoothPagePos
-        )
-        .multiply(pageDimensions.current)
+      viewOffsetMed.current.multiply(pageDimensions.current)
+
+      viewOffset.current.copy(viewOffsetMed.current)
     } else {
-      viewOffset.current.set(
+      viewOffsetMobAdjust.current.set(
         0,
         (size.height - size.width * dimensions.mobSceneRatio) / 2
       )
-      cam.zoom *= 1.2
+      viewOffsetMob.current
+        .multiply(pageDimensions.current)
+        .add(viewOffsetMobAdjust.current)
+
+      viewOffset.current.copy(viewOffsetMob.current)
     }
 
     cam.position.setFromCylindricalCoords(

@@ -3,6 +3,7 @@ import { Intro, Tech, Engineer, Art, Contact } from "./pages"
 
 export type VectorKeys =
   | "camOffset"
+  | "camOffsetMob"
   | "camPosition"
   | "camLookAt"
   | "camOrbitOffset"
@@ -13,7 +14,7 @@ export interface PageData {
   content: Function
   justify: string
   camOffset: Vector2
-  camOffsetMob: number
+  camOffsetMob: Vector2
   isFullHeightMob?: boolean
   camPosition: Vector3 // Cylindrical (rad, theta, y)
   camLookAt: Vector3
@@ -27,7 +28,7 @@ export const pageData: PageData[] = [
     id: "intro",
     justify: "flex-end",
     camOffset: new Vector2(0.25, -0.2),
-    camOffsetMob: 0,
+    camOffsetMob: new Vector2(0, -0.1),
     camPosition: new Vector3(3.5, 0, 0.8),
     camLookAt: new Vector3(-1.2, 0.8, 0),
     camOrbitOffset: new Vector3(-1.2, 0, 0),
@@ -39,7 +40,7 @@ export const pageData: PageData[] = [
     id: "tech",
     justify: "flex-start",
     camOffset: new Vector2(-0.25, 0),
-    camOffsetMob: 0,
+    camOffsetMob: new Vector2(0, 0),
     camPosition: new Vector3(1, 0, 2),
     camLookAt: new Vector3(0, 1.1, 0),
     camOrbitOffset: new Vector3(0, 0, 0),
@@ -51,7 +52,7 @@ export const pageData: PageData[] = [
     id: "engineer",
     justify: "flex-end",
     camOffset: new Vector2(0.25, 0.33),
-    camOffsetMob: 0,
+    camOffsetMob: new Vector2(0, 0),
     camPosition: new Vector3(2, 0, 1),
     camLookAt: new Vector3(0, 1.5, 0),
     camOrbitOffset: new Vector3(0, 0, 0),
@@ -63,7 +64,7 @@ export const pageData: PageData[] = [
     id: "art",
     justify: "flex-start",
     camOffset: new Vector2(-0.25, -0.2),
-    camOffsetMob: 0,
+    camOffsetMob: new Vector2(0, 0),
     camPosition: new Vector3(5, Math.PI, 1),
     camLookAt: new Vector3(0, 1, 0),
     camOrbitOffset: new Vector3(0, 0, 0),
@@ -75,7 +76,7 @@ export const pageData: PageData[] = [
     id: "contact",
     justify: "flex-end",
     camOffset: new Vector2(0.25, 0),
-    camOffsetMob: 0,
+    camOffsetMob: new Vector2(0, 0),
     camPosition: new Vector3(2, Math.PI * 2, 1),
     camLookAt: new Vector3(0, 1, 0),
     camOrbitOffset: new Vector3(0, 0, 0),
