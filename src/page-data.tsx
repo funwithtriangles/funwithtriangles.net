@@ -46,7 +46,7 @@ export const pageData: PageData[] = [
     camOrbitOffset: new Vector3(0, 0, 0),
     content: Tech,
     action: "idle",
-    tvPosition: new Vector3(-60, 0, 0),
+    tvPosition: new Vector3(-100, 0, 0),
   },
   {
     id: "engineer",
