@@ -11,8 +11,8 @@ const medBreak = breakpoints.medium
 export function Camera() {
   const camera = useRef<PerspectiveCamera>(new PerspectiveCamera())
   const viewOffset = useRef(new Vector2())
-  const viewOffsetMobAdjust = useRef(new Vector2())
-  const pageDimensions = useRef(new Vector2())
+  const viewOffsetAdjust = useRef(new Vector2())
+  const sceneDimensions = useRef(new Vector2())
 
   // Fair play, hooks are pretty awesome!
   const viewOffsetMob = usePageDataVector("camOffsetMob", new Vector3())
@@ -28,7 +28,6 @@ export function Camera() {
   })
 
   useFrame(() => {
-    pageDimensions.current.set(size.width, size.height)
     const cam = camera.current
 
     // Use horizontal fov instead of vertical
@@ -37,17 +36,22 @@ export function Camera() {
       (Math.atan(Math.tan((hfov * Math.PI) / 360) / cam.aspect) * 360) / Math.PI
 
     if (size.width >= medBreak) {
-      viewOffsetMed.current.multiply(pageDimensions.current)
+      // Resizing based on a target aspect ratio, so only changing width of window affects sizings / offsets
+      const sceneHeight = size.width * dimensions.sceneRatio
+      sceneDimensions.current.set(size.width / 2, sceneHeight)
+      viewOffsetMed.current.multiply(sceneDimensions.current)
 
       viewOffset.current.copy(viewOffsetMed.current)
     } else {
-      viewOffsetMobAdjust.current.set(
-        0,
-        (size.height - size.width * dimensions.mobSceneRatio) / 2
-      )
+      // Resizing based on a target aspect ratio, so only changing width of window affects sizings / offsets
+      const sceneHeight = size.width * dimensions.mobSceneRatio
+      sceneDimensions.current.set(size.width, sceneHeight)
+
+      // With mob we have to an extra vertical adjustment
+      viewOffsetAdjust.current.set(0, (size.height - sceneHeight) / 2)
       viewOffsetMob.current
-        .multiply(pageDimensions.current)
-        .add(viewOffsetMobAdjust.current)
+        .multiply(sceneDimensions.current)
+        .add(viewOffsetAdjust.current)
 
       viewOffset.current.copy(viewOffsetMob.current)
     }
@@ -58,9 +62,11 @@ export function Camera() {
       cylindricalPos.current.z
     )
 
-    // Damped orbit based on mouse pos
-    cam.position.x += state.mousePos.x * mouseAmp
-    cam.position.y += state.mousePos.y * mouseAmp
+    if (size.width >= medBreak) {
+      // Damped orbit based on mouse pos
+      cam.position.x += state.mousePos.x * mouseAmp
+      cam.position.y += state.mousePos.y * mouseAmp
+    }
 
     cam.position.add(orbitOffset.current)
 

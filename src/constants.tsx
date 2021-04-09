@@ -3,5 +3,6 @@ export const breakpoints = {
 }
 
 export const dimensions = {
+  sceneRatio: 1,
   mobSceneRatio: 1,
 }
