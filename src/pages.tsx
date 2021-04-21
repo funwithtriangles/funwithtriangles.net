@@ -1,3 +1,18 @@
+import styled from "styled-components"
+
+const Box = styled.div`
+  font-size: 0.8em;
+
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  // color: #472619;
+  border-radius: 5px;
+
+  /* 
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.5); */
+`
+
 export function Intro() {
   return (
     <>
@@ -8,6 +23,12 @@ export function Intro() {
         the web. I am the creator of Hedron, visual artist for Polyop and
         creative director at Nudibranch Records.
       </p>
+      <Box>
+        <p>
+          Scroll down to learn more, or just <a href="#contact">get in touch</a>
+          !
+        </p>
+      </Box>
     </>
   )
 }
@@ -23,11 +44,13 @@ export function Tech() {
         achieved on a website! I’m always looking for projects with an
         interesting visual or interactive element.
       </p>
-      <h3>Take a look at some of my XR projects:</h3>
-      <ul>
-        <li>Leapwerm - Rather trippy Instagram filter</li>
-        <li>Instatrip - Face filters for the web</li>
-      </ul>
+      <Box>
+        <h3>Take a look at some of my XR projects:</h3>
+        <ul>
+          <li>Leapwerm - Rather trippy Instagram filter</li>
+          <li>Instatrip - Face filters for the web</li>
+        </ul>
+      </Box>
     </>
   )
 }

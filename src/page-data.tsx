@@ -39,7 +39,7 @@ export const pageData: PageData[] = [
   {
     id: "tech",
     justify: "flex-start",
-    camOffset: new Vector2(-0.5, 0),
+    camOffset: new Vector2(0.5, 0),
     camOffsetMob: new Vector2(0, 0),
     camPosition: new Vector3(1, 0, 2),
     camLookAt: new Vector3(0, 1.1, 0),
@@ -63,7 +63,7 @@ export const pageData: PageData[] = [
   {
     id: "art",
     justify: "flex-start",
-    camOffset: new Vector2(-0.5, -0.1),
+    camOffset: new Vector2(0.5, -0.1),
     camOffsetMob: new Vector2(0, 0),
     camPosition: new Vector3(5, Math.PI, 1),
     camLookAt: new Vector3(0, 1, 0),
