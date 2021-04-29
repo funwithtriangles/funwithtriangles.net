@@ -1,9 +1,10 @@
 import styled from "styled-components"
 
 const Box = styled.div`
-  font-size: 0.8em;
+  font-size: 0.7em;
 
-  padding: 2rem;
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
   background: rgba(255, 255, 255, 0.2);
   // color: #472619;
   border-radius: 5px;
@@ -19,9 +20,9 @@ export function Intro() {
       <h2>Hello</h2>
       <p>
         I'm Alex Kempton, a creative developer and artist working with new
-        technologies to create interesting visual experiences, with a focus on
-        the web. I am the creator of Hedron, visual artist for Polyop and
-        creative director at Nudibranch Records.
+        technologies to create interesting visual experiences. I am the creator
+        of Hedron, visual artist for Polyop and creative director at Nudibranch
+        Records.
       </p>
       <Box>
         <p>
@@ -45,11 +46,31 @@ export function Tech() {
         interesting visual or interactive element.
       </p>
       <Box>
-        <h3>Take a look at some of my XR projects:</h3>
-        <ul>
-          <li>Leapwerm - Rather trippy Instagram filter</li>
-          <li>Instatrip - Face filters for the web</li>
-        </ul>
+        <h3>Some fun things I've made</h3>
+        <dl>
+          <dt>
+            <a href="https://www.instagram.com/ar/2985068164844778/">
+              Leapwerm
+            </a>
+          </dt>
+          <dd>
+            Instagram filter where you fly through space as an ever evolving
+            worm
+          </dd>
+          <dt>
+            <a href="https://www.instagram.com/ar/2985068164844778/">
+              Instatrip
+            </a>
+          </dt>
+          <dd>
+            Face filters that work in the browser. I wanted to see what was
+            possible using only open-source tech (no apps required!)
+          </dd>
+          <dt>
+            <a href="https://thickerthanblood.co.uk/">Thicker than Blood</a>
+          </dt>
+          <dd>An online rendition of Izdihar Afyouni's conceptual art piece</dd>
+        </dl>
       </Box>
     </>
   )
@@ -81,11 +102,18 @@ export function Art() {
         Polyop, I’ve produced various pieces for other artists too, such as
         album artwork and music videos.
       </p>
-      <p>
-        I'm particularly proud of the Nudibranch compilation album,
-        <i>Molecular Selections</i>. As well as the main artwork, I created
-        animations and even a UV printed cassette tape!
-      </p>
+      <Box>
+        <h3>Gene-weaving octopodes</h3>
+        <p>
+          One piece I'm particularly proud of is for the Nudibranch compilation
+          album,{" "}
+          <a href="https://nudibranchrecords.bandcamp.com/album/molecular-selections">
+            Molecular Selections
+          </a>
+          . As well as the main artwork, I also produced animated promotional
+          pieces along with some funky cassette designs.
+        </p>
+      </Box>
     </>
   )
 }

@@ -9,6 +9,7 @@ import { pageData } from "../page-data"
 import { state } from "../state"
 import { lerp } from "../utils/lerp"
 import { useProgress } from "drei"
+import { breakpoints } from "../constants"
 
 const Background = styled.div`
   width: 100vw;
@@ -18,6 +19,15 @@ const Background = styled.div`
   z-index: -1;
   top: 0;
   left: 0;
+`
+
+const PagesContainer = styled.div`
+  @media (min-width: ${breakpoints.medium}px) {
+    backdrop-filter: blur(20px);
+    background: rgba(252, 102, 3, 0.5);
+    width: 50%;
+    margin-left: auto;
+  }
 `
 
 const fuzzyThresh = 0.6
@@ -88,11 +98,13 @@ export function App() {
         </Canvas>
       </Background>
 
-      {pageData.map((props, i) => (
-        <div key={i} ref={(el) => (pageRefs.current[i] = el)}>
-          <Page {...props} />
-        </div>
-      ))}
+      <PagesContainer>
+        {pageData.map((props, i) => (
+          <div key={i} ref={(el) => (pageRefs.current[i] = el)}>
+            <Page {...props} />
+          </div>
+        ))}
+      </PagesContainer>
     </>
   )
 }

@@ -17,7 +17,7 @@ const Container = styled.div<PageProps>`
 
   @media (min-width: ${breakpoints.medium}px) {
     padding-top: 0;
-    height: 100vh;
+    min-height: 100vh;
     align-items: center;
     justify-content: flex-end;
   }
@@ -38,15 +38,21 @@ const Block = styled.div<PageProps>`
   }
 
   @media (min-width: ${breakpoints.medium}px) {
+    background: none;
+    backdrop-filter: none;
     min-height: 100vh;
     padding: 4rem;
     border-width: 1px;
     height: auto;
-    width: 50%;
 
     h2 {
+      font-size: 3rem;
+    }
+  }
+
+  @media (min-width: ${breakpoints.large}px) {
+    h2 {
       font-size: 6rem;
-      line-height: 1;
     }
   }
 `

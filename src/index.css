@@ -36,10 +36,16 @@ p:last-child {
 
 ul {
   margin-top: 0;
+  padding-left: 1em;
 }
 
 ul:last-child {
   margin-bottom: 0;
+}
+
+dd {
+  margin-left: 0;
+  margin-bottom: 0.5em;
 }
 
 video {
