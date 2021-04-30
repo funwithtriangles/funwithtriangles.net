@@ -17,11 +17,16 @@ export function usePageDataVector(id: VectorKeys, vector: Vector2 | Vector3) {
   }, [id])
 
   useFrame(() => {
-    const smoothPagePos = easeInOutSin(state.pagePos % 1)
+    const smoothPagePos = easeInOutSin(state.pagePos)
+
+    const nextVecIndex = Math.min(
+      state.currPageIndex + 1,
+      items.current.length - 1
+    )
 
     vec.current.lerpVectors(
       items.current[state.currPageIndex],
-      items.current[state.currPageIndex + 1],
+      items.current[nextVecIndex],
       smoothPagePos
     )
   })
