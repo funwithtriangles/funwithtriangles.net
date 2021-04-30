@@ -1,28 +1,47 @@
 {
-  "name": "funwithtriangles.github.io",
-  "version": "1.0.0",
-  "description": "Source code for Alex Kempton's portfolio, [funwithtriangles.net][1].",
-  "main": "src/index.js",
+  "name": "funwithtriangles.net",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/styled-components": "^5.1.9",
+    "drei": "^2.2.21",
+    "editly": "^0.11.1",
+    "prettier": "2.2.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.3",
+    "react-three-fiber": "^5.3.19",
+    "styled-components": "^5.2.1",
+    "three": "^0.124.0",
+    "typescript": "^4.1.2"
+  },
   "scripts": {
-    "start": "parcel src/index.html",
-    "build": "parcel build src/index.html",
-    "deploy": "gh-pages -d dist"
+    "start": "react-scripts start",
+    "video": "node showreel.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/funwithtriangles/funwithtriangles.github.io.git"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/funwithtriangles/funwithtriangles.github.io/issues"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
-  "homepage": "https://github.com/funwithtriangles/funwithtriangles.github.io#readme",
-  "devDependencies": {
-    "cssnano": "^4.1.10",
-    "gh-pages": "^3.1.0",
-    "parcel-plugin-clean-dist": "0.0.6",
-    "parcel-plugin-static-files-copy": "^2.5.0",
-    "sass": "^1.29.0"
-  }
+  "devDependencies": {}
 }
