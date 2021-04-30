@@ -1,4 +1,4 @@
-# funwithtriangles.github.io
+# funwithtriangles.net
 Source code for Alex Kempton's portfolio, [funwithtriangles.net](http://funwithtriangles.net).
 
 ## Installation
