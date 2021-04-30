@@ -20,9 +20,11 @@ export function Intro() {
       <h2>Hello</h2>
       <p>
         I'm Alex Kempton, a creative developer and artist working with new
-        technologies to create interesting visual experiences. I am the creator
-        of Hedron, visual artist for Polyop and creative director at Nudibranch
-        Records.
+        technologies to build interesting visual experiences. I am the creator
+        of <a href="https://github.com/nudibranchrecords/hedron">Hedron</a>,
+        visual artist for <a href="http://polyop.uk/">Polyop</a> and creative
+        director at{" "}
+        <a href="http://nudibranchrecords.uk/">Nudibranch Records</a>.
       </p>
       <Box>
         <p>

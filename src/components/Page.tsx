@@ -25,7 +25,6 @@ const Container = styled.div<PageProps>`
 const Block = styled.div<PageProps>`
   width: 100%;
   padding: 2rem;
-  height: ${(p) => (p.isFullHeightMob ? "60vh" : "auto")};
   display: flex;
   align-items: center;
   backdrop-filter: blur(20px);

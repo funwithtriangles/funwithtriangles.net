@@ -37,6 +37,7 @@ p:last-child {
 ul {
   margin-top: 0;
   padding-left: 0;
+  font-size: 0.8em;
 }
 
 ul:last-child {
