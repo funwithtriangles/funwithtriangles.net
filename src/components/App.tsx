@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import { Canvas } from "react-three-fiber"
 import { Page } from "./Page"
 import { Scene } from "./Scene"
+import { Loader } from "./Loader"
 import { pageData } from "../page-data"
 
 import { state } from "../state"
@@ -32,15 +33,13 @@ const PagesContainer = styled.div`
 
 const fuzzyThresh = 0.6
 
-function Loader({ progress }: { progress: number }) {
-  return <h2 style={{ position: "absolute" }}>{Math.round(progress)}</h2>
-}
-
 export function App() {
   const { progress } = useProgress()
   const pageRefs = useRef(new Array(pageData.length))
 
   useEffect(() => {
+    if (progress !== 100) return
+
     const updateScrollState = () => {
       for (let i = pageRefs.current.length - 1; i >= 0; i--) {
         // Loop through page elements backwards to see which one is current
@@ -87,7 +86,7 @@ export function App() {
         lerp(1, -1, e.clientY / window.innerHeight)
       )
     })
-  }, [])
+  }, [progress])
 
   return (
     <>
@@ -98,13 +97,15 @@ export function App() {
         </Canvas>
       </Background>
 
-      <PagesContainer>
-        {pageData.map((props, i) => (
-          <div key={i} ref={(el) => (pageRefs.current[i] = el)}>
-            <Page {...props} />
-          </div>
-        ))}
-      </PagesContainer>
+      {progress === 100 && (
+        <PagesContainer>
+          {pageData.map((props, i) => (
+            <div key={i} ref={(el) => (pageRefs.current[i] = el)}>
+              <Page {...props} />
+            </div>
+          ))}
+        </PagesContainer>
+      )}
     </>
   )
 }
