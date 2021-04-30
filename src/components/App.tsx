@@ -53,16 +53,13 @@ export function App() {
 
       const currEl = pageRefs.current[state.currPageIndex]
       const relScroll = window.pageYOffset - currEl.offsetTop
-      state.pagePos = relScroll / currEl.clientHeight
+      state.pagePos = Math.min(relScroll / currEl.clientHeight, 0.9999)
     }
 
     window.addEventListener("scroll", () => {
       updateScrollState()
 
-      if (
-        state.pagePos > state.prevPagePos &&
-        state.pagePos % 1 > fuzzyThresh
-      ) {
+      if (state.pagePos > state.prevPagePos && state.pagePos > fuzzyThresh) {
         // Scrolling down
         state.fuzzyPageIndex = Math.min(
           state.currPageIndex + 1,

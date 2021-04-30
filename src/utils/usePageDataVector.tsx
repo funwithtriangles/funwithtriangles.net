@@ -14,7 +14,6 @@ export function usePageDataVector(id: VectorKeys, vector: Vector2 | Vector3) {
 
   useEffect(() => {
     items.current = pageData.map((item) => item[id])
-    items.current.push(items.current[0]) // Need this extra item so last position can lerp beyond that if scrolled 1px too far
   }, [id])
 
   useFrame(() => {
