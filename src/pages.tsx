@@ -3,7 +3,7 @@ import styled from "styled-components"
 const Box = styled.div`
   font-size: 0.7em;
 
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
   margin-bottom: 1rem;
   background: rgba(255, 255, 255, 0.2);
   // color: #472619;
@@ -81,13 +81,25 @@ export function Engineer() {
     <>
       <h2>10+ Years an Engineer</h2>
       <p>
-        I’ve been solving problems with code since 2010. As much as I enjoy
-        artistic projects, I’m a programmer at heart and am always looking to
-        get my teeth into something technical. Past jobs include being the lead
-        front-end developer for the build of an online banking interface, as
-        well as creating custom data visualisations for financial reporting
-        tools.
+        I’ve been solving problems with code since 2010. While I learn towards
+        artistic projects, I enjoy all kinds of technical challenge! I've worked
+        on various projects, such as online banking interfaces, data
+        visualisations, desktop software and interactive maps.
       </p>
+      <Box>
+        <h3>Hedron</h3>
+        <p>
+          I created and actively maintain{" "}
+          <a href="https://github.com/nudibranchrecords/hedron">Hedron</a>, an
+          open source tool for designing and performing live visual shows. It
+          has to be one of the most complicated projects I have worked on and
+          continues to grow. I was invited to do a{" "}
+          <a href="https://www.youtube.com/watch?v=B6z0flqI9Lk">
+            short talk about the software at React Day Berlin
+          </a>
+          .
+        </p>
+      </Box>
     </>
   )
 }
@@ -121,12 +133,26 @@ export function Art() {
 export function Contact() {
   return (
     <>
-      <h2>Get in touch</h2>
+      <h2 id="contact">Get in touch</h2>
       <ul>
-        <li>Email</li>
-        <li>Insta</li>
-        <li>Twitter</li>
-        <li>Github</li>
+        <li>
+          <strong>Email:</strong>{" "}
+          <a href="mailto:alex@funwithtriangles.net">
+            alex@funwithtriangles.net
+          </a>
+        </li>
+        <li>
+          <strong>Twitter:</strong> @
+          <a href="https://twitter.com/funtriangles">funtriangles</a>
+        </li>
+        <li>
+          <strong>Instagram:</strong> @
+          <a href="https://instagram.com/funwithtriangles">funwithtriangles</a>
+        </li>
+        <li>
+          <strong>Github:</strong>{" "}
+          <a href="https://github.com/funwithtriangles">funwithtriangles</a>
+        </li>
       </ul>
     </>
   )

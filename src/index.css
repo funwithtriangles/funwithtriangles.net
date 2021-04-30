@@ -36,16 +36,33 @@ p:last-child {
 
 ul {
   margin-top: 0;
-  padding-left: 1em;
+  padding-left: 0;
 }
 
 ul:last-child {
   margin-bottom: 0;
 }
 
+li {
+  list-style: none;
+  margin-left: 0;
+}
+
+dl {
+  margin-top: 0;
+}
+
+dl:last-child {
+  margin-bottom: 0;
+}
+
 dd {
   margin-left: 0;
   margin-bottom: 0.5em;
+}
+
+dd:last-child {
+  margin-bottom: 0;
 }
 
 video {
