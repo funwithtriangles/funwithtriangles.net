@@ -45,7 +45,7 @@ export const pageData: PageData[] = [
     camLookAt: new Vector3(0, 1.1, 0),
     camOrbitOffset: new Vector3(0, 0, 0),
     content: Tech,
-    action: "idle",
+    action: "looking",
     tvPosition: new Vector3(-100, 0, 0),
   },
   {
