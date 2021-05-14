@@ -1,3 +1,4 @@
+import { useSpring } from "@react-spring/core"
 import { useAnimations, useGLTF } from "drei"
 import { useEffect, useRef, useState } from "react"
 import { useFrame } from "react-three-fiber"
@@ -37,6 +38,8 @@ export function Dude({ loadExtraAssets }: DudeProps) {
   const { actions, ref, mixer } = useAnimations(animations)
   const [currAction, setCurrAction] = useState("idle")
   const tv = useRef<Mesh>()
+  const headset = useRef<Mesh>()
+  const headsetOriginalZ = useRef<number>()
 
   useEffect(() => {
     gltfObject.scene.scale.set(modSc, modSc, modSc)
@@ -56,9 +59,18 @@ export function Dude({ loadExtraAssets }: DudeProps) {
 
     const screen = gltfObject.scene.getObjectByName("tvscreen") as Mesh
     screen.material = screenMat
-  })
+
+    headset.current = gltfObject.scene.getObjectByName("headset") as Mesh
+    headsetOriginalZ.current = headset.current.position.z
+  }, [gltfObject.scene])
 
   const tvPosition = usePageDataVector("tvPosition", new Vector3())
+  const headsetPosition = useSpring({
+    to: {
+      z: pageData[state.fuzzyPageIndex].action === "looking" ? 0 : 1,
+    },
+    duration: 5000,
+  })
 
   useFrame(() => {
     const page = pageData[state.fuzzyPageIndex]
@@ -77,6 +89,14 @@ export function Dude({ loadExtraAssets }: DudeProps) {
       tv.current.position.copy(tvPosition.current)
       // Hide TV once it's out of the shot
       tv.current.visible = tv.current.position.x > -40
+    }
+
+    // Move headset based on page data
+    if (headset.current && headsetOriginalZ.current) {
+      headset.current.position.z =
+        headsetOriginalZ.current + headsetPosition.z.get() * 3000
+
+      headset.current.visible = headset.current.position.z < 2900
     }
   })
 

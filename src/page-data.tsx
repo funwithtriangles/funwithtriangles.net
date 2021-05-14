@@ -8,6 +8,7 @@ export type VectorKeys =
   | "camLookAt"
   | "camOrbitOffset"
   | "tvPosition"
+  | "headsetPosition"
 
 export interface PageData {
   id: string
@@ -21,6 +22,7 @@ export interface PageData {
   camOrbitOffset: Vector3
   action: string
   tvPosition: Vector3
+  headsetPosition: Vector3
 }
 
 export const pageData: PageData[] = [
@@ -35,6 +37,7 @@ export const pageData: PageData[] = [
     content: Intro,
     action: "idle",
     tvPosition: new Vector3(0, 0, 0),
+    headsetPosition: new Vector3(0, 1000, 0),
   },
   {
     id: "tech",
@@ -43,10 +46,11 @@ export const pageData: PageData[] = [
     camOffsetMob: new Vector2(0, 0),
     camPosition: new Vector3(1, 0, 2),
     camLookAt: new Vector3(0, 1.1, 0),
-    camOrbitOffset: new Vector3(0, 0, 0),
+    camOrbitOffset: new Vector3(0, -0.5, 0),
     content: Tech,
     action: "looking",
     tvPosition: new Vector3(-100, 0, 0),
+    headsetPosition: new Vector3(0, 0, 0),
   },
   {
     id: "engineer",
@@ -59,6 +63,7 @@ export const pageData: PageData[] = [
     content: Engineer,
     action: "strut",
     tvPosition: new Vector3(-60, 0, 0),
+    headsetPosition: new Vector3(0, 1000, 0),
   },
   {
     id: "art",
@@ -71,6 +76,7 @@ export const pageData: PageData[] = [
     content: Art,
     action: "idle",
     tvPosition: new Vector3(-60, 0, 0),
+    headsetPosition: new Vector3(0, 1000, 0),
   },
   {
     id: "contact",
@@ -84,5 +90,6 @@ export const pageData: PageData[] = [
     content: Contact,
     action: "chicken",
     tvPosition: new Vector3(-60, 0, 0),
+    headsetPosition: new Vector3(0, 1000, 0),
   },
 ]
