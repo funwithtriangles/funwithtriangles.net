@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react"
-import { useFrame } from "react-three-fiber"
+import { useFrame } from "@react-three/fiber"
 import { Vector2, Vector3 } from "three"
 import { pageData, VectorKeys } from "../page-data"
 import { state } from "../state"

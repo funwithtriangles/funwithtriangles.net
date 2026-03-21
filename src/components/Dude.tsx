@@ -1,11 +1,11 @@
 import { useSpring } from "@react-spring/core"
-import { useAnimations, useGLTF } from "drei"
+import { useAnimations, useGLTF } from "@react-three/drei"
 import { useEffect, useRef, useState } from "react"
-import { useFrame } from "react-three-fiber"
+import { useFrame } from "@react-three/fiber"
 import {
   Mesh,
   MeshBasicMaterial,
-  sRGBEncoding,
+  SRGBColorSpace,
   Vector3,
   VideoTexture,
 } from "three"
@@ -29,7 +29,7 @@ video.play()
 
 const videoTex = new VideoTexture(video)
 const screenMat = new MeshBasicMaterial({ map: videoTex })
-videoTex.encoding = sRGBEncoding
+videoTex.colorSpace = SRGBColorSpace
 screenMat.toneMapped = false
 
 export function Dude({ loadExtraAssets }: DudeProps) {
@@ -37,9 +37,9 @@ export function Dude({ loadExtraAssets }: DudeProps) {
   const { animations } = gltfObject
   const { actions, ref, mixer } = useAnimations(animations)
   const [currAction, setCurrAction] = useState("idle")
-  const tv = useRef<Mesh>()
-  const headset = useRef<Mesh>()
-  const headsetOriginalZ = useRef<number>()
+  const tv = useRef<Mesh | null>(null)
+  const headset = useRef<Mesh | null>(null)
+  const headsetOriginalZ = useRef<number | undefined>(undefined)
 
   useEffect(() => {
     gltfObject.scene.scale.set(modSc, modSc, modSc)
@@ -50,9 +50,9 @@ export function Dude({ loadExtraAssets }: DudeProps) {
       obj.castShadow = true
     })
 
-    tv.current = gltfObject.scene.getObjectByName("tv") as Mesh
+    ;(tv as React.MutableRefObject<Mesh | null>).current = gltfObject.scene.getObjectByName("tv") as Mesh
 
-    tv.current.traverse((obj) => {
+    tv.current?.traverse((obj) => {
       obj.frustumCulled = false
       obj.castShadow = true
     })
@@ -60,8 +60,8 @@ export function Dude({ loadExtraAssets }: DudeProps) {
     const screen = gltfObject.scene.getObjectByName("tvscreen") as Mesh
     screen.material = screenMat
 
-    headset.current = gltfObject.scene.getObjectByName("headset") as Mesh
-    headsetOriginalZ.current = headset.current.position.z
+    ;(headset as React.MutableRefObject<Mesh | null>).current = gltfObject.scene.getObjectByName("headset") as Mesh
+    headsetOriginalZ.current = headset.current?.position.z
   }, [gltfObject.scene])
 
   const tvPosition = usePageDataVector("tvPosition", new Vector3())
@@ -72,12 +72,20 @@ export function Dude({ loadExtraAssets }: DudeProps) {
     duration: 5000,
   })
 
+  const extraActions = useInjectActions(
+    "models/extra-actions.glb",
+    loadExtraAssets,
+    mixer,
+    ref
+  )
+
   useFrame(() => {
     const page = pageData[state.fuzzyPageIndex]
     const actionName = page.action
 
     // Set animation for dude
-    if (actions[actionName] !== undefined) {
+    const allActions = { ...actions, ...extraActions.current }
+    if (allActions[actionName] !== undefined && allActions[actionName] !== null) {
       setCurrAction(actionName)
     } else {
       // If action hasn't loaded yet, fall back to "idle" action
@@ -102,17 +110,13 @@ export function Dude({ loadExtraAssets }: DudeProps) {
 
   useEffect(() => {
     // Update action when currAction updates
-    actions[currAction].reset().fadeIn(blendDuration).play()
-    return () => void actions[currAction].fadeOut(blendDuration)
+    const allActions = { ...actions, ...extraActions.current }
+    const action = allActions[currAction]
+    if (action) {
+      action.reset().fadeIn(blendDuration).play()
+      return () => void action.fadeOut(blendDuration)
+    }
   }, [currAction, actions])
-
-  useInjectActions(
-    "models/extra-actions.glb",
-    loadExtraAssets,
-    actions,
-    ref,
-    mixer
-  )
 
   return (
     <>

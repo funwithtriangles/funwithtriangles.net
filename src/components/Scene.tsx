@@ -1,16 +1,16 @@
 import { Suspense, useRef } from "react"
-import { useFrame } from "react-three-fiber"
+import { useFrame } from "@react-three/fiber"
 
 import { Camera } from "./Camera"
 import { Dude } from "./Dude"
 import { Paintings } from "./Paintings"
 
-import { Environment } from "drei"
+import { Environment } from "@react-three/drei"
 
 function Plane({ ...props }) {
   return (
     <mesh {...props} receiveShadow>
-      <planeBufferGeometry args={[10, 10, 1, 1]} />
+      <planeGeometry args={[10, 10, 1, 1]} />
       <shadowMaterial transparent opacity={0.2} />
     </mesh>
   )
@@ -44,8 +44,8 @@ export function Scene({ mainAssetsHaveLoaded }: SceneProps) {
         shadow-camera-top={5}
         shadow-camera-near={0.5}
         shadow-camera-far={100}
-        shadowMapWidth={1024}
-        shadowMapHeight={1024}
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
         castShadow
       />
       <Plane rotation={[-0.5 * Math.PI, 0, 0]} />

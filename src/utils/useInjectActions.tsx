@@ -1,28 +1,31 @@
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import {
   AnimationAction,
   AnimationMixer,
   LoadingManager,
   Object3D,
 } from "three"
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js"
 
 const extraLoader = new GLTFLoader(new LoadingManager())
 
 export function useInjectActions(
   extraActionsUrl: string,
   enable: boolean,
-  actions: { [key: string]: AnimationAction },
-  ref: React.MutableRefObject<Object3D | undefined>,
-  mixer: AnimationMixer
+  mixer: AnimationMixer,
+  root: React.RefObject<Object3D | null | undefined>
 ) {
+  const extraActions = useRef<{ [key: string]: AnimationAction }>({})
+
   useEffect(() => {
-    if (enable) {
+    if (enable && root.current) {
       extraLoader.load(extraActionsUrl, (gltf) => {
         gltf.animations.forEach((clip) => {
-          actions[clip.name] = mixer.clipAction(clip, ref.current)
+          extraActions.current[clip.name] = mixer.clipAction(clip, root.current!)
         })
       })
     }
-  }, [extraActionsUrl, enable, mixer, actions, ref])
+  }, [extraActionsUrl, enable, mixer, root])
+
+  return extraActions
 }

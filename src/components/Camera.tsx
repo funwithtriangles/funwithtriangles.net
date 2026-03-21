@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react"
-import { useFrame, useThree } from "react-three-fiber"
+import { useFrame, useThree } from "@react-three/fiber"
 import { PerspectiveCamera, Vector2, Vector3 } from "three"
 import { breakpoints, dimensions } from "../constants"
 import { state } from "../state"
@@ -21,10 +21,10 @@ export function Camera() {
   const orbitOffset = usePageDataVector("camOrbitOffset", new Vector3())
   const lookAt = usePageDataVector("camLookAt", new Vector3())
 
-  const { setDefaultCamera, size } = useThree()
+  const { set, size } = useThree()
 
   useEffect(() => {
-    void setDefaultCamera(camera.current)
+    set({ camera: camera.current })
   })
 
   useFrame(() => {

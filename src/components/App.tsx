@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 import { useEffect, useRef } from "react"
-import { Canvas } from "react-three-fiber"
+import { Canvas } from "@react-three/fiber"
 import { Page } from "./Page"
 import { Scene } from "./Scene"
 import { Loader } from "./Loader"
@@ -9,7 +9,7 @@ import { pageData } from "../page-data"
 
 import { state } from "../state"
 import { lerp } from "../utils/lerp"
-import { useProgress } from "drei"
+import { useProgress } from "@react-three/drei"
 import { breakpoints } from "../constants"
 
 const Background = styled.div`
@@ -89,7 +89,7 @@ export function App() {
     <>
       <Loader progress={progress} />
       <Background>
-        <Canvas shadowMap>
+        <Canvas shadows>
           <Scene mainAssetsHaveLoaded={progress === 100} />
         </Canvas>
       </Background>

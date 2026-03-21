@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react"
-import { useFrame } from "react-three-fiber"
+import { useFrame } from "@react-three/fiber"
 import {
   LoadingManager,
+  Mesh,
   MeshBasicMaterial,
-  Object3D,
-  PlaneBufferGeometry,
-  sRGBEncoding,
+  PlaneGeometry,
+  SRGBColorSpace,
   TextureLoader,
   Vector3,
 } from "three"
@@ -32,13 +32,13 @@ type SingleProps = {
   position: [number, number, number]
 }
 
-const geom = new PlaneBufferGeometry(sideLength, sideLength, 1, 1)
+const geom = new PlaneGeometry(sideLength, sideLength, 1, 1)
 
 function Single({ material, position }: SingleProps) {
   const basePos = useRef(new Vector3(...position))
   const velocity = useRef(new Vector3(0, 0, 0))
   const activePos = useRef(new Vector3())
-  const mesh = useRef(new Object3D())
+  const mesh = useRef<Mesh>(null!)
 
   useFrame((_, delta) => {
     velocity.current.x = -state.mousePos.x * 0.1
@@ -66,7 +66,7 @@ function Gallery() {
       const tex = texLoader.load(`artwork/${file}`)
       const mat = new MeshBasicMaterial({ map: tex })
 
-      tex.encoding = sRGBEncoding
+      tex.colorSpace = SRGBColorSpace
       mat.toneMapped = false
 
       mats.current.push(mat)

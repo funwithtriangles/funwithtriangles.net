@@ -7,12 +7,20 @@ interface PageProps {
   content: Function
 }
 
-const Container = styled.div<PageProps>`
+interface StyledContainerProps {
+  $isFullHeightMob?: boolean
+}
+
+interface StyledBlockProps {
+  $justify: string
+}
+
+const Container = styled.div<StyledContainerProps>`
   display: flex;
   align-items: flex-end;
   padding-top: ${(p) =>
-    p.isFullHeightMob ? 0 : `${dimensions.mobSceneRatio * 100}vw`};
-  height: ${(p) => (p.isFullHeightMob ? "100vh" : "auto")};
+    p.$isFullHeightMob ? 0 : `${dimensions.mobSceneRatio * 100}vw`};
+  height: ${(p) => (p.$isFullHeightMob ? "100vh" : "auto")};
   color: white;
 
   @media (min-width: ${breakpoints.medium}px) {
@@ -22,7 +30,7 @@ const Container = styled.div<PageProps>`
     justify-content: flex-end;
   }
 `
-const Block = styled.div<PageProps>`
+const Block = styled.div<StyledBlockProps>`
   width: 100%;
   padding: 2rem;
   display: flex;
@@ -58,8 +66,8 @@ const Block = styled.div<PageProps>`
 
 export function Page(props: PageProps) {
   return (
-    <Container {...props}>
-      <Block {...props}>
+    <Container $isFullHeightMob={props.isFullHeightMob}>
+      <Block $justify={props.justify}>
         <div>{props.content()}</div>
       </Block>
     </Container>
