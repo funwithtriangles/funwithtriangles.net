@@ -25,7 +25,7 @@ export function Camera() {
 
   useEffect(() => {
     set({ camera: camera.current })
-  })
+  }, [])
 
   useFrame(() => {
     const cam = camera.current
@@ -59,7 +59,7 @@ export function Camera() {
     cam.position.setFromCylindricalCoords(
       cylindricalPos.current.x,
       cylindricalPos.current.y,
-      cylindricalPos.current.z
+      cylindricalPos.current.z,
     )
 
     if (size.width >= medBreak) {
@@ -78,7 +78,7 @@ export function Camera() {
       viewOffset.current.x,
       viewOffset.current.y,
       size.width,
-      size.height
+      size.height,
     )
     cam.updateProjectionMatrix()
   })

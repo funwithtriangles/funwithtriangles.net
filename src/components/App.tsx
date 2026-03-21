@@ -56,14 +56,14 @@ export function App() {
       state.pagePos = Math.min(relScroll / currEl.clientHeight, 0.9999)
     }
 
-    window.addEventListener("scroll", () => {
+    const handleScroll = () => {
       updateScrollState()
 
       if (state.pagePos > state.prevPagePos && state.pagePos > fuzzyThresh) {
         // Scrolling down
         state.fuzzyPageIndex = Math.min(
           state.currPageIndex + 1,
-          pageData.length - 1
+          pageData.length - 1,
         )
       } else if (
         state.pagePos < state.prevPagePos &&
@@ -72,17 +72,25 @@ export function App() {
         // Scrolling up
         state.fuzzyPageIndex = Math.max(state.currPageIndex, 0)
       }
-    })
+    }
+
+    const handleMouseMove = (e: MouseEvent) => {
+      state.mousePos.set(
+        lerp(-1, 1, e.clientX / window.innerWidth),
+        lerp(1, -1, e.clientY / window.innerHeight),
+      )
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("mousemove", handleMouseMove)
 
     updateScrollState()
     state.fuzzyPageIndex = Math.round(state.pagePos)
 
-    window.addEventListener("mousemove", (e) => {
-      state.mousePos.set(
-        lerp(-1, 1, e.clientX / window.innerWidth),
-        lerp(1, -1, e.clientY / window.innerHeight)
-      )
-    })
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      window.removeEventListener("mousemove", handleMouseMove)
+    }
   }, [progress])
 
   return (
